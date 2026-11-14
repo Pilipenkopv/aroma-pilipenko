@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Калькулятор концентрации эфирных масел — Павел Пилипенко</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; line-height: 1.7; color: #2c3e50; background: #f9f7f4; }
+header { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 20px 0; }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 16px; }
+nav a:hover { opacity: 0.8; }
+.hero { background: linear-gradient(135deg, #f3e5f5, #e1bee7); padding: 60px 20px; text-align: center; }
+.hero h1 { font-size: 38px; color: #7b1fa2; margin-bottom: 10px; }
+.hero p { font-size: 18px; color: #5a6c5d; }
+.container { max-width: 700px; margin: 0 auto; padding: 50px 20px; }
+.calc-box { background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #7b1fa2; }
+.calc-box h2 { font-size: 26px; color: #7b1fa2; margin-bottom: 25px; }
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; font-size: 16px; color: #7b1fa2; margin-bottom: 8px; font-weight: bold; }
+.input-group input, .input-group select { width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; font-family: Georgia, serif; }
+.input-group input:focus, .input-group select:focus { outline: none; border-color: #7b1fa2; }
+.calc-btn { background: linear-gradient(135deg, #7b1fa2, #9c27b0); color: white; padding: 14px 35px; border: none; border-radius: 30px; font-size: 17px; font-family: Georgia, serif; cursor: pointer; width: 100%; margin-top: 10px; }
+.calc-btn:hover { opacity: 0.9; }
+.result { display: none; margin-top: 30px; padding: 25px; background: #f3e5f5; border-left: 5px solid #7b1fa2; border-radius: 12px; }
+.result-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e1bee7; }
+.result-row:last-child { border-bottom: none; }
+.result-row strong { color: #7b1fa2; }
+.result-row span { color: #5a6c5d; font-weight: bold; }
+.safety-info { margin-top: 25px; padding: 20px; background: #fff8e1; border-radius: 10px; }
+.safety-info h3 { color: #f57c00; margin-bottom: 12px; }
+.safety-info ul { margin-left: 20px; }
+.safety-info li { margin-bottom: 8px; font-size: 14px; color: #5a6c5d; }
+.back-link { display: inline-block; margin-bottom: 25px; color: #7b1fa2; text-decoration: none; font-size: 16px; }
+.back-link:hover { text-decoration: underline; }
+.warning { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 20px; border-radius: 10px; margin-top: 30px; }
+.warning strong { color: #4a148c; }
+.warning p { color: #4a148c; font-size: 14px; }
+footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; font-size: 14px; }
+
+<style>
+.floating-buttons { position: fixed; right: 20px; bottom: 100px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
+
+.floating-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(255,255,255,0.3); transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s; }
+.floating-btn:hover::before { width: 300px; height: 300px; }
+.floating-btn:hover { transform: scale(1.15) translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.35); animation: none; }
+.floating-btn .icon { position: relative; z-index: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+.floating-btn 
+.floating-btn:hover 
+
+
+.btn-email { background: linear-gradient(135deg, #ea4335 0%, #fbbc05 100%); }
+@keyframes pulse { 0%, 100% { box-shadow: 0 6px 20px rgba(0,0,0,0.25); } 50% { box-shadow: 0 6px 20px rgba(0,0,0,0.25), 0 0 0 10px rgba(255,255,255,0.1); } }
+</style></style>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="blog.html">Блог</a>
+<a href="calculators.html">Калькуляторы</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero"><h1>Калькулятор концентрации эфирных масел</h1><p>Безопасные пропорции для разведения эфирных масел</p></section>
+<div class="container">
+<a href="calculators.html" class="back-link">&larr; Все калькуляторы</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+<div class="calc-box">
+<h2>Рассчитайте безопасную концентрацию</h2>
+<div class="input-group">
+<label for="base">Объём базового масла (мл)</label>
+<input type="number" id="base" placeholder="Например, 30" min="5" max="1000">
+</div>
+<div class="input-group">
+<label for="purpose">Цель применения</label>
+<select id="purpose">
+<option value="0.5">Лицо (0.5-1%) — максимально безопасно</option>
+<option value="1" selected>Тело, массаж (1-2%) — стандартная концентрация</option>
+
+<option value="2">Локальное применение (2-3%) — для конкретных зон</option>
+<option value="3">Краткосрочное применение (3-5%) — только для взрослых</option>
+</select>
+</div>
+<button class="calc-btn" onclick="calculateOils()">Рассчитать</button>
+<div id="result" class="result">
+<div class="result-row"><strong>Безопасное количество капель:</strong><span id="dropsValue">0 капель</span></div>
+<div class="result-row"><strong>Концентрация:</strong><span id="percentValue">0%</span></div>
+<div class="result-row"><strong>На 1 мл базы:</strong><span id="perMlValue">0 капель</span></div>
+</div>
+<div class="safety-info">
+<h3>🌿  Рекомендации по концентрации</h3>
+<ul>
+<li><strong>Дети 2-6 лет:</strong> 0.25-0.5% (1-2 капли на 30 мл базы)</li>
+<li><strong>Дети 6-12 лет:</strong> 0.5-1% (3-6 капель на 30 мл базы)</li>
+<li><strong>Лицо и зона вокруг глаз:</strong> 0.5-1%</li>
+<li><strong>Тело, массаж:</strong> 1-2%</li>
+<li><strong>Локально (суставы, мышцы):</strong> 2-3%</li>
+<li><strong>Ванна:</strong> 5-10 капель на ванну, обязательно с эмульгатором</li>
+<li><strong>Диффузор:</strong> 3-6 капель на 100 мл воды</li>
+</ul>
+</div>
+</div>
+<div class="warning">
+<strong>Важно:</strong>
+<p>Никогда не наносите эфирные масла на кожу в чистом виде (кроме лаванды и чайного дерева — точечно). Всегда делайте тест на аллергию. Беременным, детям до 2 лет, людям с эпилепсией и хроническими заболеваниями необходима консультация специалиста.</p>
+</div>
+</div>
+<footer>
+    <p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p>
+    <p style="margin-top: 15px; font-size: 13px; opacity: 0.8;">
+        Методология основана на знаниях 
+        <a href="https://aromaschool.ru" target="_blank" style="color: #81c784; text-decoration: underline;">Школы ароматерапии и парфюмерии «Астарта»</a> 
+        и стандартах Международной ассоциации ароматерапевтов.
+    </p>
+    <p style="font-size: 13px; opacity: 0.8;">
+        Рекомендуемые натуральные эфирные масла и аксессуары: 
+        <a href="https://aromaschool-shop.ru" target="_blank" style="color: #ffb74d; text-decoration: underline;">Магазин «Астарта»</a>
+    </p>
+</footer>
+<script>
+function calculateOils() {
+var base = parseFloat(document.getElementById('base').value);
+var percent = parseFloat(document.getElementById('purpose').value);
+if (!base || base < 5) {
+alert('Пожалуйста, введите объём базового масла');
+return;
+}
+var drops = Math.round(base * percent * 20 / 100);
+var perMl = Math.round(percent * 20 / 100 * 10) / 10;
+document.getElementById('dropsValue').textContent = drops + ' капель';
+document.getElementById('percentValue').textContent = percent + '%';
+document.getElementById('perMlValue').textContent = perMl + ' капель';
+document.getElementById('result').style.display = 'block';
+}
+</script>
+<button id="backToTop" title="Наверх">↑</button>
+<script>
+const backToTopBtn = document.getElementById('backToTop');
+window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+};
+backToTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+</script>
+<div class="floating-buttons">
+    
+    
+    
+</div><script src="premium.js"></script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Топ-5 эфирных масел для домашней аптечки — PDF-гайд</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+<style>
+.guide-hero { background: linear-gradient(135deg, #d4a574, #b8860b); color: white; padding: 80px 20px; text-align: center; }
+.guide-hero .icon { font-size: 90px; margin-bottom: 20px; }
+.guide-hero h1 { font-size: 42px; margin-bottom: 15px; color: white; }
+.guide-hero .subtitle { font-size: 20px; opacity: 0.95; margin-bottom: 10px; }
+.guide-hero .author { font-size: 16px; opacity: 0.85; font-style: italic; }
+.download-bar { background: #fff8e1; border: 2px dashed #d4a574; padding: 20px; text-align: center; margin: 30px 0; border-radius: 12px; }
+.download-bar p { color: #8b6914; font-size: 16px; margin: 0 0 10px 0; }
+.download-bar code { background: white; padding: 8px 15px; border-radius: 6px; font-size: 15px; color: #5d4037; }
+.guide-section { background: white; border-radius: 16px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.guide-section h2 { color: #8b6914; font-size: 28px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #f5e6c8; }
+.guide-section h3 { color: #6d4c41; font-size: 22px; margin-top: 25px; margin-bottom: 12px; }
+.guide-section p { color: #5a6c5d; font-size: 16px; line-height: 1.8; margin-bottom: 15px; }
+.guide-section ul { margin: 15px 0 15px 25px; }
+.guide-section li { color: #5a6c5d; font-size: 15px; line-height: 1.7; margin-bottom: 8px; }
+.guide-section strong { color: #2d5016; }
+.oil-card { background: linear-gradient(135deg, #fafafa, #f5f5f5); border-radius: 16px; padding: 30px; margin-bottom: 25px; border-left: 6px solid #d4a574; box-shadow: 0 3px 15px rgba(0,0,0,0.05); }
+.oil-card h3 { color: #8b6914; font-size: 24px; margin-bottom: 8px; margin-top: 0; }
+.oil-card .latin { font-style: italic; color: #7f8c8d; font-size: 15px; margin-bottom: 15px; }
+.oil-card .tagline { font-size: 17px; color: #5d4037; font-weight: bold; margin-bottom: 15px; font-style: italic; }
+.oil-card h4 { color: #6d4c41; font-size: 17px; margin-top: 18px; margin-bottom: 10px; }
+.oil-card ul { margin: 10px 0 10px 25px; }
+.oil-card li { color: #5a6c5d; font-size: 15px; line-height: 1.7; margin-bottom: 6px; }
+.oil-card .note { background: #fff3e0; padding: 12px 18px; border-radius: 8px; margin-top: 15px; font-size: 14px; color: #e65100; border-left: 3px solid #ff9800; }
+.safety-list { counter-reset: safety-counter; list-style: none; padding: 0; }
+.safety-list li { counter-increment: safety-counter; padding: 15px 20px 15px 70px; background: #f9f9f9; border-radius: 10px; margin-bottom: 12px; position: relative; font-size: 15px; line-height: 1.6; color: #5a6c5d; }
+.safety-list li::before { content: counter(safety-counter); position: absolute; left: 20px; top: 12px; width: 35px; height: 35px; background: linear-gradient(135deg, #d4a574, #b8860b); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; }
+.safety-list li strong { color: #2d5016; display: block; margin-bottom: 5px; font-size: 16px; }
+.storage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 20px; }
+.storage-item { background: #f5f5f5; padding: 18px; border-radius: 10px; text-align: center; }
+.storage-item .ico { font-size: 32px; margin-bottom: 8px; }
+.storage-item p { color: #5a6c5d; font-size: 14px; margin: 0; }
+.storage-item strong { color: #2d5016; display: block; margin-bottom: 5px; }
+.start-box { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 5px solid #43a047; padding: 25px 30px; border-radius: 12px; margin: 25px 0; }
+.start-box h3 { color: #2e7d32; margin-top: 0; }
+.start-box ul { margin: 10px 0 10px 25px; }
+
+.start-box li { color: #1b5e20; font-size: 15px; line-height: 1.7; margin-bottom: 6px; }
+.cta-section { background: linear-gradient(135deg, #d4a574, #b8860b); color: white; padding: 50px 30px; text-align: center; border-radius: 16px; margin-top: 40px; }
+.cta-section h2 { color: white; font-size: 28px; margin-bottom: 15px; border: none; }
+.cta-section p { color: white; font-size: 16px; margin-bottom: 25px; }
+.cta-btn { display: inline-block; background: white; color: #8b6914; padding: 14px 35px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 17px; transition: transform 0.3s; }
+.cta-btn:hover { transform: translateY(-3px); }
+.legal-notice { background: #ffebee; border-left: 5px solid #c62828; padding: 25px 30px; border-radius: 12px; margin-top: 30px; }
+.legal-notice h4 { color: #b71c1c; font-size: 18px; margin-bottom: 12px; }
+.legal-notice p { color: #c62828; font-size: 14px; line-height: 1.7; margin-bottom: 8px; }
+.legal-notice ul { margin: 10px 0 10px 25px; color: #c62828; }
+.legal-notice li { font-size: 14px; line-height: 1.6; margin-bottom: 5px; }
+.back-link { display: inline-block; margin-bottom: 30px; color: #8b6914; text-decoration: none; font-size: 16px; font-weight: bold; }
+.back-link:hover { text-decoration: underline; }
+
+@media print {
+    body { background: white !important; }
+    header, footer, .download-bar, .cta-section, .back-link, #backToTop, .floating-buttons { display: none !important; }
+    .guide-hero { background: #d4a574 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 40px 20px; }
+    .guide-section, .oil-card, .legal-notice, .start-box { box-shadow: none; border: 1px solid #e0e0e0; page-break-inside: avoid; }
+    .oil-card { border-left: 6px solid #d4a574 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .safety-list li::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .container { max-width: 100%; padding: 0; }
+}
+
+@media (max-width: 768px) {
+    .guide-hero h1 { font-size: 30px; }
+    .guide-section { padding: 25px; }
+    .oil-card { padding: 20px; }
+}
+</style>
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="blog.html">Блог</a>
+<a href="calculators.html">Калькуляторы</a>
+<a href="where-to-buy.html">Где купить</a>
+<a href="faq.html">Вопросы</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+
+<section class="guide-hero">
+<div class="icon">🌿 </div>
+<h1>Топ-5 эфирных масел для домашней аптечки</h1>
+<p class="subtitle">Практическое руководство по выбору и безопасному применению</p>
+<p class="author">Автор: Павел Пилипенко, дипломированный ароматерапевт</p>
+</section>
+
+<div class="container">
+<a href="index.html" class="back-link">&larr; Вернуться на главную</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+
+<div class="download-bar">
+<p>📥  <strong>Сохранить как PDF:</strong> нажмите <code>Ctrl + P</code> → выберите «Сохранить как PDF»</p>
+</div>
+
+<div class="guide-section">
+<h2>👋  Приветствие</h2>
+<p>Здравствуйте! Меня зовут Павел, я — дипломированный ароматерапевт. Этот гайд я создал для тех, кто хочет сделать первый осознанный шаг в мир натуральной поддержки здоровья — без эзотерики, мифов и «волшебных таблеток», а с опорой на фитохимию, физиологию и здравый смысл.</p>
+<p>Домашняя аптечка из эфирных масел — это не замена врачу и не склад пузырьков «на всякий случай». Это <strong>пять проверенных инструментов</strong>, которые помогут вам в повседневной жизни: снять напряжение, поддержать иммунитет, облегчить дыхание, улучшить сон и настроение.</p>
+<p>В этом гайде вы узнаете:</p>
+<ul>
+<li>Какие 5 масел действительно стоит иметь дома</li>
+<li>Чем каждое из них полезно и когда применять</li>
+<li>Как выбрать настоящее масло и не купить подделку</li>
+<li>Базовые правила безопасности, которые важно знать каждому</li>
+</ul>
+</div>
+
+<div class="guide-section">
+
+<h2>Почему именно эфирные масла?</h2>
+<p>Эфирные масла — это концентрированные экстракты растений, содержащие десятки и сотни биологически активных молекул. Они работают на трёх уровнях:</p>
+<ul>
+<li><strong>Обонятельном</strong> — аромат напрямую влияет на лимбическую систему мозга, которая отвечает за эмоции, память и стресс-реакции. Поэтому одно и то же масло может одновременно успокаивать нервную систему и менять ваше самочувствие.</li>
+<li><strong>Физиологическом</strong> — при нанесении на кожу (в разведённом виде) или ингаляции компоненты масел проникают в кровоток и оказывают реальное действие: антисептическое, спазмолитическое, противовоспалительное.</li>
+<li><strong>Микробиологическом</strong> — многие эфирные масла обладают доказанной активностью против бактерий, вирусов и грибков, что делает их ценным дополнением к профилактике сезонных простуд.</li>
+</ul>
+<p>Важно понимать: эфирные масла — это <strong>не БАДы и не лекарства</strong>. Это натуральные средства поддержки, которые работают в связке с правильным питанием, водным режимом, сном и движением.</p>
+</div>
+
+<div class="guide-section">
+<h2>Как выбрать настоящее эфирное масло</h2>
+<p>Прежде чем перейти к пятёрке лучших масел, важно научиться отличать настоящее масло от подделки. На рынке очень много синтетики, особенно в масс-маркете.</p>
+
+<h3>Признаки качественного масла:</h3>
+<ul>
+<li>✅  <strong>Тёмный стеклянный флакон</strong> (янтарный или синий) — свет разрушает активные компоненты. Пластик и прозрачное стекло — признак низкого качества.</li>
+<li>✅  <strong>Латинское название на этикетке</strong> — например, <em>Lavandula angustifolia</em>, а не просто «лаванда». Одно и то же русское название может скрывать разные виды растений с разными свойствами.</li>
+<li>✅  <strong>Указание хемотипа</strong> (для масел, которые его имеют) — например, <em>Rosmarinus officinalis CT cineol</em>. Хемотип показывает, какое главное вещество преобладает в масле, а значит — как оно будет действовать.</li>
+<li>✅  <strong>Часть растения и метод получения</strong> — «цветки», «листья», «кора», «холодное прессование цедры», «паровая дистилляция».</li>
+<li>✅  <strong>Страна происхождения</strong> — качественные масла всегда указывают, где выращено сырьё.</li>
+<li>✅  <strong>Разумная цена</strong> — настоящее масло лаванды не может стоить 200 рублей за 10 мл.</li>
+</ul>
+
+<h3>Где покупать проверенные масла:</h3>
+<p>На моём сайте в разделе <a href="where-to-buy.html" style="color: #8b6914; font-weight: bold;">«Где купить»</a> я собрал три магазина, которым доверяю лично:</p>
+<ul>
+<li><strong>Магазин «Астарта»</strong> — эфирные масла, гидролаты, базовые масла, аксессуары</li>
+<li><strong>doTERRA</strong> — эфирные масла международного стандарта CPTG</li>
+<li><strong>Oiless</strong> — особенно хорош для покупки гидролатов и базовых масел</li>
+</ul>
+</div>
+
+<div class="guide-section">
+<h2> Топ-5 эфирных масел для домашней аптечки</h2>
+
+<div class="oil-card">
+<h3>1. Лаванда настоящая</h3>
+<p class="latin">Lavandula angustifolia</p>
+<p class="tagline">Королева домашней аптечки. Если бы можно было оставить только одно масло — это была бы лаванда.</p>
+
+<h4>Основные свойства:</h4>
+<ul>
+<li>Успокаивает нервную систему, помогает при тревожности и лёгкой бессоннице</li>
+<li>Снимает кожные раздражения, ожоги (в том числе солнечные), укусы насекомых</li>
+<li>Облегчает головную боль напряжения</li>
+<li>Мягкий антисептик</li>
+</ul>
+
+<h4>Когда применять:</h4>
+<ul>
+<li>Вечером перед сном — в аромалампе или диффузоре</li>
+<li>При лёгких ожогах и раздражениях кожи — точечно, разведённым в базовом масле</li>
+<li>При головной боли — нанести разведённое масло на виски и заднюю поверхность шеи</li>
+<li>В путешествиях — как универсальное средство «на всякий случай»</li>
+</ul>
+
+<div class="note">
+<strong>Особенности:</strong> одно из немногих масел, которое считается относительно безопасным даже для детей (после 3 месяцев) и беременных — но только в низких концентрациях и после консультации со специалистом.
+
+</div>
+</div>
+
+<div class="oil-card">
+<h3>2. Чайное дерево</h3>
+<p class="latin">Melaleuca alternifolia</p>
+<p class="tagline">Главный природный антисептик. Масло с мощным противомикробным действием.</p>
+
+<h4>Основные свойства:</h4>
+<ul>
+<li>Антибактериальное, противовирусное, противогрибковое действие</li>
+<li>Поддерживает иммунитет в сезон простуд</li>
+<li>Помогает при проблемной коже, акне, грибковых поражениях</li>
+<li>Очищает воздух в помещении</li>
+</ul>
+
+<h4>Когда применять:</h4>
+<ul>
+<li>При первых признаках простуды — ингаляции и аромамедальоны</li>
+<li>Для обработки мелких царапин и порезов — точечно, разведённым</li>
+<li>При проблемной коже — в составе масок и точечно</li>
+<li>Для очищения воздуха — в диффузоре, особенно в период эпидемий</li>
+</ul>
+
+<div class="note">
+<strong>Особенности:</strong> масло достаточно активное, может раздражать чувствительную кожу. Всегда разводить в базовом масле перед нанесением. Не применять внутрь без назначения врача.
+</div>
+</div>
+
+<div class="oil-card">
+<h3>3. Мята перечная</h3>
+<p class="latin">Mentha piperita</p>
+<p class="tagline">Масло-помощник при головной боли и усталости. Освежающее, тонизирующее, со спазмолитическим действием.</p>
+
+<h4>Основные свойства:</h4>
+<ul>
+<li>Облегчает головную боль и мигрень</li>
+<li>Снимает тошноту, поддерживает пищеварение</li>
+<li>Бодрит, улучшает концентрацию и ясность ума</li>
+<li>Облегчает дыхание при заложенности носа</li>
+</ul>
+
+<h4>Когда применять:</h4>
+<ul>
+<li>При головной боли — разведённым маслом массировать виски и лоб</li>
+<li>При укачивании и тошноте — вдохнуть аромат с платка или аромамедальона</li>
+<li>Утром для бодрости — в диффузоре или в утреннем душе (1-2 капли на губку)</li>
+<li>При заложенности носа — ингаляции над паром</li>
+</ul>
+
+<div class="note">
+<strong>Особенности:</strong> масло очень активное. <strong>Не применять у детей до 6 лет</strong> — может вызвать спазм дыхательных путей. Не наносить на кожу лица и слизистые. Не использовать вечером — может нарушить сон.
+</div>
+</div>
+
+<div class="oil-card">
+<h3>4. Лимон</h3>
+<p class="latin">Citrus limon</p>
+<p class="tagline">Масло хорошего настроения и чистого воздуха. Солнечный аромат, который поднимает настроение и освежает пространство.</p>
+
+<h4>Основные свойства:</h4>
+<ul>
+<li>Поднимает настроение, снижает тревожность</li>
+<li>Освежает и очищает воздух в помещении</li>
+<li>Поддерживает иммунитет</li>
+<li>Помогает при тошноте и укачивании</li>
+<li>Используется в бытовой химии как натуральный очиститель</li>
+</ul>
+
+<h4>Когда применять:</h4>
+<ul>
+<li>Утром в диффузоре — для бодрого начала дня</li>
+<li>В офисе или за рулём — для концентрации и хорошего настроения</li>
+<li>При уборке — несколько капель в воду для мытья поверхностей</li>
+<li>При тошноте — вдохнуть аромат с носового платка</li>
+</ul>
+
+<div class="note">
+<strong>Особенности:</strong> как и все цитрусовые масла, <strong>фототоксично</strong> — нельзя наносить на кожу перед выходом на солнце (риск ожогов и пигментации). Хранить в холодильнике после открытия — цитрусовые масла быстро окисляются.
+</div>
+</div>
+
+<div class="oil-card">
+<h3>5. Эвкалипт лучистый</h3>
+<p class="latin">Eucalyptus radiata</p>
+<p class="tagline">Масло свободного дыхания. Лучший помощник в сезон простуд и при заложенности носа.</p>
+
+<h4>Основные свойства:</h4>
+<ul>
+<li>Облегчает дыхание при насморке, заложенности носа, кашле</li>
+<li>Противовирусное и антибактериальное действие</li>
+<li>Отхаркивающее — помогает при влажном кашле</li>
+<li>Освежает и очищает воздух</li>
+<li>Снимает умственную усталость</li>
+</ul>
+
+<h4>Когда применять:</h4>
+<ul>
+<li>При простуде и заложенности носа — ингаляции, аромамедальоны, диффузор</li>
+<li>В период эпидемий — для очищения воздуха в доме</li>
+<li>При кашле — растирания грудной клетки разведённым маслом</li>
+<li>Для концентрации — в рабочем пространстве</li>
+</ul>
+
+<div class="note">
+
+<strong>Особенности:</strong> для домашней аптечки лучше всего подходит именно <em>Eucalyptus radiata</em> — он мягче, чем <em>Eucalyptus globulus</em>, и безопаснее для детей (после 3 лет). <strong>Не применять у детей до 3 лет</strong> и людей с бронхиальной астмой без консультации с врачом.
+</div>
+</div>
+</div>
+
+<div class="guide-section">
+<h2>5 базовых правил безопасности</h2>
+<p>Эфирные масла — это концентрированные вещества, и с ними нужно обращаться уважительно. Вот правила, которые должен знать каждый:</p>
+
+<ol class="safety-list">
+<li><strong>Никогда не наносите неразведённое масло на кожу</strong>Исключение — лаванда и чайное дерево (точечно, на небольшие участки). Все остальные масла разводятся в базовом (жожоба, миндальное, оливковое).</li>
+<li><strong>Не принимайте масла внутрь без назначения врача</strong>В интернете много советов «пить масла» — это опасно для слизистой ЖКТ, печени и почек.</li>
+<li><strong>Храните в недоступном для детей месте</strong>Эфирные масла — не игрушки. Даже безопасные масла в руках ребёнка могут стать причиной ожога или отравления.</li>
+<li><strong>Соблюдайте дозировки</strong>Больше — не значит лучше. Превышение концентрации не усилит эффект, но может вызвать раздражение, головную боль или аллергию.</li>
+<li><strong>Делайте тест на чувствительность</strong>Перед первым применением нанесите каплю разведённого масла на сгиб локтя и подождите 24 часа. Если нет покраснения и зуда — можно использовать.</li>
+</ol>
+</div>
+
+<div class="guide-section">
+<h2>Как хранить эфирные масла</h2>
+<div class="storage-grid">
+<div class="storage-item">
+<div class="ico">🌑 </div>
+<strong>В тёмном месте</strong>
+<p>Вдали от прямых солнечных лучей</p>
+</div>
+<div class="storage-item">
+<div class="ico">️</div>
+<strong>Комнатная температура</strong>
+<p>Цитрусовые — в холодильнике после открытия</p>
+</div>
+<div class="storage-item">
+<div class="ico">🔒 </div>
+<strong>Плотно закрытыми</strong>
+<p>Кислород окисляет масла</p>
+</div>
+<div class="storage-item">
+<div class="ico">⏱️ </div>
+<strong>Срок хранения</strong>
+<p>Большинство — 3-5 лет, цитрусовые — 1-2 года</p>
+</div>
+</div>
+</div>
+
+<div class="guide-section">
+<h2>С чего начать?</h2>
+<p>Если вы только знакомитесь с ароматерапией, не покупайте сразу все пять масел. Начните с <strong>двух-трёх</strong>, которые откликаются вам больше всего:</p>
+
+<div class="start-box">
+<h3>Рекомендации для старта:</h3>
+<ul>
+<li><strong>Для спокойствия и сна</strong> → лаванда</li>
+<li><strong>Для иммунитета и простуд</strong> → чайное дерево + эвкалипт</li>
+<li><strong>Для бодрости и настроения</strong> → лимон + мята</li>
+</ul>
+</div>
+
+<p>Постепенно, по мере знакомства с маслами, вы сможете расширять свою аптечку и подбирать средства под конкретные задачи.</p>
+</div>
+
+<div class="guide-section">
+<h2>Что дальше?</h2>
+<p>Этот гайд — только начало пути. Ароматерапия — это глубокая и интересная область, где каждое масло имеет свою «биографию», химический состав и особенности применения.</p>
+<p>Если вы хотите:</p>
+<ul>
+<li>Разобраться, какие масла подходят именно вам</li>
+<li>Научиться составлять безопасные смеси</li>
+<li>Получить персональные рекомендации с учётом вашего здоровья, возраста и образа жизни</li>
+</ul>
+<p>— запишитесь на консультацию. Вместе мы составим вашу индивидуальную стратегию натуральной поддержки здоровья.</p>
+
+<div class="cta-section">
+<h2>Нужна персональная консультация?</h2>
+<p>Разберём ваш запрос и подберём безопасные натуральные средства именно для вас.</p>
+<a href="contact.html" class="cta-btn">Записаться на консультацию</a>
+</div>
+</div>
+
+<div class="legal-notice">
+<h4>⚠️  Важное примечание</h4>
+<p>Этот гайд носит <strong>исключительно информационный характер</strong> и не является медицинской рекомендацией. Эфирные масла — это средства поддержки, а не замена лечения.</p>
+<p><strong>Форму, дозировку и схему применения эфирных масел назначает только врач</strong>, особенно при:</p>
+<ul>
+<li>Беременности и грудном вскармливании</li>
+
+<li>Детском возрасте (до 12 лет — обязательна консультация)</li>
+<li>Хронических заболеваниях (астма, эпилепсия, гипертония, онкология)</li>
+<li>Приёме лекарственных препаратов</li>
+<li>Аллергиях и чувствительной коже</li>
+</ul>
+<p style="font-style: italic; margin-top: 15px;">Материалы гайда основаны на методологии Школы ароматерапии и парфюмерии «Астарта» и стандартах международной практики ароматерапии.</p>
+</div>
+
+<p style="text-align: center; color: #7f8c8d; font-size: 13px; margin-top: 30px;">© 2026 Павел Пилипенко. Все права защищены.</p>
+
+</div>
+
+<footer>
+<p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p>
+<p style="margin-top: 15px; font-size: 13px; opacity: 0.8;">
+Методология основана на знаниях 
+<a href="https://aromaschool.ru" target="_blank" style="color: #81c784; text-decoration: underline;">Школы ароматерапии и парфюмерии «Астарта»</a> 
+и стандартах Международной ассоциации ароматерапевтов.
+</p>
+<p style="font-size: 13px; opacity: 0.8;">
+Рекомендуемые натуральные эфирные масла и аксессуары: 
+<a href="https://aromaschool-shop.ru" target="_blank" style="color: #ffb74d; text-decoration: underline;">Магазин «Астарта»</a>
+</p>
+</footer>
+<button id="backToTop" title="Наверх">↑</button>
+<script>
+const backToTopBtn = document.getElementById('backToTop');
+window.onscroll = function() {
+if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) backToTopBtn.classList.add('show');
+else backToTopBtn.classList.remove('show');
+};
+backToTopBtn.onclick = function() { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+</script>
+<script src="premium.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Чекапы - Справочная информация</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;line-height:1.6;color:#2c3e50;background:#f0f4f8;padding:20px}
+.container{max-width:1200px;margin:0 auto;background:#fff;border-radius:12px;padding:30px;box-shadow:0 4px 20px rgba(0,0,0,0.1)}
+h1{color:#1a5490;text-align:center;margin-bottom:10px}
+.subtitle{text-align:center;color:#666;margin-bottom:20px}
+.quote-box{background:linear-gradient(135deg,#1a5490,#2a9d8f);color:#fff;padding:20px;border-radius:12px;text-align:center;margin-bottom:25px;box-shadow:0 4px 15px rgba(26,84,144,0.3)}
+.quote-box .quote{font-size:1.2em;font-weight:bold;font-style:italic;margin-bottom:8px}
+.quote-box .author{font-size:0.9em;opacity:0.9}
+.info-box{background:#e3f2fd;border-left:4px solid #1976d2;padding:15px;border-radius:0 8px 8px 0;margin-bottom:25px}
+.checkup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-bottom:30px}
+.checkup-card{background:#fff;border:2px solid #e0e0e0;border-radius:12px;padding:25px;transition:all 0.3s;cursor:pointer;text-decoration:none;color:inherit;display:block}
+.checkup-card:hover{border-color:#2a9d8f;transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.1)}
+.checkup-card .icon{font-size:3em;margin-bottom:10px}
+.checkup-card h3{color:#1a5490;margin-bottom:10px;font-size:1.3em}
+.checkup-card p{color:#666;font-size:0.95em;margin-bottom:15px}
+.checkup-card .tag{display:inline-block;background:#e8f5e9;color:#2e7d32;padding:4px 12px;border-radius:12px;font-size:0.85em;font-weight:bold}
+.checkup-card .tag.soon{background:#fff3e0;color:#e65100}
+.back-link{display:inline-block;margin-bottom:15px;color:#1a5490;text-decoration:none;font-weight:bold}
+.back-link:hover{text-decoration:underline}
+.warn{background:#ffebee;border-left:4px solid #d32f2f;padding:15px;border-radius:0 8px 8px 0;margin-top:20px}
+.warn h3{color:#c62828;margin-bottom:8px}
+</style>
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<div class="container">
+<a href="analyses.html" class="back-link">← Назад к разделу Анализы</a>
+
+<div class="quote-box">
+<div class="quote">"Никогда не смотрим анализы в отрыве от симптоматики, только в контексте ситуации клиента!"</div>
+<div class="author">— Профессиональное образование в области интегративной нутрициологии</div>
+</div>
+
+<h1>📋 Чекапы здоровья</h1>
+<p class="subtitle">Готовые списки анализов для разных категорий клиентов</p>
+
+<div class="info-box">
+<h3>Что такое чекап?</h3>
+<p>Чекап — это заранее подобранный список анализов, который позволяет получить полную картину здоровья за одно обследование. Мы подготовили чекапы для разных категорий клиентов с учётом возрастных и половых особенностей. Каждый чекап содержит список анализов, оптимальные значения и пояснение, зачем сдавать каждый показатель.</p>
+</div>
+
+<div class="checkup-grid">
+
+<a href="checkup-women.html" class="checkup-card">
+<div class="icon">👩</div>
+<h3>Чекап для женщин</h3>
+<p>18-50 лет. Включает базовые анализы + половые гормоны, ферритин, витамин D, ТТГ.</p>
+<span class="tag soon">В разработке</span>
+</a>
+
+<a href="checkup-men.html" class="checkup-card">
+<div class="icon">👨</div>
+<h3>Чекап для мужчин</h3>
+<p>18-50 лет. Включает базовые анализы + тестостерон, ПСА (40+), ферритин, витамин D.</p>
+<span class="tag soon">В разработке</span>
+</a>
+
+<a href="checkup-children.html" class="checkup-card">
+<div class="icon">🧒</div>
+<h3>Чекап для детей</h3>
+<p>1-12 лет. С учётом возрастных норм. Минимальный набор для контроля здоровья ребёнка.</p>
+<span class="tag soon">В разработке</span>
+</a>
+
+<a href="checkup-seniors.html" class="checkup-card">
+<div class="icon">👴</div>
+<h3>Чекап для старшего возраста</h3>
+<p>50+ лет. Расширенный список с акцентом на сердечно-сосудистые риски и онкологию.</p>
+<span class="tag soon">В разработке</span>
+</a>
+
+</div>
+
+<div class="warn">
+<h3>⚠️ Важно</h3>
+<p>Чекапы носят справочный характер. Окончательный список анализов определяет врач с учётом вашей клинической картины, симптомов и анамнеза. Нутрициолог не назначает обследования.</p>
+</div>
+</div>
+
+<script>
+// Обновляем теги на карточках чекапов
+window.addEventListener('DOMContentLoaded', function() {
+  var cards = document.querySelectorAll('.checkup-card');
+ 
+  for (var i = 0; i < cards.length; i++) {
+    var href = cards[i].getAttribute('href');
+    var tag = cards[i].querySelector('.tag');
+   
+    if (href === 'checkup-women.html' || href === 'checkup-men.html') {
+      if (tag) {
+        tag.textContent = 'Доступно';
+        tag.className = 'tag';  // убираем класс 'soon'
+      }
+    }
+  }
+});
+</script>
+
+<script>
+// Обновляем теги на карточках чекапов
+window.addEventListener('DOMContentLoaded', function() {
+  var cards = document.querySelectorAll('.checkup-card');
+ 
+  for (var i = 0; i < cards.length; i++) {
+    var href = cards[i].getAttribute('href');
+    var tag = cards[i].querySelector('.tag');
+   
+    // Если страница существует — меняем тег на "Доступно"
+    if (href === 'checkup-women.html' || href === 'checkup-men.html' || href === 'checkup-children.html') {
+      if (tag) {
+        tag.textContent = 'Доступно';
+        tag.className = 'tag';  // убираем класс 'soon' (оранжевый → зелёный)
+      }
+    }
+  }
+});
+</script>
+
+<script>
+// Обновляем теги на карточках чекапов
+window.addEventListener('DOMContentLoaded', function() {
+  var cards = document.querySelectorAll('.checkup-card');
+ 
+  for (var i = 0; i < cards.length; i++) {
+    var href = cards[i].getAttribute('href');
+    var tag = cards[i].querySelector('.tag');
+   
+    // Все 4 чекапа теперь доступны
+    if (href === 'checkup-women.html' || href === 'checkup-men.html' || href === 'checkup-children.html' || href === 'checkup-seniors.html') {
+      if (tag) {
+        tag.textContent = 'Доступно';
+        tag.className = 'tag';
+      }
+    }
+  }
+});
+</script>
+<script src="premium.js"></script>
+</body>
+</html>

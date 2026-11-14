@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Цитрусовые эфирные масла — Павел Пилипенко</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; line-height: 1.7; color: #2c3e50; background: #fafafa; }
+
+/* ШАПКА */
+header { background: linear-gradient(135deg, #4a148c, #6a1b9a); color: white; padding: 18px 0; }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 16px; font-weight: 500; transition: opacity 0.3s; }
+nav a:hover { opacity: 0.85; }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, #fff9c4 0%, #ffe082 50%, #ffca28 100%); padding: 80px 20px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: '🍋'; position: absolute; font-size: 200px; opacity: 0.08; top: -30px; right: -30px; transform: rotate(15deg); }
+.hero h1 { font-size: 42px; color: #e65100; margin-bottom: 15px; }
+.hero p { font-size: 20px; color: #5a4a2a; max-width: 700px; margin: 0 auto; font-style: italic; }
+
+/* КОНТЕЙНЕР */
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+/* ХЛЕБНЫЕ КРОШКИ */
+.breadcrumb { font-size: 14px; color: #7f8c8d; margin-bottom: 20px; }
+.breadcrumb a { color: #6a1b9a; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* КНОПКА НАЗАД */
+.back-link { display: inline-block; margin-bottom: 30px; color: #e65100; text-decoration: none; font-size: 16px; font-weight: 600; padding: 10px 20px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: all 0.3s; }
+.back-link:hover { background: #e65100; color: white; transform: translateX(-3px); }
+
+/* ПОИСК */
+.search-container { background: white; padding: 15px 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); margin-bottom: 30px; }
+.search-container input { width: 100%; padding: 12px 16px; font-size: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-family: Georgia, serif; transition: border-color 0.3s; }
+.search-container input:focus { outline: none; border-color: #ff9800; }
+
+/* КАРТОЧКА МАСЛА */
+.oil-card { background: white; border-radius: 16px; padding: 35px 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-left: 5px solid #ff9800; margin-bottom: 30px; transition: transform 0.3s, box-shadow 0.3s; }
+.oil-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(255,152,0,0.15); }
+.oil-card h2 { font-size: 28px; color: #e65100; margin-bottom: 8px; }
+.oil-card .latin { font-style: italic; color: #7f8c8d; font-size: 15px; margin-bottom: 15px; }
+
+/* БЕЙДЖИ */
+.badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.badge { padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+.badge-method { background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; }
+.badge-note { background: #f3e5f5; color: #6a1b9a; border: 1px solid #ce93d8; }
+
+/* СЕКЦИИ */
+.section-title { color: #e65100; font-size: 20px; margin: 25px 0 12px 0; padding-bottom: 8px; border-bottom: 2px solid #fff3e0; font-weight: 700; }
+.oil-card ul { margin-left: 25px; color: #5a6c5d; margin-bottom: 15px; }
+.oil-card li { margin-bottom: 6px; font-size: 15px; }
+.oil-card li strong { color: #e65100; }
+
+/* ПРОТИВОПОКАЗАНИЯ */
+.contraindications { background: #ffebee; border-left: 4px solid #c62828; padding: 18px 22px; border-radius: 10px; margin-top: 20px; }
+.contraindications strong { color: #c62828; font-size: 16px; display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.contraindications p { color: #b71c1c; font-size: 14px; margin: 0; line-height: 1.6; }
+
+/* СМОТРИТЕ ТАКЖЕ */
+.related { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 18px 22px; border-radius: 10px; margin-top: 15px; }
+.related strong { color: #2e7d32; font-size: 16px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.related a { color: #1b5e20; text-decoration: none; font-weight: 600; font-size: 14px; padding: 4px 10px; background: rgba(255,255,255,0.7); border-radius: 5px; margin-right: 8px; margin-bottom: 6px; display: inline-block; transition: all 0.2s; }
+.related a:hover { background: #2e7d32; color: white; }
+
+/* ИНФО-БЛОК ВНИЗУ */
+.warning { background: linear-gradient(135deg, #fff9c4, #ffe082); border-left: 5px solid #ff9800; padding: 25px 30px; border-radius: 12px; margin-top: 40px; box-shadow: 0 4px 15px rgba(255,152,0,0.15); }
+.warning strong { color: #e65100; font-size: 18px; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.warning p { color: #e65100; font-size: 15px; margin-bottom: 8px; line-height: 1.6; }
+
+/* ФУТЕР */
+footer { background: linear-gradient(135deg, #2c3e50, #34495e); color: white; text-align: center; padding: 25px 20px; font-size: 14px; margin-top: 50px; }
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 28px; }
+    .hero p { font-size: 16px; }
+    .oil-card { padding: 22px; }
+    .oil-card h2 { font-size: 22px; }
+    .badges { flex-direction: column; }
+}
+
+/* СКРЫТИЕ ПРИ ПОИСКЕ */
+.oil-card.hidden { display: none; }
+.no-results { text-align: center; padding: 40px; font-size: 17px; color: #7f8c8d; display: none; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+.no-results.show { display: block; }
+</style>
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+
+<section class="hero">
+<h1>🍋 Цитрусовые эфирные масла</h1>
+<p>Освежающие, тонизирующие масла с высоким содержанием лимонена. Антидепрессанты, иммуностимуляторы.</p>
+</section>
+
+<div class="container">
+<div class="breadcrumb">
+<a href="index.html">Главная</a> &gt; <a href="aromatherapy.html">Ароматерапия</a> &gt; <a href="essential-oils.html">Эфирные масла</a> &gt; Цитрусовые
+</div>
+<a href="essential-oils.html" class="back-link">← Вернуться к эфирным маслам</a>
+
+<div class="search-container">
+<input type="text" id="searchInput" placeholder="🔍 Поиск по названию масла или свойству...">
+</div>
+
+<!-- АПЕЛЬСИН СЛАДКИЙ -->
+<div class="oil-card" data-name="апельсин сладкий" data-properties="антидепрессант жирная кожа целлюлит">
+<h2>🍊 Апельсин сладкий</h2>
+<div class="latin">Citrus aurantium sinensis</div>
+<div class="badges">
+<span class="badge badge-method">🍊 Прессование кожуры</span>
+<span class="badge badge-note">🎵 Верхняя нота | Летучесть: высокая</span>
+</div>
+
+<div class="section-title">Химический состав</div>
+<ul>
+<li><strong>Лимонен</strong> — 89.54%</li>
+<li><strong>Мирцен</strong> — 1.31%</li>
+<li><strong>Линалоол</strong> — 2.47%</li>
+<li><strong>Деканаль</strong> — 2.10%</li>
+<li><strong>Гераниаль</strong> — 0.64%</li>
+</ul>
+
+<div class="section-title">Свойства</div>
+<ul>
+<li>Антитоксическое, антидепрессант, спазмолитическое</li>
+<li>Регулирует углеводно-жировой обмен (стимулирует расщепление жиров)</li>
+<li>Нормализует аппетит и секреторно-моторную функцию ЖКТ</li>
+<li>Противовоспалительное, желчегонное, иммуномодулирующее</li>
+<li>Эротизирующее, стабилизирующее эмоции, регенерирующее</li>
+<li>Регулирует АД, нормализует функцию вестибулярного аппарата</li>
+<li>Ветрогонное, мочегонное, жаропонижающее</li>
+</ul>
+
+<div class="section-title">Показания к применению</div>
+<ul>
+<li>Депрессия, астения, тревожность, беспокойство, эмоциональная лабильность</li>
+<li>Морская болезнь, головная боль, переутомление, снижение работоспособности</li>
+<li>Нарушения сердечного ритма, гипертония и гипотония (легкие формы ВСД)</li>
+<li>Простуда, грипп, бронхит</li>
+<li>Холангит, холецистит, лишний вес, запор, колики в кишечнике, атония кишечника</li>
+<li>Гингивиты, пародонтоз, язвы слизистой рта, афтозный стоматит</li>
+<li>Снижение зрения из-за гиповитаминоза и переутомления</li>
+<li>Менопауза, климакс, отёки</li>
+<li>Фригидность, импотенция</li>
+<li>Жирная кожа, широкие поры, угревая сыпь, целлюлит, морщины, нейродермит</li>
+</ul>
+
+<div class="related">
+<strong>🔗 Смотрите также</strong>
+<a href="base-oily.html">Масло виноградной косточки</a>
+<a href="base-dry.html">Масло жожоба</a>
+<a href="base-light.html">Масло абрикосовой косточки</a>
+</div>
+
+<div class="contraindications">
+<strong>⚠️ Противопоказания</strong>
+<p>Беременность: разрешено. Детский возраст до 5 лет накожно не наносить. Чувствительная кожа. Срок хранения: 2 года в холодильнике.</p>
+</div>
+</div>
+
+<!-- АПЕЛЬСИН ГОРЬКИЙ -->
+<div class="oil-card" data-name="апельсин горький бигардия померанец" data-properties="иммуномодулятор витамин D меланин">
+<h2>🍊 Апельсин горький (Бигардия, Померанец)</h2>
+<div class="latin">Citrus aurantium var. amara</div>
+<div class="badges">
+<span class="badge badge-method">🍊 Прессование плодов и центрифугирование</span>
+<span class="badge badge-note">🎵 Верхняя нота | Летучесть: высокая</span>
+</div>
+
+<div class="section-title">Химический состав</div>
+<ul>
+<li><strong>Лимонен</strong> — 81.31%</li>
+<li><strong>Мирцен</strong> — 4.45%</li>
+<li><strong>Линалоол</strong> — 1.35%</li>
+<li><strong>Деканаль</strong> — 0.76%</li>
+<li><strong>Октаналь</strong> — 0.55%</li>
+</ul>
+
+<div class="section-title">Свойства</div>
+<ul>
+<li>Стимулирует синтез меланина и витамина D</li>
+<li>Адаптоген, иммуномодулирующий</li>
+<li>Нормализует обмен веществ, уменьшает негативные последствия приема антибиотиков</li>
+<li>Антисептическое, противомикробное, противовоспалительное, антиоксидантное, регенерирующее, антитоксическое</li>
+<li>Очищает почки и печень</li>
+<li>Желчегонное, мочегонное, лимфо-дренажное действие</li>
+<li>Гипотензивное, потогонное, общеукрепляющее</li>
+</ul>
+
+<div class="section-title">Показания к применению</div>
+<ul>
+<li>Сердечные заболевания, гипертония — 3 капли 3 раза в день после еды с эмульгатором</li>
+</ul>
+
+<div class="related">
+<strong>🔗 Смотрите также</strong>
+<a href="base-oily.html">Масло грейпфрута</a>
+<a href="base-dry.html">Масло ши</a>
+</div>
+
+<div class="contraindications">
+<strong>⚠️ Противопоказания</strong>
+<p>Фототоксично, индивидуальная непереносимость, аллергия на цитрусы. При беременности и кормлении грудью внутрь не применять. Срок хранения: 2 года в холодильнике.</p>
+</div>
+</div>
+
+<!-- БЕРГАМОТ -->
+<div class="oil-card" data-name="бергамот" data-properties="антидепрессант адаптоген тревога">
+<h2>🍋 Бергамот</h2>
+<div class="latin">Citrus bergamia</div>
+<div class="badges">
+<span class="badge badge-method">🍊 Прямой отжим или дистилляция (без терпенов)</span>
+<span class="badge badge-note">🎵 Верхняя нота | Летучесть: высокая</span>
+</div>
+
+<div class="section-title">Химический состав</div>
+<ul>
+<li><strong>Линалилацетат</strong> — 34-44%</li>
+<li><strong>Линалоол</strong> — 21-30%</li>
+<li><strong>Лимонен</strong> — 10-20%</li>
+<li><strong>γ-терпинен</strong> — 2-5%</li>
+<li><strong>α-пинен</strong> — 1-3%</li>
+<li><strong>Сабинен</strong> — 1-4%</li>
+<li><strong>β-пинен</strong> — 1-3%</li>
+<li><strong>Мирцен</strong> — 1-2%</li>
+<li><strong>Пара-цимен</strong> — 1-2%</li>
+<li><strong>Терпинолен</strong> — 0.5%</li>
+<li><strong>α-терпинеол</strong> — 0.5%</li>
+<li><strong>Нерол</strong> — 0.2%</li>
+<li><strong>Нераль</strong> — 0.2%</li>
+<li><strong>Гераниол</strong> — 0.6%</li>
+<li><strong>Гераниаль</strong> — 0.4%</li>
+<li><strong>Нерилацетат</strong> — 0.3%</li>
+<li><strong>Геранилацетат</strong> — 0.5%</li>
+</ul>
+
+<div class="section-title">Свойства</div>
+<ul>
+<li>Антисептическое, болеутоляющее, жаропонижающее</li>
+<li>Заживляющее — способствует рубцеванию</li>
+<li>Инсектицидное, дезодорирующее, ветрогонное</li>
+<li>Повышает функциональную активность желудка, стимулирует пищеварение</li>
+<li>Отхаркивающее, противоглистное</li>
+<li>Тонизирует работу сердца, спазмолитическое</li>
+<li>Антидепрессант, сильный адаптоген</li>
+<li>Снижает активность симпатической нервной системы</li>
+<li>Репеллент</li>
+</ul>
+
+<div class="section-title">Показания к применению</div>
+<ul>
+<li>Тревога, депрессия, нервное напряжение, раздражительность</li>
+<li>Воспаление мочевыводящих путей, цистит</li>
+<li>Боли в животе после приема пищи, диспепсия, метеоризм, колики, несварение, анорексия, переедание, желчнокаменная болезнь</li>
+<li>Паразиты</li>
+<li>Респираторные инфекции: тонзиллит, бронхит, туберкулез</li>
+<li>Герпес, ветряная оспа, опоясывающий лишай</li>
+</ul>
+
+<div class="related">
+<strong>🔗 Смотрите также</strong>
+<a href="base-oily.html">Масло бергамота (гидролат)</a>
+<a href="eo-floral.html">Нероли</a>
+<a href="eo-floral.html">Лаванда</a>
+</div>
+
+<div class="contraindications">
+<strong>⚠️ Противопоказания</strong>
+<p>Масло повышает фоточувствительность кожи, после его применения не стоит сразу выходить на солнце. Раздражает чувствительную кожу, не использовать детям до 5 лет накожно. Срок хранения: до 2 лет в холодильнике. Часто фальсифицируется.</p>
+</div>
+</div>
+
+<!-- ГРЕЙПФРУТ -->
+<div class="oil-card" data-name="грейпфрут" data-properties="расщепление жиров целлюлит отбеливание">
+<h2>🍊 Грейпфрут</h2>
+<div class="latin">Citrus paradisi</div>
+<div class="badges">
+<span class="badge badge-method">🍊 Прямой отжим корок, дистилляция</span>
+<span class="badge badge-note">🎵 Верхняя нота | Летучесть: высокая</span>
+</div>
+
+<div class="section-title">Химический состав</div>
+<ul>
+<li><strong>Лимонен</strong> — 89.17%</li>
+<li><strong>Мирцен</strong> — 2.36%</li>
+<li><strong>Нуткатон</strong> — 1.35%</li>
+<li><strong>α-пинен</strong> — 0.75%</li>
+<li><strong>Сабинен</strong> — 0.59%</li>
+<li><strong>Деканаль</strong> — 0.53%</li>
+<li><strong>Кариофиллен</strong> — 0.44%</li>
+</ul>
+
+<div class="section-title">Свойства</div>
+<ul>
+<li>Антитоксическое, желчегонное, гепатопротектор</li>
+<li>Тонизирующее, антидепрессант</li>
+<li>Стимулирует расщепление жиров</li>
+<li>Иммуностимулирующее, противовоспалительное</li>
+<li>Нормализует деятельность сальных желёз</li>
+<li>Стимулирует крово- и лимфообращение</li>
+<li>Спазмолитическое, гипертензивное</li>
+<li>Антибактериальное, антисептическое, мочегонное</li>
+<li>Отбеливающее кожу</li>
+</ul>
+
+<div class="section-title">Показания к применению</div>
+<ul>
+<li>Депрессия, астения, стресс, тревожность, переутомление</li>
+<li>Нейроциркуляторная дистония с пониженным АД, артериальная гипотензия</li>
+<li>Нарушение микроциркуляции, атеросклероз (профилактика)</li>
+<li>Холецистит, снижение функции печени, колит, нарушение процесса пищеварения, ожирение</li>
+<li>Хроническая интоксикация организма, частые простудные заболевания</li>
+</ul>
+
+<div class="related">
+<strong>🔗 Смотрите также</strong>
+<a href="base-oily.html">Масло грейпфрута (гидролат)</a>
+<a href="base-light.html">Масло виноградной косточки</a>
+</div>
+
+<div class="contraindications">
+<strong>⚠️ Противопоказания</strong>
+<p>Фототоксично, не использовать на кожу перед выходом на солнце. Может раздражать чувствительную и детскую кожу. Срок хранения: 2 года в холодильнике.</p>
+</div>
+</div>
+
+<!-- ЛАЙМ -->
+<div class="oil-card" data-name="лайм" data-properties="антисептик жаропонижающее тонизирующее">
+<h2>🍋 Лайм</h2>
+<div class="latin">Citrus aurantifolia</div>
+<div class="badges">
+<span class="badge badge-method">🍊 Прессование корок, дистилляция</span>
+<span class="badge badge-note">🎵 Верхняя нота | Летучесть: высокая</span>
+</div>
+
+<div class="section-title">Химический состав</div>
+<ul>
+<li><strong>Лимонен</strong> — 48.157%</li>
+<li><strong>γ-терпинен</strong> — 14.145%</li>
+<li><strong>β-пинен</strong> — 11.818%</li>
+<li><strong>α-пинен</strong> — 2.586%</li>
+<li><strong>Сабинен</strong> — 1.781%</li>
+<li><strong>Мирцен</strong> — 1.637%</li>
+<li><strong>Нераль</strong> — 3.619%</li>
+<li><strong>Гераниаль</strong> — 1.773%</li>
+<li><strong>Нерол</strong> — 2.372%</li>
+<li><strong>Кариофиллен</strong> — 1.592%</li>
+<li><strong>Транс-α-бергамотен</strong> — 0.111%</li>
+<li><strong>β-бисаболен</strong> — 0.254%</li>
+<li><strong>α-бисаболол</strong> — 0.789%</li>
+</ul>
+
+<div class="section-title">Свойства</div>
+<ul>
+<li>Антисептическое, бактерицидное, восстанавливающее, дезинфицирующее</li>
+<li>Жаропонижающее, инсектицидное, противовирусное</li>
+<li>Стягивающее, тонизирующее, улучшает аппетит</li>
+<li>Антитоксическое, стимулирует расщепление жиров</li>
+<li>Регулирует углеводно-жировой обмен</li>
+<li>Гипотензивное, антисклеротическое, желчегонное</li>
+<li>Обезболивающее, антиоксидантное</li>
+<li>Стимулирует психику, тонизирует нервную систему</li>
+<li>Слабительное, эротизирующее, репеллентное</li>
+</ul>
+
+<div class="section-title">Показания к применению</div>
+<ul>
+<li>Астения, истощение, нервное напряжение, стресс, беспокойство, вялость</li>
+<li>Снижение работоспособности и концентрации внимания</li>
+<li>Гипертония, нейроциркуляторная дистония с повышенным АД, профилактика атеросклероза</li>
+<li>Простуда, грипп, ОРЗ, ОРВИ, ангина, тонзиллит, фарингит, высокая температура</li>
+<li>Избыточный вес, холангит, холецистит, запоры, желудочные и кишечные колики</li>
+<li>Цистит, уретрит</li>
+<li>Фригидность, импотенция</li>
+</ul>
+
+<div class="related">
+<strong>🔗 Смотрите также</strong>
+<a href="base-oily.html">Масло лайма (гидролат)</a>
+<a href="eo-citrus.html">Лимон</a>
+<a href="eo-citrus.html">Бергамот</a>
+</div>
+
+<div class="contraindications">
+<strong>⚠️ Противопоказания</strong>
+<p>Масло лайма, полученное прессованием, обладает фототоксичностью (не применять перед воздействием ультрафиолета). Непереносимость. Срок хранения: 2 года в холодильнике.</p>
+</div>
+</div>
+
+<!-- ЛИМОН -->
+<div class="oil-card" data-name="лимон" data-properties="антисептик иммуностимулятор отбеливание">
+<h2>🍋 Лимон</h2>
+<div class="latin">Citrus limonum</div>
+<div class="badges">
+<span class="badge badge-method">🍊 Прессование (чаще) или паровая дистилляция</span>
+<span class="badge badge-note">🎵 Верхняя нота | Летучесть: высокая</span>
+</div>
+
+<div class="section-title">Химический состав</div>
+<ul>
+<li><strong>Лимонен</strong> — 62-74.6%</li>
+<li><strong>γ-терпинен</strong> — 6.0-11.6%</li>
+<li><strong>β-пинен</strong> — 6.1-15.0%</li>
+<li><strong>α-пинен</strong> — 1.8-3.6%</li>
+<li><strong>Мирцен</strong> — 1.0-2.1%</li>
+<li><strong>Пара-цимен</strong> — 0.3-1.8%</li>
+<li><strong>Терпинолен</strong> — 0.3-1.9%</li>
+<li><strong>α-терпинеол</strong> — 0.7-2.8%</li>
+<li><strong>Нераль</strong> — 0.3-2.8%</li>
+<li><strong>Гераниаль</strong> — 0.9-3.0%</li>
+<li><strong>Содержание цитраля</strong> (нераль+гераниаль): 2.2-3.8% (калифорнийский тип), 3.0-5.5% (итальянский тип)</li>
+</ul>
+
+<div class="section-title">Свойства</div>
+<ul>
+<li>Антисептическое, противогрибковое, противовирусное</li>
+<li>Вяжущее, противовоспалительное</li>
+<li>Улучшает микроциркуляцию</li>
+<li>Иммуностимулятор</li>
+<li>Омолаживающее для кожи, очищающее</li>
+<li>Снижает аппетит</li>
+</ul>
+
+<div class="section-title">Показания к применению</div>
+<ul>
+<li><b>Система кровообращения:</b> варикозное расширение вен, гипертония</li>
+<li><b>Кожа:</b> акне, веснушки, пигментные пятна, перхоть, сыпь, жирная кожа, целлюлит</li>
+<li><b>Иммунная система:</b> инфекционные заболевания, грипп, герпес, поддержка иммунной системы</li>
+<li><b>Нервная система:</b> бессонница, беспокойство, стресс, депрессия</li>
+</ul>
+
+<div class="related">
+<strong>🔗 Смотрите также</strong>
+<a href="base-oily.html">Масло лимона (гидролат)</a>
+<a href="eo-citrus.html">Лайм</a>
+<a href="eo-citrus.html">Грейпфрут</a>
+</div>
+
+<div class="contraindications">
+<strong>⚠️ Противопоказания</strong>
+<p>Индивидуальная непереносимость. Фототоксично. Срок хранения: 2 года в холодильнике.</p>
+</div>
+</div>
+
+<!-- МАНДАРИН -->
+<div class="oil-card" data-name="мандарин" data-properties="желчегонное антидепрессант успокоительное">
+<h2>🍊 Мандарин</h2>
+<div class="latin">Citrus reticulata</div>
+<div class="badges">
+<span class="badge badge-method">🍊 Прямой отжим корок, дистилляция</span>
+<span class="badge badge-note">🎵 Верхняя нота | Летучесть: высокая</span>
+</div>
+
+<div class="section-title">Химический состав</div>
+<ul>
+<li><strong>Лимонен</strong> — 64.94%</li>
+<li><strong>γ-терпинен</strong> — 20.52%</li>
+<li><strong>α-пинен</strong> — 2.82%</li>
+<li><strong>Мирцен</strong> — 2.07%</li>
+<li><strong>β-пинен</strong> — 1.65%</li>
+<li><strong>Пара-цимен</strong> — 1.50%</li>
+<li><strong>α-терпинен</strong> — 0.41%</li>
+<li><strong>Терпинолен</strong> — 0.71%</li>
+<li><strong>Метил-N-метилантранилат</strong> — 1.12%</li>
+<li><strong>Лиметтин</strong> — 0.50%</li>
+</ul>
+
+<div class="section-title">Свойства</div>
+<ul>
+<li>Желчегонное, стимулирует пищеварение</li>
+<li>Спазмолитическое, успокоительное</li>
+<li>Антидепрессивное, антитоксическое</li>
+<li>Нормализует аппетит</li>
+<li>Стимулирует расщепление жиров</li>
+<li>Нормализует углеводно-жировой обмен</li>
+<li>Общеукрепляющее, снижает повышенную кислотность желудочного сока</li>
+<li>Питательное, антисептическое, противогрибковое</li>
+<li>Отхаркивающее, улучшающее кровообращение в тканях</li>
+</ul>
+
+<div class="section-title">Показания к применению</div>
+<ul>
+<li>Переутомление, депрессия, психологический и духовный кризис, фрустрация, перенапряжение, страх, стресс, бессонница, раздражительность</li>
+<li>Острый и хронический бронхит, кашель</li>
+<li>Гастрит, изжога, тошнота, снижение аппетита, запор, метеоризм, холангит, холецистит, лишний вес</li>
+<li>Кровоточивость дёсен, гингивит</li>
+</ul>
+
+<div class="related">
+<strong>🔗 Смотрите также</strong>
+<a href="eo-citrus.html">Клементин</a>
+<a href="eo-citrus.html">Танжерин</a>
+<a href="eo-citrus.html">Юзу</a>
+</div>
+
+<div class="contraindications">
+<strong>⚠️ Противопоказания</strong>
+<p>Индивидуальная непереносимость. Срок хранения: 2 года в холодильнике.</p>
+</div>
+</div>
+
+<!-- КЛЕМЕНТИН -->
+<div class="oil-card" data-name="клементин" data-properties="антидепрессант акне целлюлит">
+<h2>🍊 Клементин</h2>
+<div class="latin">Citrus clementina</div>
+<div class="badges">
+<span class="badge badge-method">🍊 Холодный отжим</span>
+<span class="badge badge-note">🎵 Верхняя нота | Летучесть: высокая</span>
+</div>
+
+<div class="section-title">Химический состав</div>
+<ul>
+<li><strong>Лимонен</strong> — 93-95%</li>
+<li><strong>Мирцен</strong> — 1.70-1.75%</li>
+<li><strong>α-пинен</strong> — 0.44-0.45%</li>
+<li><strong>Сабинен</strong> — 0.10-0.27%</li>
+<li><strong>Терпинолен</strong> — 0.11-0.15%</li>
+<li><strong>Линалоол</strong> — 0.49-0.73%</li>
+<li><strong>Терпинен-4-ол</strong> — 0.27-0.28%</li>
+<li><strong>α-терпинеол</strong> — 0.23-0.40%</li>
+<li><strong>Октанал</strong> — 0.14-0.32%</li>
+<li><strong>Н-деканал</strong> — 0.12-0.25%</li>
+<li><strong>β-синесал</strong> — 0.03-0.10%</li>
+<li><strong>α-синесал</strong> — 0.10-0.39%</li>
+</ul>
+
+<div class="section-title">Свойства</div>
+<ul>
+<li>Антидепрессант, способствует релаксации</li>
+<li>Противоспазматическое, седативное, улучшающее сон</li>
+<li>Антисептическое, слабительное, ветрогонное</li>
+<li>Стимулирует пищеварение и работу печени</li>
+</ul>
+
+<div class="section-title">Показания к применению</div>
+<ul>
+<li>Диспепсии, гастралгии, икота, колики, желудочные спазмы</li>
+<li>Бессонница, агрессия, нервное напряжение, стресс, депрессия</li>
+<li><b>Косметическое действие:</b> акне, себорея, задержка воды, целлюлит, сухая кожа, бородавки, растяжки и рубцы</li>
+</ul>
+
+<div class="related">
+<strong>🔗 Смотрите также</strong>
+<a href="eo-citrus.html">Мандарин</a>
+<a href="eo-citrus.html">Танжерин</a>
+</div>
+
+<div class="contraindications">
+<strong>⚠️ Противопоказания</strong>
+<p>Индивидуальная непереносимость, фототоксично. Срок хранения: 2 года при температуре 6-17 градусов.</p>
+</div>
+</div>
+
+<!-- ТАНЖЕРИН -->
+<div class="oil-card" data-name="танжерин" data-properties="иммуностимулятор дряблая кожа целлюлит">
+<h2>🍊 Танжерин</h2>
+<div class="latin">Citrus reticulata Blanco var. Tangerine</div>
+<div class="badges">
+<span class="badge badge-method">🍊 Прессование</span>
+<span class="badge badge-note">🎵 Верхняя нота | Летучесть: высокая</span>
+</div>
+
+<div class="section-title">Химический состав</div>
+<ul>
+<li><strong>Лимонен</strong> — 89.13%</li>
+<li><strong>γ-терпинен</strong> — 3.33%</li>
+<li><strong>Мирцен</strong> — 2.62%</li>
+<li><strong>α-пинен</strong> — 1.21%</li>
+<li><strong>Сабинен</strong> — 0.62%</li>
+<li><strong>β-пинен</strong> — 0.61%</li>
+<li><strong>Линалоол</strong> — 0.25%</li>
+<li><strong>Деканал</strong> — 0.23%</li>
+<li><strong>α-фарнезен</strong> — 0.27%</li>
+</ul>
+
+<div class="section-title">Свойства</div>
+<ul>
+<li>Иммуностимулирующее</li>
+<li>Антисептическое</li>
+<li>Снимающее напряжение</li>
+<li>Улучшающее микроциркуляцию</li>
+<li>Стимулирующее лимфоотток</li>
+<li>Спазмолитическое</li>
+</ul>
+
+<div class="section-title">Показания к применению</div>
+<ul>
+<li>Средства для ухода за дряблой, потерявшей тонус кожей</li>
+<li>Средства для ухода за комбинированной кожей</li>
+<li>Целлюлит (стимуляция лимфотока)</li>
+<li>Эмоциональное выгорание</li>
+<li>Колебания настроения в климаксе</li>
+<li>Высокий уровень тревожности</li>
+</ul>
+
+<div class="related">
+<strong>🔗 Смотрите также</strong>
+<a href="eo-citrus.html">Мандарин</a>
+<a href="eo-citrus.html">Клементин</a>
+<a href="base-combination.html">Масла для комбинированной кожи</a>
+</div>
+
+<div class="contraindications">
+<strong>⚠️ Противопоказания</strong>
+<p>Индивидуальная непереносимость. Срок хранения: 2 года в холодильнике.</p>
+</div>
+</div>
+
+<!-- ЮЗУ -->
+<div class="oil-card" data-name="юзу" data-properties="антиоксидант увядающая кожа пигментация">
+<h2>🍋 Юзу</h2>
+<div class="latin">Citrus junos Tanaka</div>
+<div class="badges">
+<span class="badge badge-method">🍊 Прессование кожуры</span>
+<span class="badge badge-note">🎵 Верхняя нота | Летучесть: высокая</span>
+</div>
+
+<div class="section-title">Химический состав</div>
+<ul>
+<li><strong>Лимонен</strong> — 74.918%</li>
+<li><strong>γ-терпинен</strong> — 9.910%</li>
+<li><strong>Мирцен</strong> — 2.799%</li>
+<li><strong>α-пинен</strong> — 1.860%</li>
+<li><strong>β-пинен</strong> — 1.081%</li>
+<li><strong>Линалоол</strong> — 1.272%</li>
+<li><strong>Деканаль</strong> — 1.257%</li>
+<li><strong>Диметилантранилат</strong> — 1.029%</li>
+<li><strong>Цитронеллол</strong> — 0.412%</li>
+<li><strong>Гераниол</strong> — 0.268%</li>
+</ul>
+
+<div class="section-title">Свойства</div>
+<ul>
+<li>Антисептическое</li>
+<li>Антиоксидантное</li>
+<li>Снимающее мышечное напряжение</li>
+<li>Улучшающее микроциркуляцию</li>
+<li>Стимулирующее лимфоотток</li>
+<li>Спазмолитическое</li>
+<li>Расслабляющее</li>
+</ul>
+
+<div class="section-title">Показания к применению</div>
+<ul>
+<li>Средства для ухода за дряблой, потерявшей тонус кожей</li>
+<li>Средства для ухода за комбинированной кожей</li>
+<li>Средства для сухой, увядающей кожи</li>
+<li>Отбеливание пигментации</li>
+<li>Пастозность кожи (уменьшенная эластичность, связанная с небольшими отеками подкожно-жировой клетчатки)</li>
+<li>Средства для огрубевшей кожи локтей, коленей, стоп</li>
+<li>Целлюлит (стимуляция лимфотока)</li>
+<li>Стресс, высокий уровень тревожности</li>
+</ul>
+
+<div class="related">
+<strong>🔗 Смотрите также</strong>
+<a href="eo-citrus.html">Мандарин</a>
+<a href="eo-citrus.html">Лимон</a>
+<a href="base-mature.html">Масла для зрелой кожи</a>
+</div>
+
+<div class="contraindications">
+<strong>⚠️ Противопоказания</strong>
+<p>Может вызвать раздражение кожи, непереносимость. Срок хранения: 2 года в холодильнике.</p>
+</div>
+</div>
+
+<div class="no-results" id="noResults">
+😔 По вашему запросу ничего не найдено. Попробуйте изменить поисковый запрос.
+</div>
+
+<div class="warning">
+<strong>⚠️ Общие правила для цитрусовых масел</strong>
+<p><b>Фототоксичность:</b> Большинство цитрусовых масел (бергамот, лайм, лимон, грейпфрут, клементин) фототоксичны — не наносить на кожу перед выходом на солнце (минимум за 12 часов до УФ-воздействия).</p>
+<p><b>Срок хранения:</b> 2 года в холодильнике (из-за высокого содержания монотерпенов, которые быстро окисляются).</p>
+<p><b>Детская кожа:</b> С осторожностью, в низких концентрациях.</p>
+<p><b>Чувствительная кожа:</b> Возможны раздражения, начинать с минимальных доз.</p>
+<p><b>Беременность:</b> Большинство цитрусовых разрешены, но внутрь не применять.</p>
+</div>
+
+</div>
+
+<footer><p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p></footer>
+
+<script>
+const searchInput = document.getElementById('searchInput');
+const oilCards = document.querySelectorAll('.oil-card');
+const noResults = document.getElementById('noResults');
+
+searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase().trim();
+    let found = false;
+    oilCards.forEach(item => {
+        const name = item.getAttribute('data-name').toLowerCase();
+        const properties = item.getAttribute('data-properties').toLowerCase();
+        const textContent = item.textContent.toLowerCase();
+        if (name.includes(query) || properties.includes(query) || textContent.includes(query)) {
+            item.classList.remove('hidden');
+            found = true;
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+    noResults.classList.toggle('show', !found && query !== '');
+});
+</script>
+</body>
+</html>

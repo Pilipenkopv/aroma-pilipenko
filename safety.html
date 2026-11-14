@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Безопасность и противопоказания — Павел Пилипенко</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; line-height: 1.7; color: #2c3e50; background: #f9f7f4; }
+header { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 20px 0; }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 16px; }
+nav a:hover { opacity: 0.8; }
+.hero { background: linear-gradient(135deg, #ffebee, #ffcdd2); padding: 80px 20px; text-align: center; }
+.hero h1 { font-size: 42px; color: #c62828; margin-bottom: 15px; }
+.hero p { font-size: 20px; color: #5a6c5d; max-width: 700px; margin: 0 auto; }
+.container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+.breadcrumb { font-size: 14px; color: #7f8c8d; margin-bottom: 30px; }
+.breadcrumb a { color: #2d5016; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.section { background: white; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #c62828; margin-bottom: 30px; }
+.section h2 { font-size: 28px; color: #c62828; margin-bottom: 20px; }
+.section p { font-size: 16px; color: #5a6c5d; margin-bottom: 10px; }
+.section strong { color: #c62828; }
+.section ul { margin: 10px 0 10px 20px; }
+.section li { margin-bottom: 8px; font-size: 15px; color: #5a6c5d; }
+.alert { background: #ffebee; border-left: 4px solid #c62828; padding: 20px; border-radius: 10px; margin: 20px 0; }
+.alert strong { color: #b71c1c; }
+.alert p { color: #b71c1c; font-size: 15px; }
+.back-link { display: inline-block; margin-bottom: 30px; color: #c62828; text-decoration: none; font-size: 16px; }
+.back-link:hover { text-decoration: underline; }
+footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; font-size: 14px; }
+</style>
+
+<style>
+.floating-buttons {
+    position: fixed;
+    right: 25px;
+    bottom: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 999;
+}
+
+.floating-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+.floating-btn:hover::before {
+    left: 100%;
+}
+.floating-btn:hover {
+    transform: scale(1.2) translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+.floating-btn svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: transform 0.3s;
+}
+.floating-btn:hover svg {
+    transform: scale(1.1);
+}
+.floating-btn 
+.floating-btn .tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 0 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(0,0,0,0.9);
+}
+.floating-btn:hover 
+
+
+.btn-email {
+    background: linear-gradient(135deg, #ea4335 0%, #fbbc05 50%, #ea4335 100%);
+    animation-delay: 1s;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.floating-btn:hover {
+    animation: none;
+}
+@keyframes pulse-ring {
+    0% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255,255,255,0.4); }
+    70% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 15px rgba(255,255,255,0); }
+    100% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255,255,255,0); }
+}
+
+</style><link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero"><h1>Безопасность и противопоказания</h1><p>Правила безопасного использования эфирных масел</p></section>
+<div class="container">
+<div class="breadcrumb">
+<a href="index.html">Главная</a> &gt; <a href="aromatherapy.html">Ароматерапия</a> &gt; Безопасность и противопоказания
+</div>
+<a href="aromatherapy.html" class="back-link">&larr; Вернуться к разделу Ароматерапия</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+
+<div class="section">
+<h2>Общие правила безопасности</h2>
+<ul>
+<li><strong>Разведение:</strong> эфирные масла — концентрированные вещества. Никогда не наносите их на кожу в чистом виде (кроме лаванды и чайного дерева — точечно)</li>
+<li><strong>Тест на аллергию:</strong> перед первым использованием нанесите каплю разведённого масла на сгиб локтя и подождите 24 часа</li>
+<li><strong>Качество:</strong> используйте только 100% натуральные эфирные масла с указанием латинского названия на этикетке</li>
+<li><strong>Хранение:</strong> в тёмных стеклянных флаконах, в прохладном месте, вдали от детей и домашних животных</li>
+<li><strong>Срок годности:</strong> цитрусовые масла — до 2 лет, остальные — 3-5 лет. Если запах изменился — масло испорчено</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>Противопоказания</h2>
+<p>Эфирные масла противопоказаны или требуют особой осторожности в следующих случаях:</p>
+<ul>
+<li><strong>Беременность:</strong> многие масла запрещены в первом триместре, некоторые — на всём сроке. Обязательна консультация специалиста</li>
+<li><strong>Грудное вскармливание:</strong> ограничить использование, избегать нанесения на область груди</li>
+
+<li><strong>Дети до 6 лет:</strong> использовать только безопасные масла (лаванда, ромашка) в минимальных концентрациях</li>
+<li><strong>Эпилепсия:</strong> избегать масел с высоким содержанием кетонов и камфоры (розмарин, шалфей, мята, полынь)</li>
+<li><strong>Бронхиальная астма:</strong> с осторожностью — сильные ароматы могут спровоцировать приступ</li>
+<li><strong>Тяжёлые заболевания печени и почек:</strong> ограничить использование, необходима консультация врача</li>
+<li><strong>Онкология:</strong> обязательна консультация с лечащим врачом</li>
+<li><strong>Индивидуальная непереносимость и аллергия:</strong> всегда делайте тест перед применением</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>Тест на аллергию</h2>
+<p>Перед первым использованием любого эфирного масла обязательно проведите тест на чувствительность:</p>
+<ul>
+<li>Разведите 1 каплю эфирного масла в чайной ложке базового масла</li>
+<li>Нанесите небольшое количество на внутреннюю сторону запястья или сгиб локтя</li>
+<li>Подождите 24 часа</li>
+<li>Если появилось покраснение, зуд, жжение или отёк — масло вам не подходит</li>
+</ul>
+<div class="alert">
+<strong>Важно:</strong>
+<p>Даже если у вас никогда не было аллергии, реакция может возникнуть на новое масло. Всегда проводите тест — это займёт минуту, но защитит от серьёзных проблем.</p>
+</div>
+</div>
+<div class="section">
+<h2>Правила хранения</h2>
+<ul>
+<li><strong>Тара:</strong> только тёмное стекло (янтарное или синее). Пластик и прозрачное стекло разрушают масло</li>
+<li><strong>Температура:</strong> прохладное место, вдали от нагревательных приборов и прямых солнечных лучей</li>
+<li><strong>Цитрусовые масла:</strong> хранить в холодильнике! Срок годности — не более 2 лет</li>
+<li><strong>Хвойные масла:</strong> также желательно хранить в холодильнике</li>
+<li><strong>Плотно закрывать:</strong> после каждого использования плотно закрывайте флакон — масла быстро окисляются на воздухе</li>
+<li><strong>Маркировка:</strong> подписывайте дату открытия на каждом флаконе</li>
+<li><strong>Недоступность:</strong> храните в месте, недоступном для детей и домашних животных</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>Первая помощь</h2>
+<p>Что делать в экстренных ситуациях:</p>
+<ul>
+<li><strong>Попадание в глаза:</strong> НЕ промывайте водой! Промойте базовым растительным маслом (оливковым, подсолнечным), затем обратитесь к врачу</li>
+<li><strong>Попадание на кожу (ожог):</strong> не смывайте водой — нанесите базовое масло, чтобы растворить эфирное</li>
+<li><strong>Проглатывание:</strong> НЕ вызывайте рвоту! Выпейте молоко или растительное масло, обратитесь в скорую помощь</li>
+<li><strong>Аллергическая реакция:</strong> примите антигистаминное, при сильной реакции — вызовите скорую</li>
+<li><strong>Передозировка (головная боль, тошнота):</strong> обеспечьте приток свежего воздуха, выпейте воды</li>
+</ul>
+<div class="alert">
+<strong>Запомните:</strong>
+<p>Вода не растворяет эфирные масла! Поэтому при попадании на кожу или в глаза используйте базовое растительное масло — оно растворяет эфирное и снимает раздражение.</p>
+</div>
+</div>
+<div class="section">
+<h2>Особые группы риска</h2>
+<p>Некоторым категориям людей требуется особая осторожность:</p>
+<ul>
+<li><strong>Пожилые люди:</strong> кожа более чувствительна, используйте меньшие концентрации</li>
+<li><strong>Люди с хроническими заболеваниями:</strong> обязательна консультация с врачом перед использованием</li>
+<li><strong>Люди, принимающие лекарства:</strong> некоторые масла могут взаимодействовать с препаратами (например, грейпфрут влияет на метаболизм многих лекарств)</li>
+<li><strong>Домашние животные:</strong> многие масла токсичны для кошек и собак (чайное дерево, цитрусовые, хвойные). Не используйте диффузор в помещении с животными без консультации с ветеринаром</li>
+</ul>
+</div>
+
+<div class="alert">
+<strong>Главное правило:</strong>
+<p>Ароматерапия — это вспомогательный метод поддержки здоровья, а не замена медицинской помощи. При любых серьёзных заболеваниях обращайтесь к врачу. На консультации я помогу вам подобрать безопасные и эффективные масла именно для вашей ситуации, учитывая все противопоказания и особенности здоровья.</p>
+</div>
+</div>
+<footer><p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p></footer>
+
+<div class="floating-buttons">
+    
+    
+    
+</div><script src="premium.js"></script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Базовые масла — Павел Пилипенко</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; line-height: 1.7; color: #2c3e50; background: #f9f7f4; }
+header { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 20px 0; }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 16px; }
+nav a:hover { opacity: 0.8; }
+.hero { background: linear-gradient(135deg, #fff8e1, #ffecb3); padding: 80px 20px; text-align: center; }
+.hero h1 { font-size: 42px; color: #f57c00; margin-bottom: 15px; }
+.hero p { font-size: 20px; color: #5a6c5d; max-width: 700px; margin: 0 auto; }
+.container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+.breadcrumb { font-size: 14px; color: #7f8c8d; margin-bottom: 30px; }
+.breadcrumb a { color: #2d5016; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.section-title { font-size: 28px; color: #f57c00; margin: 40px 0 20px; border-bottom: 2px solid #f57c00; padding-bottom: 10px; }
+.groups-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+.group-card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #f57c00; transition: transform 0.3s; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+.group-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+.group-card .icon { font-size: 48px; margin-bottom: 15px; }
+.group-card h3 { font-size: 22px; color: #f57c00; margin-bottom: 12px; }
+.group-card p { font-size: 15px; color: #5a6c5d; margin-bottom: 20px; line-height: 1.6; flex-grow: 1; }
+.group-card .arrow { font-size: 18px; color: #f57c00; font-weight: bold; }
+.back-link { display: inline-block; margin-bottom: 30px; color: #f57c00; text-decoration: none; font-size: 16px; }
+.back-link:hover { text-decoration: underline; }
+footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; font-size: 14px; }
+</style>
+
+<style>
+.floating-buttons {
+    position: fixed;
+    right: 25px;
+    bottom: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 999;
+}
+
+.floating-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+.floating-btn:hover::before {
+    left: 100%;
+}
+.floating-btn:hover {
+    transform: scale(1.2) translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+.floating-btn svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: transform 0.3s;
+}
+.floating-btn:hover svg {
+    transform: scale(1.1);
+}
+.floating-btn 
+.floating-btn .tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 0 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(0,0,0,0.9);
+}
+.floating-btn:hover 
+
+
+.btn-email {
+    background: linear-gradient(135deg, #ea4335 0%, #fbbc05 50%, #ea4335 100%);
+    animation-delay: 1s;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.floating-btn:hover {
+    animation: none;
+}
+@keyframes pulse-ring {
+    0% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255,255,255,0.4); }
+    70% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 15px rgba(255,255,255,0); }
+    100% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255,255,255,0); }
+}
+
+</style><link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero"><h1>Базовые масла</h1><p>Транспортные масла для разведения эфирных масел и ухода за кожей</p></section>
+<div class="container">
+<div class="breadcrumb">
+<a href="index.html">Главная</a> > <a href="aromatherapy.html">Ароматерапия</a> > Базовые масла
+</div>
+<a href="aromatherapy.html" class="back-link">← Вернуться к разделу Ароматерапия</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+
+<h2 class="section-title">По типу кожи</h2>
+<div class="groups-grid">
+<a href="base-dry.html" class="group-card">
+<div class="icon">💧 </div>
+<h3>Для сухой кожи</h3>
+<p>Питательные масла с высоким содержанием олеиновой кислоты. Увлажняют, смягчают, восстанавливают липидный барьер.</p>
+<span class="arrow">Перейти →</span>
+</a>
+<a href="base-oily.html" class="group-card">
+<div class="icon">🌿 </div>
+<h3>Для жирной кожи</h3>
+<p>Лёгкие масла с низкой комедогенностью. Регулируют себум, не забивают поры, быстро впитываются.</p>
+<span class="arrow">Перейти →</span>
+</a>
+<a href="base-combination.html" class="group-card">
+<div class="icon">⚖️ </div>
+<h3>Для комбинированной кожи</h3>
+<p>Сбалансированные масла, которые увлажняют сухие зоны и не утяжеляют жирные.</p>
+<span class="arrow">Перейти →</span>
+</a>
+<a href="base-sensitive.html" class="group-card">
+<div class="icon"></div>
+<h3>Для чувствительной кожи</h3>
+<p>Мягкие, гипоаллергенные масла с противовоспалительными свойствами. Подходят для реактивной кожи.</p>
+<span class="arrow">Перейти →</span>
+</a>
+
+<a href="base-mature.html" class="group-card">
+<div class="icon">✨</div>
+<h3>Для зрелой кожи</h3>
+<p>Масла с антиоксидантами и регенерирующими свойствами. Борются с морщинами и потерей эластичности.</p>
+<span class="arrow">Перейти →</span>
+</a>
+</div>
+
+<h2 class="section-title">По физическим свойствам</h2>
+<div class="groups-grid">
+<a href="base-light.html" class="group-card">
+<div class="icon">🪶 </div>
+<h3>Лёгкие масла</h3>
+<p>Быстро впитываются, не оставляют жирной плёнки. Идеальны для массажа и ежедневного ухода.</p>
+<span class="arrow">Перейти →</span>
+</a>
+<a href="base-medium.html" class="group-card">
+<div class="icon"></div>
+<h3>Средние масла</h3>
+<p>Универсальные масла с балансом питательности и лёгкости. Подходят для большинства задач.</p>
+<span class="arrow">Перейти →</span>
+</a>
+<a href="base-heavy.html" class="group-card">
+<div class="icon"></div>
+<h3>Тяжёлые масла</h3>
+<p>Плотные, окклюзионные масла. Создают защитный барьер, идеальны для очень сухой кожи и бальзамов.</p>
+<span class="arrow">Перейти →</span>
+</a>
+</div>
+</div>
+<footer><p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p></footer>
+
+<div class="floating-buttons">
+    
+    
+    
+</div><script src="premium.js"></script>
+</body>
+</html>
+
+
+
+
+

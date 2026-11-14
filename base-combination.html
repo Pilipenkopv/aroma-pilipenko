@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Базовые масла для комбинированной кожи — Павел Пилипенко</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; line-height: 1.7; color: #2c3e50; background: #f9f7f4; }
+header { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 20px 0; }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 16px; }
+nav a:hover { opacity: 0.8; }
+.hero { background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 80px 20px; text-align: center; }
+.hero h1 { font-size: 42px; color: #1976d2; margin-bottom: 15px; }
+.hero p { font-size: 20px; color: #5a6c5d; max-width: 700px; margin: 0 auto; }
+.container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+.breadcrumb { font-size: 14px; color: #7f8c8d; margin-bottom: 30px; }
+.breadcrumb a { color: #2d5016; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.oils-list { display: flex; flex-direction: column; gap: 30px; }
+.oil-item { background: white; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #1976d2; }
+.oil-item h3 { font-size: 24px; color: #1976d2; margin-bottom: 5px; }
+.oil-item .latin { font-style: italic; color: #7f8c8d; font-size: 14px; margin-bottom: 15px; }
+.oil-item p { font-size: 16px; color: #5a6c5d; margin-bottom: 10px; }
+.oil-item strong { color: #1976d2; }
+.specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0; }
+.spec { background: #e3f2fd; padding: 12px; border-radius: 8px; }
+.spec strong { display: block; font-size: 13px; color: #1976d2; margin-bottom: 5px; }
+.spec span { font-size: 14px; color: #5a6c5d; }
+.back-link { display: inline-block; margin-bottom: 30px; color: #1976d2; text-decoration: none; font-size: 16px; }
+.back-link:hover { text-decoration: underline; }
+.warning { background: #e3f2fd; border-left: 4px solid #1976d2; padding: 20px; border-radius: 10px; margin-top: 40px; }
+.warning strong { color: #0d47a1; }
+.warning p { color: #0d47a1; font-size: 15px; }
+footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; font-size: 14px; }
+</style>
+
+<style>
+.floating-buttons {
+    position: fixed;
+    right: 25px;
+    bottom: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 999;
+}
+
+.floating-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+.floating-btn:hover::before {
+    left: 100%;
+}
+.floating-btn:hover {
+    transform: scale(1.2) translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+.floating-btn svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: transform 0.3s;
+}
+.floating-btn:hover svg {
+    transform: scale(1.1);
+}
+.floating-btn 
+.floating-btn .tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 0 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(0,0,0,0.9);
+}
+.floating-btn:hover 
+
+
+.btn-email {
+    background: linear-gradient(135deg, #ea4335 0%, #fbbc05 50%, #ea4335 100%);
+    animation-delay: 1s;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.floating-btn:hover {
+    animation: none;
+}
+@keyframes pulse-ring {
+    0% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255,255,255,0.4); }
+    70% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 15px rgba(255,255,255,0); }
+    100% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255,255,255,0); }
+}
+
+</style><link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero"><h1>Базовые масла для комбинированной кожи</h1><p>Сбалансированные масла для разных зон лица</p></section>
+<div class="container">
+<div class="breadcrumb">
+<a href="index.html">Главная</a> &gt; <a href="aromatherapy.html">Ароматерапия</a> &gt; <a href="base-oils.html">Базовые масла</a> &gt; Для комбинированной кожи
+</div>
+<a href="base-oils.html" class="back-link">&larr; Вернуться к разделу Базовые масла</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+<div class="oils-list">
+<div class="oil-item">
+<h3>Масло жожоба</h3>
+<div class="latin">Simmondsia chinensis</div>
+<div class="specs">
+<div class="spec"><strong>Состав:</strong><span>Восковые эфиры: эйкозеновая (65-80%), эруковая (15-25%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>2 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>Не ограничен (жидкий воск)</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Лёгкая, похожа на себум кожи</span></div>
+</div>
+<p><strong>Свойства:</strong> регулирует выработку себума, балансирует жирные и сухие зоны, богато витамином E</p>
+<p><strong>Применение:</strong> универсальное масло для комбинированной кожи, уход за T-зоной и щеками</p>
+</div>
+<div class="oil-item">
+<h3>Масло арганы</h3>
+<div class="latin">Argania spinosa</div>
+<div class="specs">
+
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Олеиновая (40-50%), линолевая (30-40%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>0 (не забивает поры)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>12-24 месяца</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Лёгкая, быстро впитывается</span></div>
+</div>
+<p><strong>Свойства:</strong> балансирует выработку себума, увлажняет без жирности, богато витамином E и скваленом</p>
+<p><strong>Применение:</strong> ежедневный уход за комбинированной кожей, база под макияж</p>
+</div>
+<div class="oil-item">
+<h3>Масло сладкого миндаля</h3>
+<div class="latin">Prunus amygdalus dulcis</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Олеиновая (62-86%), линолевая (10-30%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>2 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>6-12 месяцев</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Лёгкая, универсальная</span></div>
+</div>
+<p><strong>Свойства:</strong> мягко питает, не утяжеляет, подходит для чувствительных зон, богато витамином E</p>
+<p><strong>Применение:</strong> базовое масло для разведения эфирных масел, массаж, уход за лицом и телом</p>
+</div>
+<div class="oil-item">
+<h3>Масло абрикосовой косточки</h3>
+<div class="latin">Prunus armeniaca</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Олеиновая (60-70%), линолевая (20-30%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>2 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>6-12 месяцев</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Лёгкая, быстро впитывается</span></div>
+</div>
+<p><strong>Свойства:</strong> смягчает сухие зоны, не утяжеляет жирные, богато витамином A и E</p>
+<p><strong>Применение:</strong> уход за лицом, особенно для области вокруг глаз и щёк</p>
+</div>
+<div class="oil-item">
+<h3>Масло виноградной косточки</h3>
+<div class="latin">Vitis vinifera</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Линолевая (60-70%), олеиновая (15-20%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>1 (очень низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>6-12 месяцев</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Очень лёгкая, не оставляет плёнки</span></div>
+</div>
+<p><strong>Свойства:</strong> регулирует себум в T-зоне, сужает поры, антиоксидант</p>
+<p><strong>Применение:</strong> для жирных зон (лоб, нос, подбородок), база для лёгких сывороток</p>
+</div>
+<div class="oil-item">
+<h3>Масло лесного ореха</h3>
+<div class="latin">Corylus avellana</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Олеиновая (75-85%), линолевая (10-15%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>1-2 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>6-12 месяцев</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Сухая, быстро впитывается</span></div>
+</div>
+<p><strong>Свойства:</strong> балансирует кожу, сужает поры, укрепляет капилляры</p>
+<p><strong>Применение:</strong> уход за комбинированной кожей, особенно для зон с расширенными порами</p>
+</div>
+</div>
+<div class="warning">
+<strong>Совет:</strong>
+<p>Для комбинированной кожи можно использовать разные масла для разных зон: лёгкие (виноградная косточка) для T-зоны, более питательные (жожоба, аргана) для щёк. Или смешивать масла в пропорции 50/50.</p>
+</div>
+</div>
+<footer><p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p></footer>
+
+<div class="floating-buttons">
+    
+    
+    
+</div><script src="premium.js"></script>
+</body>
+</html>
+
+
+
+
+

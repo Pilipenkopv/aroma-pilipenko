@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Калькулятор ИМТ — Павел Пилипенко</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; line-height: 1.7; color: #2c3e50; background: #f9f7f4; }
+header { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 20px 0; }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 16px; }
+nav a:hover { opacity: 0.8; }
+.hero { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 60px 20px; text-align: center; }
+.hero h1 { font-size: 38px; color: #2e7d32; margin-bottom: 10px; }
+.hero p { font-size: 18px; color: #5a6c5d; }
+.container { max-width: 700px; margin: 0 auto; padding: 50px 20px; }
+.calc-box { background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #2e7d32; }
+.calc-box h2 { font-size: 26px; color: #2e7d32; margin-bottom: 25px; }
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; font-size: 16px; color: #2d5016; margin-bottom: 8px; font-weight: bold; }
+.input-group input { width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; font-family: Georgia, serif; }
+.input-group input:focus { outline: none; border-color: #4a7c23; }
+.calc-btn { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 14px 35px; border: none; border-radius: 30px; font-size: 17px; font-family: Georgia, serif; cursor: pointer; width: 100%; margin-top: 10px; }
+.calc-btn:hover { opacity: 0.9; }
+.result { display: none; margin-top: 30px; padding: 25px; border-radius: 12px; text-align: center; }
+.result-value { font-size: 48px; font-weight: bold; margin-bottom: 10px; }
+.result-label { font-size: 18px; margin-bottom: 15px; }
+.result-desc { font-size: 15px; line-height: 1.6; }
+.result.normal { background: #e8f5e9; border-left: 5px solid #4caf50; }
+.result.normal .result-value { color: #2e7d32; }
+.result.under { background: #fff3e0; border-left: 5px solid #ff9800; }
+.result.under .result-value { color: #e65100; }
+.result.over { background: #fff3e0; border-left: 5px solid #ff9800; }
+.result.over .result-value { color: #e65100; }
+.result.obese { background: #ffebee; border-left: 5px solid #f44336; }
+.result.obese .result-value { color: #c62828; }
+.scale { margin-top: 30px; padding: 20px; background: #f9f7f4; border-radius: 10px; }
+.scale h3 { color: #2e7d32; margin-bottom: 15px; }
+.scale-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e0e0e0; font-size: 14px; }
+.scale-row:last-child { border-bottom: none; }
+.back-link { display: inline-block; margin-bottom: 25px; color: #2e7d32; text-decoration: none; font-size: 16px; }
+.back-link:hover { text-decoration: underline; }
+.warning { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 20px; border-radius: 10px; margin-top: 30px; }
+.warning strong { color: #1b5e20; }
+.warning p { color: #1b5e20; font-size: 14px; }
+footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; font-size: 14px; }
+
+<style>
+.floating-buttons { position: fixed; right: 20px; bottom: 100px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
+
+.floating-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(255,255,255,0.3); transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s; }
+.floating-btn:hover::before { width: 300px; height: 300px; }
+.floating-btn:hover { transform: scale(1.15) translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.35); animation: none; }
+.floating-btn .icon { position: relative; z-index: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+.floating-btn 
+.floating-btn:hover 
+
+
+.btn-email { background: linear-gradient(135deg, #ea4335 0%, #fbbc05 100%); }
+@keyframes pulse { 0%, 100% { box-shadow: 0 6px 20px rgba(0,0,0,0.25); } 50% { box-shadow: 0 6px 20px rgba(0,0,0,0.25), 0 0 0 10px rgba(255,255,255,0.1); } }
+</style></style>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="blog.html">Блог</a>
+<a href="calculators.html">Калькуляторы</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero"><h1>Калькулятор ИМТ</h1><p>Индекс массы тела по стандартам ВОЗ</p></section>
+<div class="container">
+<a href="calculators.html" class="back-link">&larr; Все калькуляторы</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+<div class="calc-box">
+<h2>Рассчитайте ваш ИМТ</h2>
+<div class="input-group">
+<label for="weight">Ваш вес (кг)</label>
+
+<input type="number" id="weight" placeholder="Например, 70" min="30" max="300">
+</div>
+<div class="input-group">
+<label for="height">Ваш рост (см)</label>
+<input type="number" id="height" placeholder="Например, 170" min="100" max="250">
+</div>
+<button class="calc-btn" onclick="calculateBMI()">Рассчитать ИМТ</button>
+<div id="result" class="result">
+<div class="result-value" id="bmiValue">0</div>
+<div class="result-label" id="bmiLabel"></div>
+<div class="result-desc" id="bmiDesc"></div>
+</div>
+<div class="scale">
+<h3>Шкала ИМТ (ВОЗ)</h3>
+<div class="scale-row"><span>Менее 18.5</span><span>Недостаточный вес</span></div>
+<div class="scale-row"><span>18.5 — 24.9</span><span>Норма</span></div>
+<div class="scale-row"><span>25.0 — 29.9</span><span>Избыточный вес</span></div>
+<div class="scale-row"><span>30.0 — 34.9</span><span>Ожирение I степени</span></div>
+<div class="scale-row"><span>35.0 — 39.9</span><span>Ожирение II степени</span></div>
+<div class="scale-row"><span>40.0 и выше</span><span>Ожирение III степени</span></div>
+</div>
+</div>
+<div class="warning">
+<strong>Важно:</strong>
+<p>ИМТ — ориентировочный показатель. Он не учитывает мышечную массу, возраст, пол и распределение жира. Для спортсменов и пожилых людей ИМТ может быть неточным. Для полной оценки здоровья необходима консультация врача.</p>
+</div>
+</div>
+<footer>
+    <p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p>
+    <p style="margin-top: 15px; font-size: 13px; opacity: 0.8;">
+        Методология основана на знаниях 
+        <a href="https://aromaschool.ru" target="_blank" style="color: #81c784; text-decoration: underline;">Школы ароматерапии и парфюмерии «Астарта»</a> 
+        и стандартах Международной ассоциации ароматерапевтов.
+    </p>
+    <p style="font-size: 13px; opacity: 0.8;">
+        Рекомендуемые натуральные эфирные масла и аксессуары: 
+        <a href="https://aromaschool-shop.ru" target="_blank" style="color: #ffb74d; text-decoration: underline;">Магазин «Астарта»</a>
+    </p>
+</footer>
+<script>
+function calculateBMI() {
+var weight = parseFloat(document.getElementById('weight').value);
+var height = parseFloat(document.getElementById('height').value) / 100;
+if (!weight || !height || weight < 30 || height < 1) {
+alert('Пожалуйста, введите корректные данные');
+return;
+}
+var bmi = weight / (height * height);
+bmi = Math.round(bmi * 10) / 10;
+var resultDiv = document.getElementById('result');
+var valueDiv = document.getElementById('bmiValue');
+var labelDiv = document.getElementById('bmiLabel');
+var descDiv = document.getElementById('bmiDesc');
+resultDiv.className = 'result';
+valueDiv.textContent = bmi;
+if (bmi < 18.5) {
+resultDiv.classList.add('under');
+labelDiv.textContent = 'Недостаточный вес';
+descDiv.textContent = 'Ваш вес ниже нормы. Рекомендуется консультация специалиста для выяснения причин и подбора программы питания.';
+} else if (bmi < 25) {
+resultDiv.classList.add('normal');
+labelDiv.textContent = 'Норма';
+descDiv.textContent = 'Поздравляем! Ваш вес в пределах нормы. Поддерживайте его сбалансированным питанием и регулярной активностью.';
+} else if (bmi < 30) {
+resultDiv.classList.add('over');
+labelDiv.textContent = 'Избыточный вес';
+descDiv.textContent = 'Ваш вес выше нормы. Рекомендуется пересмотреть питание и увеличить физическую активность. Консультация специалиста поможет составить план.';
+} else {
+resultDiv.classList.add('obese');
+labelDiv.textContent = 'Ожирение';
+descDiv.textContent = 'Ваш вес значительно выше нормы. Настоятельно рекомендуется консультация врача для разработки безопасной программы снижения веса.';
+}
+resultDiv.style.display = 'block';
+}
+</script>
+<button id="backToTop" title="Наверх">↑</button>
+<script>
+const backToTopBtn = document.getElementById('backToTop');
+window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+};
+backToTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+</script>
+<div class="floating-buttons">
+    
+    
+    
+</div><script src="premium.js"></script>
+</body>
+</html>
+
+
+
+
+

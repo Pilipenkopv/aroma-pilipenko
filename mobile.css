@@ -1,0 +1,377 @@
+/* ========================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ САЙТА
+   Павел Лилипенко - Клиническая ароматерапия
+   ======================================== */
+
+/* --- ПЛАНШЕТЫ (до 768px) --- */
+@media screen and (max-width: 768px) {
+ 
+  /* Уменьшаем отступы контейнера */
+  .container {
+    padding: 15px !important;
+    margin: 10px !important;
+  }
+ 
+  /* Заголовки поменьше */
+  h1 { font-size: 1.6em !important; }
+  h2 { font-size: 1.4em !important; }
+  h3 { font-size: 1.2em !important; }
+ 
+  /* Цитата-бокс компактнее */
+  .quote-box { padding: 15px !important; }
+  .quote-box .quote { font-size: 1em !important; }
+ 
+  /* Контекст-бокс в одну колонку */
+  .context-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .context-item { min-width: 100% !important; }
+ 
+  /* Сетка препаратов в 2 колонки */
+  .meds-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+ 
+  /* Подготовка в одну колонку */
+  .prep-grid {
+    grid-template-columns: 1fr !important;
+  }
+ 
+  /* Карточки чекапов и калькуляторов в одну колонку */
+  .checkup-grid, .calc-grid {
+    grid-template-columns: 1fr !important;
+  }
+ 
+  /* Кнопки истории в столбик */
+  .btn-group {
+    flex-direction: column !important;
+  }
+  .btn { width: 100% !important; }
+ 
+  /* Увеличиваем поля ввода для пальцев */
+  td input, td select, input, select, textarea {
+    font-size: 16px !important; /* Предотвращает зум на iOS */
+    padding: 10px !important;
+    min-height: 44px !important;
+  }
+ 
+  /* Кнопки минимум 44px для пальца */
+  .btn, button {
+    min-height: 44px !important;
+    font-size: 16px !important;
+  }
+ 
+  /* Модальные окна на весь экран */
+  .tooltip-popup {
+    width: 95% !important;
+    max-width: 95% !important;
+    padding: 20px !important;
+    margin: 10px !important;
+  }
+}
+
+/* --- ТЕЛЕФОНЫ (до 480px) --- */
+@media screen and (max-width: 480px) {
+ 
+  body { padding: 10px !important; font-size: 14px !important; }
+ 
+  .container { padding: 10px !important; }
+ 
+  h1 { font-size: 1.4em !important; }
+ 
+  /* Сетка препаратов в 1 колонку */
+  .meds-grid {
+    grid-template-columns: 1fr !important;
+  }
+ 
+  /* Ссылка "назад" крупнее */
+  .back-link {
+    font-size: 1em !important;
+    padding: 5px 0 !important;
+  }
+ 
+  /* История измерений */
+  .history-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 5px !important;
+  }
+ 
+  /* Таблица сравнения в истории */
+  .compare-table {
+    font-size: 0.85em !important;
+  }
+  .compare-table th, .compare-table td {
+    padding: 6px !important;
+  }
+}
+
+/* ========================================
+   ГЛАВНОЕ: ПРЕВРАЩЕНИЕ ТАБЛИЦ В КАРТОЧКИ
+   Это решает проблему 6-колоночных таблиц
+   на мобильных устройствах
+   ======================================== */
+@media screen and (max-width: 768px) {
+ 
+  /* Контейнер таблицы без горизонтального скролла */
+  .table-container {
+    overflow-x: visible !important;
+  }
+ 
+  table {
+    min-width: 100% !important;
+    border: none !important;
+  }
+ 
+  /* Скрываем заголовки таблицы */
+  thead {
+    display: none !important;
+  }
+ 
+  /* Каждая строка таблицы = отдельная карточка */
+  table tr {
+    display: block !important;
+    margin-bottom: 15px !important;
+    background: #fff !important;
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+  }
+ 
+  /* Заголовки блоков (серые строки) */
+  table tr td[colspan] {
+    background: #f8f9fa !important;
+    border-radius: 8px !important;
+    margin-bottom: 10px !important;
+    padding: 12px !important;
+  }
+ 
+  /* Каждая ячейка = строка внутри карточки */
+  table td {
+    display: block !important;
+    width: 100% !important;
+    border: none !important;
+    padding: 8px 0 !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    box-sizing: border-box !important;
+  }
+ 
+  table td:last-child {
+    border-bottom: none !important;
+  }
+ 
+  /* Добавляем подписи к каждой ячейке через data-label */
+  table td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: bold;
+    color: #1a5490;
+    font-size: 0.85em;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+ 
+  /* Первая ячейка (название показателя) — крупнее */
+  table td:first-child {
+    font-size: 1.1em !important;
+    border-bottom: 2px solid #1a5490 !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 5px !important;
+  }
+  table td:first-child::before {
+    display: none !important; /* У названия своя подпись не нужна */
+  }
+ 
+  /* Поля ввода на всю ширину */
+  table td input, table td select {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+ 
+  /* Статус (🟢/🔴) по центру */
+  .status {
+    display: inline-block !important;
+    margin-top: 5px !important;
+  }
+ 
+  /* Рекомендации и причины — с отступом */
+  .rec, .causes {
+    margin-top: 5px !important;
+    padding: 8px !important;
+    background: #fafafa !important;
+    border-radius: 6px !important;
+    border-left: 3px solid #f57c00 !important;
+  }
+ 
+  /* Строка с рекомендациями (вторая строка таблицы) */
+  table tr + tr td[colspan="4"] {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+/* ========================================
+   АДАПТАЦИЯ НАВИГАЦИИ (меню на главной)
+   ======================================== */
+@media screen and (max-width: 768px) {
+ 
+  /* Если меню горизонтальное — делаем вертикальным */
+  nav, .menu, header nav {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+  }
+ 
+  nav a, .menu a, header nav a {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 12px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+  }
+ 
+  /* Карточки услуг на главной в одну колонку */
+  .cards, .services, .features {
+    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
+  }
+ 
+  .card, .service-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ========================================
+   УЛУЧШЕНИЯ ДЛЯ СЕНСОРНЫХ ЭКРАНОВ
+   ======================================== */
+@media (hover: none) and (pointer: coarse) {
+ 
+  /* Увеличиваем области нажатия */
+  a, button, .btn, input[type="checkbox"], input[type="radio"] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+ 
+  /* Убираем hover-эффекты на тач-устройствах */
+  .card:hover, .btn:hover, .checkup-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+ 
+  /* Активное состояние вместо hover */
+  .card:active, .btn:active, .checkup-card:active {
+    transform: scale(0.98) !important;
+    opacity: 0.9 !important;
+  }
+}
+
+/* ========================================
+   АДАПТАЦИЯ ИСТОРИИ ИЗМЕРЕНИЙ
+   ======================================== */
+@media screen and (max-width: 768px) {
+ 
+  .history-controls {
+    padding: 15px !important;
+  }
+ 
+  .history-controls h3 {
+    font-size: 1.2em !important;
+  }
+ 
+  /* Кнопки истории в столбик */
+  .history-controls .btn-group {
+    flex-direction: column !important;
+  }
+ 
+  .history-controls .btn {
+    width: 100% !important;
+    margin-bottom: 8px !important;
+  }
+ 
+  /* Элементы истории */
+  .history-item {
+    padding: 12px !important;
+  }
+ 
+  .history-item input[type="checkbox"] {
+    width: 24px !important;
+    height: 24px !important;
+    margin-right: 10px !important;
+  }
+}
+
+/* ========================================
+   АДАПТАЦИЯ МОДАЛЬНЫХ ОКОН
+   ======================================== */
+@media screen and (max-width: 768px) {
+ 
+  .tooltip-popup {
+    width: 92% !important;
+    max-width: 92% !important;
+    max-height: 85vh !important;
+    overflow-y: auto !important;
+    padding: 20px !important;
+  }
+ 
+  .tooltip-popup h3 {
+    font-size: 1.2em !important;
+    padding-right: 30px !important;
+  }
+ 
+  .close-tooltip {
+    font-size: 2em !important;
+    top: 10px !important;
+    right: 15px !important;
+  }
+ 
+  .tooltip-popup input,
+  .tooltip-popup textarea {
+    font-size: 16px !important;
+    padding: 12px !important;
+  }
+ 
+  .tooltip-popup .btn-group {
+    flex-direction: column !important;
+  }
+ 
+  .tooltip-popup .btn {
+    width: 100% !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+/* ========================================
+   ИКОНКИ И ЭМОДЗИ — не ломаются на мобильных
+   ======================================== */
+@media screen and (max-width: 480px) {
+ 
+  .card-icon, .icon {
+    font-size: 2em !important;
+  }
+ 
+  .checkup-card .icon {
+    font-size: 2.5em !important;
+  }
+ 
+  .info-icon {
+    font-size: 1.5em !important;
+  }
+}
+
+/* ========================================
+   ПРЕДОТВРАЩЕНИЕ ГОРИЗОНТАЛЬНОГО СКРОЛЛА
+   ======================================== */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+img, table, pre, code {
+  max-width: 100% !important;
+  height: auto !important;
+}

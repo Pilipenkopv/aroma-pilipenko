@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Калькулятор циклов сна — Павел Пилипенко</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; line-height: 1.7; color: #2c3e50; background: #f9f7f4; }
+header { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 20px 0; }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 16px; }
+nav a:hover { opacity: 0.8; }
+.hero { background: linear-gradient(135deg, #e8eaf6, #c5cae9); padding: 60px 20px; text-align: center; }
+.hero h1 { font-size: 38px; color: #283593; margin-bottom: 10px; }
+.hero p { font-size: 18px; color: #5a6c5d; }
+.container { max-width: 700px; margin: 0 auto; padding: 50px 20px; }
+.calc-box { background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #283593; }
+.calc-box h2 { font-size: 26px; color: #283593; margin-bottom: 25px; }
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; font-size: 16px; color: #283593; margin-bottom: 8px; font-weight: bold; }
+.input-group input { width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; font-family: Georgia, serif; }
+.input-group input:focus { outline: none; border-color: #283593; }
+.calc-btn { background: linear-gradient(135deg, #283593, #3f51b5); color: white; padding: 14px 35px; border: none; border-radius: 30px; font-size: 17px; font-family: Georgia, serif; cursor: pointer; width: 100%; margin-top: 10px; }
+.calc-btn:hover { opacity: 0.9; }
+.result { display: none; margin-top: 30px; padding: 25px; background: #e8eaf6; border-left: 5px solid #283593; border-radius: 12px; }
+.result h3 { color: #283593; margin-bottom: 15px; }
+.time-slot { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #c5cae9; }
+.time-slot:last-child { border-bottom: none; }
+.time-slot .time { font-size: 20px; font-weight: bold; color: #283593; }
+.time-slot .cycles { color: #5a6c5d; font-size: 14px; }
+.time-slot.recommended { background: #c8e6c9; padding: 12px; border-radius: 8px; margin: 5px 0; }
+.time-slot.recommended .time { color: #2e7d32; }
+.back-link { display: inline-block; margin-bottom: 25px; color: #283593; text-decoration: none; font-size: 16px; }
+.back-link:hover { text-decoration: underline; }
+.info { margin-top: 25px; padding: 20px; background: #f9f7f4; border-radius: 10px; }
+.info h3 { color: #283593; margin-bottom: 12px; }
+.info p { font-size: 14px; color: #5a6c5d; margin-bottom: 10px; }
+.warning { background: #e8eaf6; border-left: 4px solid #283593; padding: 20px; border-radius: 10px; margin-top: 30px; }
+.warning strong { color: #1a237e; }
+.warning p { color: #1a237e; font-size: 14px; }
+footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; font-size: 14px; }
+
+<style>
+.floating-buttons { position: fixed; right: 20px; bottom: 100px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
+
+.floating-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(255,255,255,0.3); transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s; }
+.floating-btn:hover::before { width: 300px; height: 300px; }
+.floating-btn:hover { transform: scale(1.15) translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.35); animation: none; }
+.floating-btn .icon { position: relative; z-index: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+.floating-btn 
+.floating-btn:hover 
+
+
+.btn-email { background: linear-gradient(135deg, #ea4335 0%, #fbbc05 100%); }
+@keyframes pulse { 0%, 100% { box-shadow: 0 6px 20px rgba(0,0,0,0.25); } 50% { box-shadow: 0 6px 20px rgba(0,0,0,0.25), 0 0 0 10px rgba(255,255,255,0.1); } }
+</style></style>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="blog.html">Блог</a>
+<a href="calculators.html">Калькуляторы</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero"><h1>Калькулятор циклов сна</h1><p>Узнайте, когда лечь или во сколько встать для бодрого пробуждения</p></section>
+<div class="container">
+<a href="calculators.html" class="back-link">&larr; Все калькуляторы</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+<div class="calc-box">
+<h2>Рассчитайте время сна</h2>
+<div class="input-group">
+<label for="mode">Что рассчитать?</label>
+<select id="mode">
+<option value="bedtime">Во сколько лечь, если вставать в...</option>
+<option value="wakeup">Во сколько встать, если лечь в...</option>
+</select>
+</div>
+<div class="input-group">
+<label for="time">Время</label>
+
+<input type="time" id="time" value="">
+</div>
+<button class="calc-btn" onclick="calculateSleep()">Рассчитать</button>
+<div id="result" class="result">
+<h3 id="resultTitle">Оптимальное время:</h3>
+<div id="timeSlots"></div>
+</div>
+<div class="info">
+<h3>😴  Как работают циклы сна</h3>
+<p>Сон состоит из циклов по 90 минут. Каждый цикл включает фазы медленного и быстрого сна. Просыпаться лучше в конце цикла — тогда вы чувствуете себя бодрым.</p>
+<p>На засыпание уходит в среднем 15 минут. Калькулятор учитывает это время.</p>
+<p>Оптимальная продолжительность сна для взрослого — 7.5-9 часов (5-6 циклов).</p>
+</div>
+</div>
+<div class="warning">
+<strong>Важно:</strong>
+<p>Калькулятор даёт ориентировочные значения. Индивидуальная продолжительность циклов может отличаться. При хронической бессоннице, апноэ и других нарушениях сна необходима консультация врача.</p>
+</div>
+</div>
+<footer>
+    <p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p>
+    <p style="margin-top: 15px; font-size: 13px; opacity: 0.8;">
+        Методология основана на знаниях 
+        <a href="https://aromaschool.ru" target="_blank" style="color: #81c784; text-decoration: underline;">Школы ароматерапии и парфюмерии «Астарта»</a> 
+        и стандартах Международной ассоциации ароматерапевтов.
+    </p>
+    <p style="font-size: 13px; opacity: 0.8;">
+        Рекомендуемые натуральные эфирные масла и аксессуары: 
+        <a href="https://aromaschool-shop.ru" target="_blank" style="color: #ffb74d; text-decoration: underline;">Магазин «Астарта»</a>
+    </p>
+</footer>
+<script>
+function calculateSleep() {
+var mode = document.getElementById('mode').value;
+var timeStr = document.getElementById('time').value;
+if (!timeStr) {
+alert('Пожалуйста, укажите время');
+return;
+}
+var parts = timeStr.split(':');
+var hours = parseInt(parts[0]);
+var minutes = parseInt(parts[1]);
+var baseTime = new Date();
+baseTime.setHours(hours, minutes, 0, 0);
+var slots = [];
+var title = '';
+if (mode === 'bedtime') {
+title = 'Ложитесь в одно из этих времён:';
+for (var i = 6; i >= 3; i--) {
+var t = new Date(baseTime.getTime() - i * 90 * 60000 - 15 * 60000);
+slots.push({ time: formatTime(t), cycles: i + ' циклов (' + (i * 1.5) + ' ч)' });
+}
+} else {
+title = 'Встаньте в одно из этих времён:';
+for (var i = 3; i <= 6; i++) {
+var t = new Date(baseTime.getTime() + i * 90 * 60000 + 15 * 60000);
+slots.push({ time: formatTime(t), cycles: i + ' циклов (' + (i * 1.5) + ' ч)' });
+}
+}
+document.getElementById('resultTitle').textContent = title;
+var html = '';
+slots.forEach(function(slot, idx) {
+var cls = (idx === 1 || idx === 2) ? 'time-slot recommended' : 'time-slot';
+html += '<div class="' + cls + '"><span class="time">' + slot.time + '</span><span class="cycles">' + slot.cycles + '</span></div>';
+});
+document.getElementById('timeSlots').innerHTML = html;
+document.getElementById('result').style.display = 'block';
+}
+function formatTime(date) {
+var h = date.getHours().toString().padStart(2, '0');
+var m = date.getMinutes().toString().padStart(2, '0');
+return h + ':' + m;
+}
+</script>
+<button id="backToTop" title="Наверх">↑</button>
+<script>
+const backToTopBtn = document.getElementById('backToTop');
+window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+};
+backToTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+</script>
+<div class="floating-buttons">
+    
+    
+    
+</div><script src="premium.js"></script>
+</body>
+</html>
+
+
+
+
+

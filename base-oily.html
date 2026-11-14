@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Базовые масла для жирной кожи — Павел Пилипенко</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; line-height: 1.7; color: #2c3e50; background: #f9f7f4; }
+header { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 20px 0; }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 16px; }
+nav a:hover { opacity: 0.8; }
+.hero { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 80px 20px; text-align: center; }
+.hero h1 { font-size: 42px; color: #2e7d32; margin-bottom: 15px; }
+.hero p { font-size: 20px; color: #5a6c5d; max-width: 700px; margin: 0 auto; }
+.container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+.breadcrumb { font-size: 14px; color: #7f8c8d; margin-bottom: 30px; }
+.breadcrumb a { color: #2d5016; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.oils-list { display: flex; flex-direction: column; gap: 30px; }
+.oil-item { background: white; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #2e7d32; }
+.oil-item h3 { font-size: 24px; color: #2e7d32; margin-bottom: 5px; }
+.oil-item .latin { font-style: italic; color: #7f8c8d; font-size: 14px; margin-bottom: 15px; }
+.oil-item p { font-size: 16px; color: #5a6c5d; margin-bottom: 10px; }
+.oil-item strong { color: #2e7d32; }
+.specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0; }
+.spec { background: #e8f5e9; padding: 12px; border-radius: 8px; }
+.spec strong { display: block; font-size: 13px; color: #2e7d32; margin-bottom: 5px; }
+.spec span { font-size: 14px; color: #5a6c5d; }
+.back-link { display: inline-block; margin-bottom: 30px; color: #2e7d32; text-decoration: none; font-size: 16px; }
+.back-link:hover { text-decoration: underline; }
+.warning { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 20px; border-radius: 10px; margin-top: 40px; }
+.warning strong { color: #1b5e20; }
+.warning p { color: #1b5e20; font-size: 15px; }
+footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; font-size: 14px; }
+</style>
+
+<style>
+.floating-buttons {
+    position: fixed;
+    right: 25px;
+    bottom: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 999;
+}
+
+.floating-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+.floating-btn:hover::before {
+    left: 100%;
+}
+.floating-btn:hover {
+    transform: scale(1.2) translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+.floating-btn svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: transform 0.3s;
+}
+.floating-btn:hover svg {
+    transform: scale(1.1);
+}
+.floating-btn 
+.floating-btn .tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 0 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(0,0,0,0.9);
+}
+.floating-btn:hover 
+
+
+.btn-email {
+    background: linear-gradient(135deg, #ea4335 0%, #fbbc05 50%, #ea4335 100%);
+    animation-delay: 1s;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.floating-btn:hover {
+    animation: none;
+}
+@keyframes pulse-ring {
+    0% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255,255,255,0.4); }
+    70% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 15px rgba(255,255,255,0); }
+    100% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255,255,255,0); }
+}
+
+</style><link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero"><h1>Базовые масла для жирной кожи</h1><p>Лёгкие масла с низкой комедогенностью, регулирующие себум</p></section>
+<div class="container">
+<div class="breadcrumb">
+<a href="index.html">Главная</a> &gt; <a href="aromatherapy.html">Ароматерапия</a> &gt; <a href="base-oils.html">Базовые масла</a> &gt; Для жирной кожи
+</div>
+<a href="base-oils.html" class="back-link">&larr; Вернуться к разделу Базовые масла</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+<div class="oils-list">
+<div class="oil-item">
+<h3>Масло виноградной косточки</h3>
+<div class="latin">Vitis vinifera</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Линолевая (60-70%), олеиновая (15-20%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>1 (очень низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>6-12 месяцев</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Очень лёгкая, быстро впитывается, не оставляет плёнки</span></div>
+</div>
+<p><strong>Свойства:</strong> вяжущее, регулирует выработку себума, сужает поры, богато антиоксидантами (проантоцианидины), улучшает тон кожи</p>
+<p><strong>Применение:</strong> ежедневный уход за жирной и проблемной кожей, база для сывороток, массаж</p>
+</div>
+<div class="oil-item">
+<h3>Масло лесного ореха (фундука)</h3>
+
+<div class="latin">Corylus avellana</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Олеиновая (75-85%), линолевая (10-15%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>1-2 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>6-12 месяцев, хранить в прохладном месте</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Лёгкая, сухая, быстро впитывается</span></div>
+</div>
+<p><strong>Свойства:</strong> регулирует секрецию сальных желез, сужает расширенные поры, улучшает микроциркуляцию, укрепляет стенки капилляров</p>
+<p><strong>Применение:</strong> уход за жирной и комбинированной кожей, контур глаз, массаж лица</p>
+</div>
+<div class="oil-item">
+<h3>Масло конопли</h3>
+<div class="latin">Cannabis sativa</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Линолевая (50-60%), линоленовая (15-20%), олеиновая (10-15%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>0 (не забивает поры)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>6-9 месяцев, строго в холодильнике</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Лёгкая, зеленоватого оттенка</span></div>
+</div>
+<p><strong>Свойства:</strong> идеальное соотношение Омега-3 и Омега-6 (3:1), мощное противовоспалительное, успокаивает акне и розацеа, не закупоривает поры</p>
+<p><strong>Применение:</strong> уход за проблемной и воспалённой кожей, добавка в кремы и сыворотки</p>
+</div>
+<div class="oil-item">
+<h3>Масло шиповника</h3>
+<div class="latin">Rosa canina / Rosa rubiginosa</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Линолевая (40-50%), линоленовая (30-35%), олеиновая (15-20%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>1 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>6 месяцев, строго в холодильнике</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Сухая, быстро впитывается</span></div>
+</div>
+<p><strong>Свойства:</strong> рекордное содержание транс-ретиноевой кислоты (природный ретинол), регенерирует, осветляет постакне и пигментацию, повышает упругость</p>
+<p><strong>Применение:</strong> вечерний уход за кожей с постакне, рубцами и гиперпигментацией</p>
+</div>
+<div class="oil-item">
+<h3>Масло чёрного тмина</h3>
+<div class="latin">Nigella sativa</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Линолевая (50-60%), олеиновая (20-25%), пальмитиновая (10-15%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>2 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>12-18 месяцев</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Средняя, с характерным пряным ароматом</span></div>
+</div>
+<p><strong>Свойства:</strong> мощное антибактериальное и противовоспалительное (тимохинон), балансирует жирную кожу, помогает при акне и экземе</p>
+<p><strong>Применение:</strong> точечно на воспаления или в смесях (10-20%) с лёгкими маслами из-за сильного аромата</p>
+</div>
+<div class="oil-item">
+<h3>Масло таману</h3>
+<div class="latin">Calophyllum inophyllum</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Олеиновая (35-45%), линолевая (30-40%), стеариновая (10-15%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>2 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>12-24 месяца</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Плотная, зеленовато-коричневая, с землистым ароматом</span></div>
+</div>
+<p><strong>Свойства:</strong> уникальное ранозаживляющее, антибактериальное, стимулирует синтез коллагена, идеально для заживления следов от акне</p>
+<p><strong>Применение:</strong> добавлять 10-20% в смеси для ухода за проблемной кожей и заживления рубцов</p>
+</div>
+</div>
+<div class="warning">
+<strong>Важно:</strong>
+<p>Масла, богатые полиненасыщенными жирными кислотами (шиповник, конопля), быстро окисляются. Храните их в холодильнике в тёмной стеклянной таре. Перед нанесением на всё лицо всегда делайте тест на небольшом участке кожи.</p>
+</div>
+</div>
+<footer><p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p></footer>
+
+<div class="floating-buttons">
+    
+    
+    
+</div><script src="premium.js"></script>
+</body>
+</html>
+
+
+
+
+

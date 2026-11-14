@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Базовые масла для чувствительной кожи — Павел Пилипенко</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; line-height: 1.7; color: #2c3e50; background: #f9f7f4; }
+header { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 20px 0; }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 16px; }
+nav a:hover { opacity: 0.8; }
+.hero { background: linear-gradient(135deg, #fce4ec, #f8bbd0); padding: 80px 20px; text-align: center; }
+.hero h1 { font-size: 42px; color: #c2185b; margin-bottom: 15px; }
+.hero p { font-size: 20px; color: #5a6c5d; max-width: 700px; margin: 0 auto; }
+.container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+.breadcrumb { font-size: 14px; color: #7f8c8d; margin-bottom: 30px; }
+.breadcrumb a { color: #2d5016; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.oils-list { display: flex; flex-direction: column; gap: 30px; }
+.oil-item { background: white; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #c2185b; }
+.oil-item h3 { font-size: 24px; color: #c2185b; margin-bottom: 5px; }
+.oil-item .latin { font-style: italic; color: #7f8c8d; font-size: 14px; margin-bottom: 15px; }
+.oil-item p { font-size: 16px; color: #5a6c5d; margin-bottom: 10px; }
+.oil-item strong { color: #c2185b; }
+.specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0; }
+.spec { background: #fce4ec; padding: 12px; border-radius: 8px; }
+.spec strong { display: block; font-size: 13px; color: #c2185b; margin-bottom: 5px; }
+.spec span { font-size: 14px; color: #5a6c5d; }
+.back-link { display: inline-block; margin-bottom: 30px; color: #c2185b; text-decoration: none; font-size: 16px; }
+.back-link:hover { text-decoration: underline; }
+.warning { background: #fce4ec; border-left: 4px solid #c2185b; padding: 20px; border-radius: 10px; margin-top: 40px; }
+.warning strong { color: #880e4f; }
+.warning p { color: #880e4f; font-size: 15px; }
+footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; font-size: 14px; }
+</style>
+
+<style>
+.floating-buttons {
+    position: fixed;
+    right: 25px;
+    bottom: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 999;
+}
+
+.floating-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+.floating-btn:hover::before {
+    left: 100%;
+}
+.floating-btn:hover {
+    transform: scale(1.2) translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+.floating-btn svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: transform 0.3s;
+}
+.floating-btn:hover svg {
+    transform: scale(1.1);
+}
+.floating-btn 
+.floating-btn .tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 0 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(0,0,0,0.9);
+}
+.floating-btn:hover 
+
+
+.btn-email {
+    background: linear-gradient(135deg, #ea4335 0%, #fbbc05 50%, #ea4335 100%);
+    animation-delay: 1s;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.floating-btn:hover {
+    animation: none;
+}
+@keyframes pulse-ring {
+    0% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255,255,255,0.4); }
+    70% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 15px rgba(255,255,255,0); }
+    100% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255,255,255,0); }
+}
+
+</style><link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero"><h1>Базовые масла для чувствительной кожи</h1><p>Мягкие, гипоаллергенные масла с противовоспалительными свойствами</p></section>
+<div class="container">
+<div class="breadcrumb">
+<a href="index.html">Главная</a> &gt; <a href="aromatherapy.html">Ароматерапия</a> &gt; <a href="base-oils.html">Базовые масла</a> &gt; Для чувствительной кожи
+</div>
+<a href="base-oils.html" class="back-link">&larr; Вернуться к разделу Базовые масла</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+<div class="oils-list">
+<div class="oil-item">
+<h3>Масло календулы (инфуз)</h3>
+<div class="latin">Calendula officinalis (infused oil)</div>
+<div class="specs">
+<div class="spec"><strong>Основа:</strong><span>Оливковое или подсолнечное масло, настоянное на цветках календулы</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>1-2 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>12-18 месяцев</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Средняя, с лёгким травяным ароматом</span></div>
+</div>
+<p><strong>Свойства:</strong> мощное противовоспалительное, заживляет раздражения и покраснения, успокаивает реактивную кожу, подходит для детской кожи</p>
+<p><strong>Применение:</strong> уход за раздражённой кожей, опрелости у младенцев, после бритья, при солнечных ожогах</p>
+</div>
+<div class="oil-item">
+
+<h3>Масло ромашки (инфуз)</h3>
+<div class="latin">Chamomilla recutita (infused oil)</div>
+<div class="specs">
+<div class="spec"><strong>Основа:</strong><span>Оливковое масло, настоянное на цветках ромашки</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>1 (очень низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>12-18 месяцев</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Лёгкая, с мягким яблочным ароматом</span></div>
+</div>
+<p><strong>Свойства:</strong> успокаивает зуд и раздражение, противовоспалительное (хамазулен), антигистаминное, подходит для аллергичной кожи</p>
+<p><strong>Применение:</strong> уход за кожей с экземой, дерматитом, розацеа, детская кожа</p>
+</div>
+<div class="oil-item">
+<h3>Масло жожоба</h3>
+<div class="latin">Simmondsia chinensis</div>
+<div class="specs">
+<div class="spec"><strong>Состав:</strong><span>Восковые эфиры: эйкозеновая (65-80%), эруковая (15-25%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>2 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>Не ограничен (жидкий воск)</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Лёгкая, похожа на себум кожи</span></div>
+</div>
+<p><strong>Свойства:</strong> гипоаллергенное, не вызывает реакций, создаёт защитную плёнку, богато витамином E</p>
+<p><strong>Применение:</strong> универсальное масло для чувствительной кожи, удаление макияжа, уход за губами</p>
+</div>
+<div class="oil-item">
+<h3>Масло примулы вечерней</h3>
+<div class="latin">Oenothera biennis</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Линолевая (65-75%), гамма-линоленовая (8-12%), олеиновая (6-10%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>1 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>6-9 месяцев, строго в холодильнике</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Лёгкая, золотисто-жёлтая</span></div>
+</div>
+<p><strong>Свойства:</strong> рекордное содержание гамма-линоленовой кислоты (GLA), мощное противовоспалительное, помогает при экземе, дерматите, ПМС</p>
+<p><strong>Применение:</strong> уход за кожей с экземой и атопическим дерматитом, гормональные высыпания</p>
+</div>
+<div class="oil-item">
+<h3>Масло огуречника (бораго)</h3>
+<div class="latin">Borago officinalis</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Линолевая (35-40%), гамма-линоленовая (18-25%), олеиновая (15-20%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>2 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>6-9 месяцев, строго в холодильнике</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Лёгкая, с лёгким огуречным ароматом</span></div>
+</div>
+<p><strong>Свойства:</strong> самое высокое содержание GLA среди всех масел, восстанавливает липидный барьер, снимает воспаление, помогает при розацеа</p>
+<p><strong>Применение:</strong> уход за реактивной кожей, купероз, розацеа, возрастная чувствительная кожа</p>
+</div>
+<div class="oil-item">
+<h3>Масло шиповника</h3>
+<div class="latin">Rosa canina</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Линолевая (40-50%), линоленовая (30-35%), олеиновая (15-20%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>1 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>6 месяцев, строго в холодильнике</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Сухая, быстро впитывается</span></div>
+</div>
+<p><strong>Свойства:</strong> регенерирует, осветляет пигментацию, содержит транс-ретиноевую кислоту, подходит для чувствительной кожи с постакне</p>
+<p><strong>Применение:</strong> вечерний уход, осветление пятен, уход за кожей после агрессивных процедур</p>
+</div>
+</div>
+<div class="warning">
+<strong>Важно:</strong>
+<p>Для чувствительной кожи всегда начинайте с теста на аллергию: нанесите каплю масла на сгиб локтя и подождите 24 часа. Избегайте масел с сильным ароматом и высоким содержанием олеиновой кислоты (оливковое, авокадо) — они могут вызывать реакции. Масла с GLA (примула, бораго) храните только в холодильнике.</p>
+</div>
+</div>
+<footer><p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p></footer>
+
+<div class="floating-buttons">
+    
+    
+    
+</div><script src="premium.js"></script>
+</body>
+</html>
+
+
+
+
+

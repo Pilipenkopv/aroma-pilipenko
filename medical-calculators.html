@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Медицинские калькуляторы - Справочная информация</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;line-height:1.6;color:#2c3e50;background:#f0f4f8;padding:20px}
+.container{max-width:1200px;margin:0 auto;background:#fff;border-radius:12px;padding:30px;box-shadow:0 4px 20px rgba(0,0,0,0.1)}
+h1{color:#1a5490;text-align:center;margin-bottom:10px}
+.subtitle{text-align:center;color:#666;margin-bottom:20px}
+.quote-box{background:linear-gradient(135deg,#1a5490,#2a9d8f);color:#fff;padding:20px;border-radius:12px;text-align:center;margin-bottom:25px;box-shadow:0 4px 15px rgba(26,84,144,0.3)}
+.quote-box .quote{font-size:1.2em;font-weight:bold;font-style:italic;margin-bottom:8px}
+.quote-box .author{font-size:0.9em;opacity:0.9}
+.info-box{background:#e3f2fd;border-left:4px solid #1976d2;padding:15px;border-radius:0 8px 8px 0;margin-bottom:25px}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px;margin-bottom:30px}
+.calc-card{background:#fff;border:2px solid #e0e0e0;border-radius:12px;padding:25px;transition:all 0.3s;border-left:5px solid #2e7d32}
+.calc-card:hover{box-shadow:0 8px 20px rgba(0,0,0,0.1);transform:translateY(-2px)}
+.calc-card h3{color:#1a5490;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.calc-card .icon{font-size:2em}
+.calc-card .desc{color:#666;font-size:0.95em;margin-bottom:15px}
+.calc-card .formula{background:#f8f9fa;padding:10px;border-radius:6px;font-family:monospace;font-size:0.9em;margin-bottom:15px;color:#2e7d32}
+.calc-card label{display:block;font-weight:bold;margin-bottom:5px;color:#1a5490;font-size:0.9em}
+.calc-card input,.calc-card select{width:100%;padding:8px;margin-bottom:12px;border:2px solid #ddd;border-radius:6px;font-size:1em}
+.calc-card input:focus,.calc-card select:focus{outline:none;border-color:#2a9d8f}
+.calc-btn{background:linear-gradient(135deg,#1a5490,#2a9d8f);color:#fff;border:none;padding:10px 25px;border-radius:25px;cursor:pointer;font-weight:bold;font-size:0.95em;transition:all 0.2s}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(26,84,144,0.3)}
+.result-box{margin-top:15px;padding:15px;border-radius:8px;font-size:0.95em;display:none}
+.result-box.show{display:block}
+.result-box.ok{background:#e8f5e9;border-left:4px solid #2e7d32;color:#2e7d32}
+.result-box.warn{background:#fff3e0;border-left:4px solid #f57c00;color:#e65100}
+.result-box.bad{background:#ffebee;border-left:4px solid #c62828;color:#c62828}
+.result-box .value{font-size:1.5em;font-weight:bold;margin-bottom:5px}
+.result-box .interpretation{font-size:0.9em}
+.back-link{display:inline-block;margin-bottom:15px;color:#1a5490;text-decoration:none;font-weight:bold}
+.back-link:hover{text-decoration:underline}
+.warn{background:#ffebee;border-left:4px solid #d32f2f;padding:15px;border-radius:0 8px 8px 0;margin-top:20px}
+.warn h3{color:#c62828;margin-bottom:8px}
+</style>
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<div class="container">
+<a href="analyses.html" class="back-link">← Назад к разделу Анализы</a>
+
+<div class="quote-box">
+<div class="quote">"Никогда не смотрим анализы в отрыве от симптоматики, только в контексте ситуации клиента!"</div>
+<div class="author">— Профессиональное образование в области интегративной нутрициологии</div>
+</div>
+
+<h1>🧮 Медицинские калькуляторы</h1>
+<p class="subtitle">Расчёт ключевых индексов по результатам лабораторных анализов</p>
+
+<div class="info-box">
+<h3>Как пользоваться</h3>
+<p>Введите значения из вашего бланка анализа в соответствующие поля и нажмите <b>«Рассчитать»</b>. Система автоматически вычислит индекс и даст справочную интерпретацию результата.</p>
+</div>
+
+<div class="calc-grid">
+
+<!-- Калькулятор 1: HOMA-IR -->
+<div class="calc-card">
+<h3><span class="icon">🍬</span> HOMA-IR</h3>
+<p class="desc">Индекс инсулинорезистентности. Главный маркер риска метаболического синдрома, диабета 2 типа, СПКЯ.</p>
+<div class="formula">Формула: (Глюкоза × Инсулин) / 22.5</div>
+<label>Глюкоза натощак (ммоль/л):</label>
+<input type="number" step="0.1" id="homa-glu" placeholder="например, 5.0">
+<label>Инсулин (мкЕд/мл):</label>
+<input type="number" step="0.1" id="homa-ins" placeholder="например, 5.0">
+<button class="calc-btn" onclick="calcHoma()">Рассчитать →</button>
+<div class="result-box" id="homa-result"></div>
+</div>
+
+<!-- Калькулятор 2: СКФ (CKD-EPI) -->
+<div class="calc-card">
+<h3><span class="icon">💧</span> СКФ (CKD-EPI)</h3>
+<p class="desc">Скорость клубочковой фильтрации — главный маркер функции почек. Без него нельзя корректно оценить креатинин.</p>
+<div class="formula">Формула: CKD-EPI 2021 (без расы)</div>
+<label>Креатинин (мкмоль/л):</label>
+<input type="number" step="0.1" id="gfr-creat" placeholder="например, 80">
+<label>Возраст (лет):</label>
+<input type="number" id="gfr-age" placeholder="например, 35">
+<label>Пол:</label>
+<select id="gfr-gender">
+<option value="female">Женский</option>
+<option value="male">Мужской</option>
+</select>
+<button class="calc-btn" onclick="calcGfr()">Рассчитать →</button>
+<div class="result-box" id="gfr-result"></div>
+</div>
+
+<!-- Калькулятор 3: Коэффициент атерогенности -->
+<div class="calc-card">
+<h3><span class="icon">❤️</span> Коэффициент атерогенности (КА)</h3>
+<p class="desc">Показывает риск атеросклероза лучше, чем просто холестерин. Отражает баланс "плохих" и "хороших" липопротеинов.</p>
+<div class="formula">Формула: (Общий холестерин − ЛПВП) / ЛПВП</div>
+<label>Общий холестерин (ммоль/л):</label>
+<input type="number" step="0.01" id="ka-chol" placeholder="например, 5.0">
+<label>ЛПВП (ммоль/л):</label>
+<input type="number" step="0.01" id="ka-hdl" placeholder="например, 1.5">
+<button class="calc-btn" onclick="calcKa()">Рассчитать →</button>
+<div class="result-box" id="ka-result"></div>
+</div>
+
+<!-- Калькулятор 4: NLR -->
+<div class="calc-card">
+<h3><span class="icon">🔥</span> NLR (Нейтрофил/Лимфоцит)</h3>
+<p class="desc">Маркер системного воспаления и стресса. Используется в онкологии, кардиологии, интегративной медицине.</p>
+<div class="formula">Формула: Нейтрофилы (%) / Лимфоциты (%)</div>
+<label>Нейтрофилы (%):</label>
+<input type="number" step="0.1" id="nlr-neu" placeholder="например, 55">
+<label>Лимфоциты (%):</label>
+<input type="number" step="0.1" id="nlr-lym" placeholder="например, 35">
+<button class="calc-btn" onclick="calcNlr()">Рассчитать →</button>
+<div class="result-box" id="nlr-result"></div>
+</div>
+
+</div>
+
+<div class="warn">
+<h3>⚠️ Важно</h3>
+<p>Данные калькуляторы носят исключительно справочный характер и не заменяют консультацию врача. Интерпретация результатов должна проводиться с учётом клинической картины, симптомов и анамнеза квалифицированным специалистом. Нутрициолог не ставит диагнозы и не назначает лечение.</p>
+</div>
+</div>
+
+<script>
+function showResult(id, value, text, cls) {
+  var el = document.getElementById(id);
+  el.innerHTML = '<div class="value">' + value + '</div><div class="interpretation">' + text + '</div>';
+  el.className = 'result-box show ' + cls;
+}
+
+// HOMA-IR
+function calcHoma() {
+  var glu = parseFloat(document.getElementById('homa-glu').value);
+  var ins = parseFloat(document.getElementById('homa-ins').value);
+  if (isNaN(glu) || isNaN(ins) || glu <= 0 || ins <= 0) {
+    showResult('homa-result', '—', 'Пожалуйста, введите корректные значения.', 'warn');
+    return;
+  }
+  var homa = Math.round((glu * ins / 22.5) * 100) / 100;
+  var cls, text;
+  if (homa < 2.0) { cls = 'ok'; text = '✅ Оптимум. Инсулинорезистентность отсутствует.'; }
+  else if (homa < 2.7) { cls = 'warn'; text = '⚠️ Пограничное значение. Рекомендуется пересмотреть питание и образ жизни.'; }
+  else { cls = 'bad'; text = '🔴 Инсулинорезистентность. Рекомендуется консультация эндокринолога и нутрициолога.'; }
+  showResult('homa-result', 'HOMA-IR = ' + homa, text, cls);
+}
+
+// СКФ (CKD-EPI 2021)
+function calcGfr() {
+  var creat = parseFloat(document.getElementById('gfr-creat').value);
+  var age = parseInt(document.getElementById('gfr-age').value);
+  var gender = document.getElementById('gfr-gender').value;
+  if (isNaN(creat) || isNaN(age) || creat <= 0 || age <= 0) {
+    showResult('gfr-result', '—', 'Пожалуйста, введите корректные значения.', 'warn');
+    return;
+  }
+  // Переводим мкмоль/л в мг/дл
+  var creatMg = creat / 88.4;
+  var k = (gender === 'female') ? 0.7 : 0.9;
+  var a = (gender === 'female') ? -0.241 : -0.302;
+  var minPart = Math.pow(Math.min(creatMg / k, 1), a);
+  var maxPart = Math.pow(Math.max(creatMg / k, 1), -1.200);
+  var gfr = 142 * minPart * maxPart * Math.pow(0.9938, age) * (gender === 'female' ? 1.012 : 1);
+  gfr = Math.round(gfr);
+  var cls, text;
+  if (gfr >= 90) { cls = 'ok'; text = '✅ Норма. Функция почек не нарушена.'; }
+  else if (gfr >= 60) { cls = 'warn'; text = '⚠️ Лёгкое снижение функции почек (G2). Требуется наблюдение.'; }
+  else if (gfr >= 45) { cls = 'bad'; text = '🔴 Умеренное снижение (G3a). Консультация нефролога.'; }
+  else if (gfr >= 30) { cls = 'bad'; text = '🔴 Выраженное снижение (G3b). Срочная консультация нефролога.'; }
+  else { cls = 'bad'; text = '🔴 Тяжёлое снижение функции почек (G4-G5). Немедленная консультация врача!'; }
+  showResult('gfr-result', 'СКФ = ' + gfr + ' мл/мин/1.73м²', text, cls);
+}
+
+// Коэффициент атерогенности
+function calcKa() {
+  var chol = parseFloat(document.getElementById('ka-chol').value);
+  var hdl = parseFloat(document.getElementById('ka-hdl').value);
+  if (isNaN(chol) || isNaN(hdl) || chol <= 0 || hdl <= 0) {
+    showResult('ka-result', '—', 'Пожалуйста, введите корректные значения.', 'warn');
+    return;
+  }
+  var ka = Math.round(((chol - hdl) / hdl) * 100) / 100;
+  var cls, text;
+  if (ka < 3.0) { cls = 'ok'; text = '✅ Оптимум. Риск атеросклероза низкий.'; }
+  else if (ka < 4.0) { cls = 'warn'; text = '⚠️ Пограничное значение. Рекомендуется пересмотреть питание и образ жизни.'; }
+  else { cls = 'bad'; text = '🔴 Повышенный риск атеросклероза. Рекомендуется консультация кардиолога.'; }
+  showResult('ka-result', 'КА = ' + ka, text, cls);
+}
+
+// NLR
+function calcNlr() {
+  var neu = parseFloat(document.getElementById('nlr-neu').value);
+  var lym = parseFloat(document.getElementById('nlr-lym').value);
+  if (isNaN(neu) || isNaN(lym) || neu <= 0 || lym <= 0) {
+    showResult('nlr-result', '—', 'Пожалуйста, введите корректные значения.', 'warn');
+    return;
+  }
+  var nlr = Math.round((neu / lym) * 100) / 100;
+  var cls, text;
+  if (nlr >= 1.0 && nlr <= 2.5) { cls = 'ok'; text = '✅ Оптимум. Системное воспаление отсутствует.'; }
+  else if (nlr < 1.0) { cls = 'warn'; text = '⚠️ Снижен. Возможен вирусный процесс или снижение иммунитета.'; }
+  else if (nlr <= 3.0) { cls = 'warn'; text = '⚠️ Лёгкое повышение. Возможен стресс или вялотекущее воспаление.'; }
+  else { cls = 'bad'; text = '🔴 Повышен. Выраженное системное воспаление. Рекомендуется дообследование (СРБ, СОЭ, ферритин).'; }
+  showResult('nlr-result', 'NLR = ' + nlr, text, cls);
+}
+</script>
+<script src="premium.js"></script>
+</body>
+</html>

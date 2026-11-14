@@ -1,0 +1,70 @@
+﻿/* =========================================
+   ОСНОВНЫЕ СТИЛИ САЙТА (Master Styles)
+   ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+body { font-family: 'Georgia', serif; line-height: 1.7; color: #2c3e50; background: #f9f7f4; }
+
+/* Навигация */
+header { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 20px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 0 20px; }
+nav a { color: white; text-decoration: none; font-size: 16px; transition: opacity 0.3s; }
+nav a:hover { opacity: 0.8; text-decoration: underline; }
+
+/* Типографика */
+h1, h2, h3 { color: #2d5016; line-height: 1.3; }
+h1 { font-size: 42px; margin-bottom: 15px; }
+h2 { font-size: 32px; margin-bottom: 20px; }
+p { font-size: 17px; color: #5a6c5d; margin-bottom: 15px; }
+
+/* Контейнер */
+.container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+
+/* Карточки (универсальные) */
+.card, .price-card, .article-card, .calc-card, .faq-item { 
+    background: white; border-radius: 12px; padding: 25px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #4a7c23; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+.card:hover, .price-card:hover, .article-card:hover, .calc-card:hover { 
+    transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); 
+}
+
+/* Кнопки */
+.cta-btn, .calc-btn { 
+    display: inline-block; background: linear-gradient(135deg, #2d5016, #4a7c23); 
+    color: white; padding: 14px 35px; border-radius: 30px; text-decoration: none; 
+    font-size: 16px; font-weight: bold; border: none; cursor: pointer; 
+    transition: transform 0.3s, box-shadow 0.3s; text-align: center;
+}
+.cta-btn:hover, .calc-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(45, 80, 22, 0.4); }
+
+/* Вспомогательные блоки */
+.warning { background: #ffebee; border-left: 4px solid #c62828; padding: 20px; border-radius: 10px; margin: 30px 0; }
+.warning strong { color: #b71c1c; }
+.warning p { color: #b71c1c; font-size: 15px; margin: 0; }
+
+.highlight-box { background: #fff8e1; border-left: 4px solid #f57c00; padding: 20px; border-radius: 10px; margin: 25px 0; }
+.highlight-box h4 { color: #f57c00; margin-bottom: 12px; font-size: 18px; }
+
+/* Footer */
+footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; font-size: 14px; margin-top: 60px; }
+
+/* =========================================
+   КНОПКА "НАВЕРХ" (Back to Top)
+   ========================================= */
+#backToTop {
+    display: none; position: fixed; bottom: 30px; left: 30px; z-index: 99;
+    width: 50px; height: 50px; border-radius: 50%; background: #4a7c23; color: white;
+    border: none; cursor: pointer; font-size: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: opacity 0.3s, transform 0.3s; align-items: center; justify-content: center;
+}
+#backToTop:hover { background: #2d5016; transform: scale(1.1); }
+#backToTop.show { display: flex; }
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    h1 { font-size: 32px; }
+    h2 { font-size: 26px; }
+    nav { gap: 15px; }
+    .container { padding: 40px 15px; }
+}

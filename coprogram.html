@@ -1,0 +1,501 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Копрограмма - Справочная информация</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;line-height:1.6;color:#2c3e50;background:#f0f4f8;padding:20px}
+.container{max-width:1400px;margin:0 auto;background:#fff;border-radius:12px;padding:30px;box-shadow:0 4px 20px rgba(0,0,0,0.1)}
+h1{color:#1a5490;text-align:center;margin-bottom:10px}
+.subtitle{text-align:center;color:#666;margin-bottom:20px}
+.quote-box{background:linear-gradient(135deg,#1a5490,#2a9d8f);color:#fff;padding:20px;border-radius:12px;text-align:center;margin-bottom:25px;box-shadow:0 4px 15px rgba(26,84,144,0.3)}
+.quote-box .quote{font-size:1.2em;font-weight:bold;font-style:italic;margin-bottom:8px}
+.quote-box .author{font-size:0.9em;opacity:0.9}
+.context-box{background:#fff8e1;border:2px solid #ffe082;border-radius:12px;padding:20px;margin-bottom:25px}
+.context-box h3{color:#f57f17;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.context-row{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:15px}
+.context-item{flex:1;min-width:250px}
+.context-item label{display:block;font-weight:bold;margin-bottom:8px;color:#1a5490}
+.context-item select{width:100%;padding:10px;border:2px solid #ddd;border-radius:6px;font-size:1em}
+.prep-box{background:#e8f5e9;border-left:4px solid #2e7d32;border-radius:12px;padding:20px;margin-bottom:25px}
+.prep-box h3{color:#1b5e20;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.prep-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px}
+.prep-item{background:#fff;padding:12px;border-radius:8px;border:1px solid #c8e6c9}
+.prep-item .icon{font-size:1.3em;margin-right:8px}
+.prep-item strong{color:#2e7d32}
+.prep-item p{margin-top:5px;font-size:0.92em;color:#555}
+.prep-note{margin-top:15px;padding:12px;background:#fff3e0;border-radius:8px;font-size:0.9em;color:#e65100;border-left:3px solid #ff9800}
+.info-box{background:#e3f2fd;border-left:4px solid #1976d2;padding:15px;border-radius:0 8px 8px 0;margin-bottom:20px}
+.block-title{color:#1a5490;font-size:1.2em;margin:25px 0 15px;padding-bottom:8px;border-bottom:2px solid #e0e0e0}
+.table-container{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin-bottom:20px;min-width:1100px}
+thead{background:#1a5490;color:#fff}
+th,td{padding:12px;text-align:left;border-bottom:1px solid #e0e0e0;vertical-align:top}
+th{font-size:0.95em}
+td select, td input{width:100%;padding:8px;border:2px solid #ddd;border-radius:4px;font-size:0.95em}
+td select:focus, td input:focus{outline:none;border-color:#2a9d8f}
+.norm-text{font-weight:bold;color:#555;font-size:0.9em}
+.status{padding:4px 10px;border-radius:12px;font-size:0.85em;font-weight:bold;display:inline-block}
+.st-ok{background:#e8f5e9;color:#2e7d32}
+.st-low{background:#ffebee;color:#c62828}
+.causes{font-size:0.9em;color:#c62828;font-style:italic;margin-bottom:8px}
+.rec{font-size:0.9em;color:#e65100;font-style:italic}
+.warn{background:#ffebee;border-left:4px solid #d32f2f;padding:15px;border-radius:0 8px 8px 0;margin-top:20px}
+.warn h3{color:#c62828;margin-bottom:8px}
+.disc{background:#f5f5f5;padding:15px;border-radius:8px;margin-top:20px;font-size:0.9em;color:#666}
+.back-link{display:inline-block;margin-bottom:15px;color:#1a5490;text-decoration:none;font-weight:bold}
+.back-link:hover{text-decoration:underline}
+
+/* Стили для истории измерений */
+.history-controls{background:#f0f4f8;border-radius:12px;padding:20px;margin-top:30px;border:1px solid #e0e0e0}
+.history-controls h3{color:#1a5490;margin-bottom:15px}
+.btn-group{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:15px}
+.btn{padding:10px 20px;border:none;border-radius:6px;cursor:pointer;font-size:0.95em;font-weight:bold;transition:all 0.2s}
+.btn-primary{background:#1a5490;color:#fff}
+.btn-primary:hover{background:#2a9d8f}
+.btn-secondary{background:#fff;color:#1a5490;border:1px solid #1a5490}
+.btn-secondary:hover{background:#e3f2fd}
+.btn-danger{background:#ffebee;color:#c62828;border:1px solid #c62828}
+.btn-danger:hover{background:#ffcdd2}
+.history-list{max-height:300px;overflow-y:auto;margin-bottom:15px}
+.history-item{display:flex;justify-content:space-between;align-items:center;padding:10px;background:#fff;border:1px solid #e0e0e0;border-radius:6px;margin-bottom:8px}
+.history-item input{margin-right:10px}
+.compare-table{width:100%;border-collapse:collapse;margin-top:15px}
+.compare-table th,.compare-table td{padding:10px;border:1px solid #e0e0e0;text-align:left}
+.compare-table th{background:#f8f9fa}
+.trend-up{color:#2e7d32;font-weight:bold}
+.trend-down{color:#c62828;font-weight:bold}
+.trend-same{color:#757575}
+
+/* Модальные окна */
+.tooltip-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:999}
+.tooltip-overlay.show{display:block}
+.tooltip-popup{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:25px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.2);z-index:1000;max-width:500px;width:90%;border:2px solid #1a5490}
+.tooltip-popup.show{display:block}
+.tooltip-popup h3{color:#1a5490;margin-bottom:15px}
+.tooltip-popup input,.tooltip-popup textarea{width:100%;padding:10px;margin-bottom:15px;border:1px solid #ddd;border-radius:6px;font-size:1em}
+.close-tooltip{position:absolute;top:10px;right:15px;cursor:pointer;font-size:1.5em;color:#666;font-weight:bold}
+.close-tooltip:hover{color:#c62828}
+</style>
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<nav>
+<a href="index.html#author">ОБО МНЕ</a>
+<a href="aromatherapy.html">АРОМАТЕРАПИЯ</a>
+<a href="services.html">УСЛУГИ</a>
+<a href="blog.html">БЛОГ</a>
+<a href="analyses.html">АНАЛИЗЫ</a>
+<a href="calculators.html">КАЛЬКУЛЯТОРЫ</a>
+<a href="where-to-buy.html">ГДЕ КУПИТЬ</a>
+<a href="faq.html">ВОПРОСЫ</a>
+<a href="contact.html">СВЯЗЬ</a>
+<a href="checkups.html">ЧЕКАПЫ</a>
+<a href="sources.html">ИСТОЧНИКИ</a>
+</nav>
+<div class="container">
+<a href="analyses.html" class="back-link">← Назад к разделу Анализы</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+
+<div class="quote-box">
+<div class="quote">"Никогда не смотрим анализы в отрыве от симптоматики, только в контексте ситуации клиента!"</div>
+<div class="author">— Профессиональное образование в области интегративной нутрициологии</div>
+</div>
+
+<h1>Копрограмма (анализ кала)</h1>
+<p class="subtitle">Справочная информация с оптимальными значениями и рекомендациями</p>
+
+<div class="context-box">
+<h3>👤 Контекст клиента</h3>
+<div class="context-row">
+<div class="context-item">
+<label>Возрастная группа:</label>
+<select id="ageGroup" onchange="updateNorms()">
+<option value="infant">👶 Ранний детский возраст (0-1 год)</option>
+<option value="child">🧒 Детский возраст (1-12 лет)</option>
+<option value="teen">🧑 Подростковый возраст (12-18 лет)</option>
+<option value="adult" selected>👨 Взрослый возраст (18-50 лет)</option>
+<option value="senior">🌟 Почтенный возраст (50+ лет)</option>
+</select>
+</div>
+<div class="context-item" id="feeding-type-container" style="display:none">
+<label>Тип вскармливания (для грудничков):</label>
+<select id="feedingType" onchange="updateNorms()">
+<option value="breast">Грудное вскармливание (ГВ)</option>
+<option value="formula">Искусственное вскармливание (ИВ)</option>
+<option value="mixed">Смешанное вскармливание</option>
+</select>
+</div>
+</div>
+</div>
+
+<div class="prep-box">
+<h3>⏰ Правильная подготовка к копрограмме</h3>
+<p style="margin-bottom:15px;color:#555">Качество подготовки напрямую влияет на достоверность результатов. Соблюдайте следующие правила:</p>
+<div class="prep-grid">
+<div class="prep-item"><span class="icon">🚫</span><strong>Отмена препаратов</strong><p>За 2-3 дня исключить слабительные, ректальные свечи, препараты висмута и железа. За 2 недели — антибиотики.</p></div>
+<div class="prep-item"><span class="icon">️</span><strong>Диета</strong><p>За 2 дня исключить продукты, окрашивающие стул (свекла, черника, томаты). Не употреблять избыток мяса и жирной пищи.</p></div>
+<div class="prep-item"><span class="icon"></span><strong>Сбор материала</strong><p>Собирать утреннюю порцию после тщательного туалета наружных половых органов. Использовать стерильный контейнер.</p></div>
+<div class="prep-item"><span class="icon">️</span><strong>Доставка</strong><p>Доставить в лабораторию в течение 2-3 часов. Хранить в холодильнике (не замораживать).</p></div>
+</div>
+<div class="prep-note">⚠️ <b>Важно:</b> Женщинам не рекомендуется сдавать анализ во время менструации. При наличии кровоточащего геморроя забор материала откладывают до прекращения кровотечения.</div>
+</div>
+
+<div class="info-box">
+<h3>Как пользоваться</h3>
+<p>Выберите результат из выпадающего списка или введите число (для рН). Система автоматически определит статус (🟢 норма или 🔴 отклонение), покажет возможные причины и рекомендации по дообследованию.</p>
+</div>
+
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="width:15%">Показатель</th>
+<th style="width:15%">Ваш результат</th>
+<th style="width:10%">Норма</th>
+<th style="width:10%">Статус</th>
+<th style="width:25%">Возможные причины</th>
+<th style="width:25%">При отклонении: дообследование</th>
+</tr>
+</thead>
+<tbody id="tb"></tbody>
+</table>
+</div>
+
+<!-- Блок истории измерений -->
+<div class="history-controls">
+<h3>📊 История измерений и динамика</h3>
+<p style="margin-bottom:15px;color:#666;font-size:0.95em">Сохраняйте результаты, чтобы отслеживать динамику. Данные хранятся локально в вашем браузере.</p>
+<div class="btn-group">
+<button class="btn btn-primary" onclick="openSaveModal()">💾 Сохранить текущий результат</button>
+<button class="btn btn-secondary" onclick="toggleHistoryView()">📋 Показать/скрыть историю</button>
+<button class="btn btn-secondary" onclick="exportData()">📤 Экспорт в JSON</button>
+<button class="btn btn-secondary" onclick="document.getElementById('import-file').click()">📥 Импорт из JSON</button>
+<input type="file" id="import-file" style="display:none" accept=".json" onchange="importData(event)">
+<button class="btn btn-danger" onclick="clearHistory()">🗑️ Очистить историю</button>
+</div>
+<div id="history-view" style="display:none">
+<div class="history-list" id="history-list"></div>
+<button class="btn btn-primary" onclick="compareSelected()" id="compare-btn" style="display:none">📈 Сравнить выбранные замеры</button>
+<div id="compare-result"></div>
+</div>
+</div>
+
+<div class="warn">
+<h3>⚠️ Важное предупреждение</h3>
+<p>Результатов копрограммы недостаточно для установки диагноза. Ставить диагноз и назначать антибактериальные препараты может только врач. Для решения вопроса о методах коррекции важно учитывать возраст, жалобы и данные УЗИ совместно с лечащим врачом.</p>
+</div>
+
+<div class="disc">
+<b>Справочная информация</b> основана на профессиональных рекомендациях по клинической лабораторной диагностике (урок 3.9, М. Посельская). Результаты анализов, проведенные в разных лабораториях, могут различаться из-за разного оборудования и реактивов.
+</div>
+</div>
+
+<!-- Модальное окно сохранения -->
+<div class="tooltip-overlay" id="save-overlay" onclick="closeSaveModal()"></div>
+<div class="tooltip-popup" id="save-modal">
+<span class="close-tooltip" onclick="closeSaveModal()">&times;</span>
+<h3>💾 Сохранение результата</h3>
+<p style="margin-bottom:15px;color:#666">Дата: <span id="modal-date"></span></p>
+<label style="display:block;margin-bottom:8px;font-weight:bold">Комментарий (необязательно):</label>
+<textarea id="modal-comment" rows="3" placeholder="Например: До начала коррекции питания, Через 4 недели..."></textarea>
+<div class="btn-group" style="justify-content:flex-end">
+<button class="btn btn-secondary" onclick="closeSaveModal()">Отмена</button>
+<button class="btn btn-primary" onclick="saveResult()">Сохранить</button>
+</div>
+</div>
+
+<script>
+var indicators = [
+  // Блок 1: Качество пищеварения
+  {block:'Качество пищеварения', id:'muscle', name:'Мышечные волокна', type:'select', options:['Не обнаружены','Единичные','Умеренное количество','Много'], norm:'Не обнаружены или единичные',
+   causes:'Гипоацидность (сниженная кислотность желудка), ферментная недостаточность поджелудочной железы, дефицит белка в рационе, синдром мальабсорбции, СПКП.',
+   rec:'Эластаза-1 панкреатическая, общий белок, альбумин. Пепсиноген I и II. УЗИ органов брюшной полости, ФГДС.'},
+  {id:'connective', name:'Соединительная ткань', type:'select', options:['Не обнаружена','Обнаружена'], norm:'Не обнаружена',
+   causes:'Нарушение переваривания белка, ферментная недостаточность ЖКТ, гипоацидность.',
+   rec:'Эластаза-1 кала, общий белок. Консультация гастроэнтеролога.'},
+  {id:'neutralfat', name:'Нейтральный жир', type:'select', options:['Не обнаружен','Единичные капли','Много'], norm:'Не обнаружен',
+   causes:'Дисфункция желчного пузыря (застой желчи), ферментная недостаточность поджелудочной железы (дефицит липазы), нарушение эмульгации жиров.',
+   rec:'Эластаза-1, липаза, ГГТП, билирубин. УЗИ желчного пузыря и поджелудочной железы.'},
+  {id:'fattyacids', name:'Жирные кислоты', type:'select', options:['Не обнаружены','Единичные','Много'], norm:'Не обнаружены',
+   causes:'Нарушение всасывания жиров в тонком кишечнике, дисбактериоз, синдром мальабсорбции, целиакия.',
+   rec:'Эластаза-1, липаза, ГГТП. Анализ на дисбактериоз. УЗИ органов брюшной полости.'},
+  {id:'soaps', name:'Мыла', type:'select', options:['Не обнаружены','Единичные','Много'], norm:'Единичные',
+   causes:'Нарушение желчеотделения, ферментная недостаточность поджелудочной железы, дисбактериоз кишечника.',
+   rec:'Эластаза-1, липаза, ГГТП, билирубин. УЗИ желчного пузыря.'},
+  {id:'intrastarch', name:'Внутриклеточный крахмал', type:'select', options:['Не обнаружен','Обнаружен'], norm:'Не обнаружен',
+   causes:'Сниженная кислотность желудочного сока (гипоацидность), нарушение переваривания углеводов.',
+   rec:'Пепсиноген I и II (оценка кислотности желудка), ФГДС.'},
+  {id:'extrastarch', name:'Внеклеточный крахмал', type:'select', options:['Не обнаружен','Обнаружен'], norm:'Не обнаружен',
+   causes:'Ферментная недостаточность поджелудочной железы (дефицит амилазы), нарушение переваривания углеводов.',
+   rec:'Эластаза-1 панкреатическая, амилаза. УЗИ поджелудочной железы.'},
+  {id:'digfiber', name:'Перевариваемая клетчатка', type:'select', options:['Не обнаружена','Обнаружена'], norm:'Не обнаружена',
+   causes:'Дисбактериоз кишечника, ферментная недостаточность, нарушение микробиоты.',
+   rec:'Анализ на дисбактериоз, эластаза-1. Консультация гастроэнтеролога.'},
+  {id:'undigfiber', name:'Неперевариваемая клетчатка', type:'select', options:['Не обнаружена','Единичные волокна','Много'], norm:'Допускается в небольшом количестве',
+   causes:'Обычно является нормой (клетчатка из овощей). При избытке — чрезмерное потребление растительной пищи.',
+   rec:'Обычно не требует дообследования. При избытке — коррекция рациона.'},
+ 
+  // Блок 2: Функциональное состояние и рН
+  {block:'Функциональное состояние ЖКТ и рН', id:'ph', name:'рН кала', type:'number', norm:'6,5 – 7,0',
+   causes:'Снижение (<6,5): рост грибковой флоры (кандида), бродильные процессы. Повышение (>7,0): рост анаэробной флоры, гнилостные процессы, дисбактериоз.',
+   rec:'При снижении: анализ на дисбактериоз, кандида. При повышении: анализ на дисбактериоз, кальпротектин.'},
+  {id:'color', name:'Цвет стула', type:'select', options:['Коричневый','Светлый/обесцвеченный','Темный/черный','Красноватый','Зеленоватый'], norm:'Коричневый',
+   causes:'Светлый: нарушение оттока желчи (холестаз), дисфункция желчного пузыря. Тёмный/чёрный: кровотечение в верхних отделах ЖКТ. Красноватый: кровотечение в нижних отделах. Зеленоватый: дисбактериоз, инфекция.',
+   rec:'Светлый: УЗИ желчного, ГГТП, билирубин. Чёрный/красный: анализ на скрытую кровь, ФГДС/колоноскопия (срочно к врачу!).'},
+ 
+  // Блок 3: Воспаление и паразиты
+  {block:'Признаки воспаления и паразитов', id:'mucus', name:'Слизь', type:'select', options:['Отсутствует','Присутствует'], norm:'Отсутствует',
+   causes:'Воспаление слизистой кишечника, синдром раздражённого кишечника, дисбактериоз, паразитарная инвазия, пищевая аллергия.',
+   rec:'Кальпротектин фекальный, анализ на скрытую кровь. При стойком наличии — колоноскопия.'},
+  {id:'leukocytes', name:'Лейкоциты', type:'select', options:['Не обнаружены','Единичные','Много'], norm:'Не обнаружены или единичные',
+   causes:'Воспалительный процесс в кишечнике, бактериальная инфекция, ВЗК (болезнь Крона, язвенный колит), паразитарная инвазия.',
+   rec:'Кальпротектин, ОАК, СРБ. Анализ на патогенную флору. Консультация гастроэнтеролога или инфекциониста.'},
+  {id:'erythrocytes', name:'Эритроциты', type:'select', options:['Не обнаружены','Присутствуют'], norm:'Не обнаружены',
+   causes:'Кровотечение в ЖКТ (язва, эрозия, полипы, опухоли), воспалительные заболевания кишечника, геморрой, трещины.',
+   rec:'Анализ кала на скрытую кровь. Срочная консультация врача! ФГДС, колоноскопия для исключения кровотечений.'},
+  {id:'helminths', name:'Яйца гельминтов', type:'select', options:['Не обнаружены','Обнаружены'], norm:'Не обнаружены',
+   causes:'Паразитарная инвазия (аскаридоз, энтеробиоз, лямблиоз, описторхоз и др.).',
+   rec:'Анализ кала на яйца гельминтов (3-кратно). Анализ крови на антитела к паразитам. Консультация инфекциониста/паразитолога.'},
+  {id:'cysts', name:'Цисты простейших', type:'select', options:['Не обнаружены','Обнаружены'], norm:'Не обнаружены',
+   causes:'Паразитарная инвазия простейшими (лямблии, амёбы, бластоцисты и др.).',
+   rec:'Анализ кала на простейшие (3-кратно). Анализ крови на антитела. Консультация инфекциониста.'},
+  {id:'occultblood', name:'Скрытая кровь', type:'select', options:['Отрицательная','Положительная'], norm:'Отрицательная',
+   causes:'Скрытое кровотечение в ЖКТ: язва желудка или двенадцатиперстной кишки, эрозии, полипы, опухоли, ВЗК, геморрой.',
+   rec:'Срочная консультация врача! ФГДС, колоноскопия для исключения кровотечений ЖКТ. ОАК, ферритин.'}
+];
+
+function buildTable(){
+  var tb = document.getElementById('tb');
+  tb.innerHTML = '';
+  var currentBlock = '';
+ 
+  for(var i=0; i<indicators.length; i++){
+    var d = indicators[i];
+   
+    if(d.block && d.block !== currentBlock){
+      currentBlock = d.block;
+      var trHead = document.createElement('tr');
+      trHead.innerHTML = '<td colspan="6" style="background:#f8f9fa;font-weight:bold;color:#1a5490;padding:15px 12px">'+d.block+'</td>';
+      tb.appendChild(trHead);
+    }
+   
+    var tr = document.createElement('tr');
+    var inputHtml = '';
+    if(d.type === 'select'){
+      inputHtml = '<select id="inp-'+d.id+'" onchange="checkRow(\''+d.id+'\')">';
+      for(var j=0; j<d.options.length; j++){
+        inputHtml += '<option value="'+d.options[j]+'">'+d.options[j]+'</option>';
+      }
+      inputHtml += '</select>';
+    } else {
+      inputHtml = '<input type="number" step="0.1" id="inp-'+d.id+'" oninput="checkRow(\''+d.id+'\')" placeholder="Например, 6.5">';
+    }
+   
+    tr.innerHTML = '<td><b>'+d.name+'</b></td>'+
+      '<td>'+inputHtml+'</td>'+
+      '<td><span class="norm-text" id="norm-'+d.id+'">'+d.norm+'</span></td>'+
+      '<td><span class="status" id="st-'+d.id+'">-</span></td>'+
+      '<td><div class="causes" id="causes-'+d.id+'"></div></td>'+
+      '<td><div class="rec" id="rec-'+d.id+'"></div></td>';
+    tb.appendChild(tr);
+  }
+  updateNorms();
+}
+
+function updateNorms() {
+  var age = document.getElementById('ageGroup').value;
+  var feedingContainer = document.getElementById('feeding-type-container');
+ 
+  if (age === 'infant') {
+    feedingContainer.style.display = 'block';
+  } else {
+    feedingContainer.style.display = 'none';
+  }
+ 
+  var allIds = indicators.map(function(ind){ return ind.id; });
+  for(var j=0; j<allIds.length; j++) {
+    checkRow(allIds[j]);
+  }
+}
+
+function checkRow(id){
+  var d = null;
+  for(var i=0; i<indicators.length; i++){ if(indicators[i].id === id){ d = indicators[i]; break; } }
+  if(!d) return;
+ 
+  var st = document.getElementById('st-'+id);
+  var causes = document.getElementById('causes-'+id);
+  var rec = document.getElementById('rec-'+id);
+  var isNorm = false;
+ 
+  if(d.type === 'select'){
+    var val = document.getElementById('inp-'+id).value;
+    if(id === 'muscle' && (val === 'Не обнаружены' || val === 'Единичные')) isNorm = true;
+    else if(id === 'soaps' && (val === 'Не обнаружены' || val === 'Единичные')) isNorm = true;
+    else if(id === 'leukocytes' && (val === 'Не обнаружены' || val === 'Единичные')) isNorm = true;
+    else if(id === 'undigfiber') isNorm = true;
+    else if(val === d.options[0]) isNorm = true;
+  } else {
+    var val = parseFloat(document.getElementById('inp-'+id).value);
+    if(!isNaN(val) && val >= 6.5 && val <= 7.0) isNorm = true;
+  }
+ 
+  if(isNorm){
+    st.textContent = '🟢 Норма'; st.className = 'status st-ok';
+    causes.textContent = '';
+    rec.textContent = '';
+  } else {
+    st.textContent = '🔴 Отклонение'; st.className = 'status st-low';
+    causes.textContent = d.causes;
+    rec.textContent = d.rec;
+  }
+}
+
+// --- УНИВЕРСАЛЬНЫЙ МОДУЛЬ ИСТОРИИ ИЗМЕРЕНИЙ ---
+var STORAGE_KEY = 'coprogram_history_v1';
+
+function getHistory() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { return []; } }
+
+function openSaveModal() {
+  var now = new Date();
+  document.getElementById('modal-date').textContent = now.toLocaleDateString('ru-RU') + ' ' + now.toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+  document.getElementById('modal-comment').value = '';
+  document.getElementById('save-overlay').classList.add('show');
+  document.getElementById('save-modal').classList.add('show');
+}
+
+function closeSaveModal() {
+  document.getElementById('save-overlay').classList.remove('show');
+  document.getElementById('save-modal').classList.remove('show');
+}
+
+function saveResult() {
+  var comment = document.getElementById('modal-comment').value.trim();
+  var values = {};
+  var ids = indicators.map(function(ind){ return ind.id; });
+  for (var i=0; i<ids.length; i++) {
+    var el = document.getElementById('inp-'+ids[i]);
+    if (el) {
+      var val = el.value;
+      if (val && val !== '') values[ids[i]] = val;
+    }
+  }
+  if (Object.keys(values).length === 0) { alert('Пожалуйста, заполните хотя бы один показатель перед сохранением.'); return; }
+ 
+  var history = getHistory();
+  history.push({ date: new Date().toISOString(), comment: comment, values: values });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+  closeSaveModal();
+  alert('✅ Результат успешно сохранен!');
+  renderHistoryList();
+}
+
+function toggleHistoryView() {
+  var view = document.getElementById('history-view');
+  if (view.style.display === 'none' || view.style.display === '') { view.style.display = 'block'; renderHistoryList(); } else { view.style.display = 'none'; }
+}
+
+function renderHistoryList() {
+  var history = getHistory();
+  var list = document.getElementById('history-list');
+  var btn = document.getElementById('compare-btn');
+  list.innerHTML = '';
+  if (history.length === 0) { list.innerHTML = '<p style="color:#666;text-align:center;padding:20px">История пуста. Сохраните ваш первый результат!</p>'; btn.style.display = 'none'; return; }
+  history.sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+  for (var i=0; i<history.length; i++) {
+    var d = new Date(history[i].date);
+    var dateStr = d.toLocaleDateString('ru-RU') + ' ' + d.toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+    var commentStr = history[i].comment ? ' — ' + history[i].comment : '';
+    var div = document.createElement('div');
+    div.className = 'history-item';
+    div.innerHTML = '<div><input type="checkbox" class="hist-check" data-idx="'+i+'"> <b>' + dateStr + '</b>' + commentStr + '</div>';
+    list.appendChild(div);
+  }
+  var checks = document.querySelectorAll('.hist-check');
+  for (var j=0; j<checks.length; j++) {
+    checks[j].onchange = function() {
+      var selected = document.querySelectorAll('.hist-check:checked');
+      btn.style.display = selected.length === 2 ? 'block' : 'none';
+    };
+  }
+}
+
+function compareSelected() {
+  var checks = document.querySelectorAll('.hist-check:checked');
+  if (checks.length !== 2) return;
+  var history = getHistory();
+  history.sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+  var idx1 = parseInt(checks[0].getAttribute('data-idx'));
+  var idx2 = parseInt(checks[1].getAttribute('data-idx'));
+  var rec1 = history[idx1];
+  var rec2 = history[idx2];
+  var oldRec = new Date(rec1.date) > new Date(rec2.date) ? rec2 : rec1;
+  var newRec = new Date(rec1.date) > new Date(rec2.date) ? rec1 : rec2;
+ 
+  var html = '<h4 style="margin-top:20px;color:#1a5490">📈 Сравнение: ' + new Date(oldRec.date).toLocaleDateString('ru-RU') + ' → ' + new Date(newRec.date).toLocaleDateString('ru-RU') + '</h4>';
+  html += '<table class="compare-table"><thead><tr><th>Показатель</th><th>Было</th><th>Стало</th><th>Изменение</th></tr></thead><tbody>';
+ 
+  var ids = indicators.map(function(ind){ return ind.id; });
+  for (var i=0; i<ids.length; i++) {
+    var id = ids[i];
+    var v1 = oldRec.values[id];
+    var v2 = newRec.values[id];
+    if (v1 === undefined || v2 === undefined) continue;
+   
+    var changed = (v1 !== v2) ? '<span class="trend-up">🔄 Изменилось</span>' : '<span class="trend-same">⚪ Без изменений</span>';
+    html += '<tr><td><b>' + id.toUpperCase() + '</b></td><td>' + v1 + '</td><td>' + v2 + '</td><td>' + changed + '</td></tr>';
+  }
+  html += '</tbody></table>';
+  document.getElementById('compare-result').innerHTML = html;
+}
+
+function exportData() {
+  var history = getHistory();
+  if (history.length === 0) { alert('История пуста, нечего экспортировать.'); return; }
+  var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(history, null, 2));
+  var dlAnchorElem = document.createElement('a');
+  dlAnchorElem.setAttribute("href", dataStr);
+  dlAnchorElem.setAttribute("download", "coprogram-history-" + new Date().toISOString().slice(0,10) + ".json");
+  dlAnchorElem.click();
+}
+
+function importData(event) {
+  var file = event.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      var imported = JSON.parse(e.target.result);
+      if (Array.isArray(imported)) {
+        var current = getHistory();
+        var merged = current.concat(imported);
+        var unique = {};
+        for (var i=0; i<merged.length; i++) unique[merged[i].date] = merged[i];
+        var finalArr = Object.values(unique);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(finalArr));
+        alert('✅ Данные успешно импортированы!');
+        renderHistoryList();
+      } else { alert('Неверный формат файла.'); }
+    } catch(err) { alert('Ошибка чтения файла: ' + err.message); }
+  };
+  reader.readAsText(file);
+}
+
+function clearHistory() {
+  if (confirm('Вы уверены, что хотите удалить всю историю измерений? Это действие нельзя отменить.')) {
+    localStorage.removeItem(STORAGE_KEY);
+    renderHistoryList();
+    document.getElementById('compare-result').innerHTML = '';
+    alert('🗑️ История очищена.');
+  }
+}
+
+buildTable();
+</script>
+<script src="premium.js"></script>
+</body>
+</html>

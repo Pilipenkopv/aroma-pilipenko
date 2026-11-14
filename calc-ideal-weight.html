@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Калькулятор идеального веса — Павел Пилипенко</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+<style>
+.hero { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 80px 20px; text-align: center; }
+.hero h1 { font-size: 38px; color: #2e7d32; margin-bottom: 10px; }
+.hero p { font-size: 18px; color: #5a6c5d; }
+.container { max-width: 700px; margin: 0 auto; padding: 50px 20px; }
+.calc-box { background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #2e7d32; }
+.calc-box h2 { font-size: 26px; color: #2e7d32; margin-bottom: 25px; }
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; font-size: 16px; color: #2e7d32; margin-bottom: 8px; font-weight: bold; }
+.input-group input, .input-group select { width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; font-family: Georgia, serif; }
+.input-group input:focus, .input-group select:focus { outline: none; border-color: #2e7d32; }
+.calc-btn { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 14px 35px; border: none; border-radius: 30px; font-size: 17px; font-family: Georgia, serif; cursor: pointer; width: 100%; margin-top: 10px; }
+.calc-btn:hover { opacity: 0.9; }
+.result { display: none; margin-top: 30px; padding: 25px; background: #e8f5e9; border-left: 5px solid #2e7d32; border-radius: 12px; }
+.result-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #c8e6c9; }
+.result-row:last-child { border-bottom: none; }
+.result-row strong { color: #2e7d32; }
+.result-row span { color: #5a6c5d; font-weight: bold; }
+.result-row.highlight { background: #c8e6c9; padding: 10px; border-radius: 8px; margin: 5px 0; }
+.result-row.highlight strong { color: #1b5e20; }
+.result-row.highlight span { color: #1b5e20; font-size: 18px; }
+.formulas-info { margin-top: 25px; padding: 20px; background: #f9f7f4; border-radius: 10px; }
+.formulas-info h3 { color: #2e7d32; margin-bottom: 12px; }
+.formulas-info p { font-size: 14px; color: #5a6c5d; margin-bottom: 10px; }
+.back-link { display: inline-block; margin-bottom: 25px; color: #2e7d32; text-decoration: none; font-size: 16px; }
+.back-link:hover { text-decoration: underline; }
+.warning { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 20px; border-radius: 10px; margin-top: 30px; }
+.warning strong { color: #1b5e20; }
+.warning p { color: #1b5e20; font-size: 14px; }
+
+<style>
+.floating-buttons { position: fixed; right: 20px; bottom: 100px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
+
+.floating-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(255,255,255,0.3); transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s; }
+.floating-btn:hover::before { width: 300px; height: 300px; }
+.floating-btn:hover { transform: scale(1.15) translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.35); animation: none; }
+.floating-btn .icon { position: relative; z-index: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+.floating-btn 
+.floating-btn:hover 
+
+
+.btn-email { background: linear-gradient(135deg, #ea4335 0%, #fbbc05 100%); }
+@keyframes pulse { 0%, 100% { box-shadow: 0 6px 20px rgba(0,0,0,0.25); } 50% { box-shadow: 0 6px 20px rgba(0,0,0,0.25), 0 0 0 10px rgba(255,255,255,0.1); } }
+</style></style>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="blog.html">Блог</a>
+<a href="calculators.html">Калькуляторы</a>
+<a href="where-to-buy.html">Где купить</a><a href="faq.html">Вопросы</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero"><h1>Калькулятор идеального веса</h1><p>Расчёт по формулам Девайна, Робинсона и Миллера</p></section>
+<div class="container">
+<a href="calculators.html" class="back-link">← Все калькуляторы</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+<div class="calc-box">
+<h2>Рассчитайте ваш идеальный вес</h2>
+<div class="input-group">
+<label for="gender">Пол</label>
+<select id="gender">
+<option value="male">Мужской</option>
+<option value="female">Женский</option>
+</select>
+</div>
+<div class="input-group">
+<label for="height">Рост (см)</label>
+<input type="number" id="height" placeholder="Например, 170" min="140" max="220">
+</div>
+<button class="calc-btn" onclick="calculateWeight()">Рассчитать</button>
+<div id="result" class="result">
+<div class="result-row"><strong>Формула Девайна:</strong><span id="devineValue">0 кг</span></div>
+<div class="result-row"><strong>Формула Робинсона:</strong><span id="robinsonValue">0 кг</span></div>
+
+<div class="result-row"><strong>Формула Миллера:</strong><span id="millerValue">0 кг</span></div>
+<div class="result-row highlight"><strong>Среднее значение:</strong><span id="averageValue">0 кг</span></div>
+<div class="result-row"><strong>Здоровый диапазон:</strong><span id="rangeValue">0 кг</span></div>
+</div>
+<div class="formulas-info">
+<h3>📊  О формулах</h3>
+<p><strong>Формула Девайна (1974):</strong> наиболее используемая в медицине. Базовый вес + 2.3 кг на каждый дюйм выше 5 футов.</p>
+<p><strong>Формула Робинсона (1983):</strong> модифицированная версия, чуть более консервативная.</p>
+<p><strong>Формула Миллера (1983):</strong> ещё одна модификация, даёт промежуточные значения.</p>
+<p>Все формулы рассчитаны на рост от 152 см. Для более низкого роста результаты могут быть неточными.</p>
+</div>
+</div>
+<div class="warning">
+<strong>Важно:</strong>
+<p>Идеальный вес — ориентировочное понятие. Реальный здоровый вес зависит от мышечной массы, костной структуры, возраста и индивидуальных особенностей. Калькулятор не учитывает эти факторы. Для точной оценки необходима консультация специалиста.</p>
+</div>
+</div>
+<footer>
+    <p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p>
+    <p style="margin-top: 15px; font-size: 13px; opacity: 0.8;">
+        Методология основана на знаниях 
+        <a href="https://aromaschool.ru" target="_blank" style="color: #81c784; text-decoration: underline;">Школы ароматерапии и парфюмерии «Астарта»</a> 
+        и стандартах Международной ассоциации ароматерапевтов.
+    </p>
+    <p style="font-size: 13px; opacity: 0.8;">
+        Рекомендуемые натуральные эфирные масла и аксессуары: 
+        <a href="https://aromaschool-shop.ru" target="_blank" style="color: #ffb74d; text-decoration: underline;">Магазин «Астарта»</a>
+    </p>
+</footer>
+<button id="backToTop" title="Наверх">↑</button>
+<script>
+function calculateWeight() {
+var gender = document.getElementById('gender').value;
+var heightCm = parseFloat(document.getElementById('height').value);
+if (!heightCm || heightCm < 140) {
+alert('Пожалуйста, введите корректный рост');
+return;
+}
+var heightInches = heightCm / 2.54;
+var over5ft = heightInches - 60;
+if (over5ft < 0) over5ft = 0;
+var devine, robinson, miller;
+if (gender === 'male') {
+devine = 50 + 2.3 * over5ft;
+robinson = 52 + 1.9 * over5ft;
+miller = 56.2 + 1.41 * over5ft;
+} else {
+devine = 45.5 + 2.3 * over5ft;
+robinson = 49 + 1.7 * over5ft;
+miller = 53.1 + 1.36 * over5ft;
+}
+var average = (devine + robinson + miller) / 3;
+var minRange = average * 0.9;
+var maxRange = average * 1.1;
+document.getElementById('devineValue').textContent = devine.toFixed(1) + ' кг';
+document.getElementById('robinsonValue').textContent = robinson.toFixed(1) + ' кг';
+document.getElementById('millerValue').textContent = miller.toFixed(1) + ' кг';
+document.getElementById('averageValue').textContent = average.toFixed(1) + ' кг';
+document.getElementById('rangeValue').textContent = minRange.toFixed(1) + ' - ' + maxRange.toFixed(1) + ' кг';
+document.getElementById('result').style.display = 'block';
+}
+const backToTopBtn = document.getElementById('backToTop');
+window.onscroll = function() {
+if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) backToTopBtn.classList.add('show');
+else backToTopBtn.classList.remove('show');
+};
+backToTopBtn.onclick = function() { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+</script>
+<button id="backToTop" title="Наверх">↑</button>
+<script>
+const backToTopBtn = document.getElementById('backToTop');
+window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+};
+backToTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+</script>
+<div class="floating-buttons">
+    
+    
+    
+</div><script src="premium.js"></script>
+</body>
+</html>
+
+
+
+
+

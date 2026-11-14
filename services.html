@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Услуги и форматы работы — Павел Пилипенко</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; line-height: 1.7; color: #2c3e50; background: #f9f7f4; }
+header { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 20px 0; }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 16px; }
+nav a:hover { opacity: 0.8; }
+.hero { background: linear-gradient(135deg, #f3e5f5, #e1bee7); padding: 80px 20px; text-align: center; }
+.hero h1 { font-size: 48px; color: #6a1b9a; margin-bottom: 15px; }
+.hero p { font-size: 20px; color: #5a6c5d; max-width: 700px; margin: 0 auto; font-style: italic; }
+.container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 60px; }
+.service-card { background: white; border-radius: 20px; padding: 40px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 5px solid #6a1b9a; transition: transform 0.3s; }
+.service-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+.service-card .icon { font-size: 48px; text-align: center; margin-bottom: 20px; }
+.service-card h3 { font-size: 24px; color: #6a1b9a; margin-bottom: 15px; text-align: center; }
+.service-card p { font-size: 15px; color: #5a6c5d; margin-bottom: 15px; }
+.service-card ul { margin-left: 20px; color: #5a6c5d; font-size: 14px; }
+.service-card li { margin-bottom: 8px; }
+.service-card.green { border-top-color: #2e7d32; }
+.service-card.green h3 { color: #2e7d32; }
+.service-card.pink { border-top-color: #c2185b; }
+.service-card.pink h3 { color: #c2185b; }
+.service-card.red { border-top-color: #c62828; }
+.service-card.red h3 { color: #c62828; }
+.info-block { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+.info-block h2 { font-size: 28px; color: #6a1b9a; margin-bottom: 20px; text-align: center; }
+.info-block p { font-size: 16px; color: #5a6c5d; margin-bottom: 15px; text-align: center; }
+.info-block .highlight { background: #f3e5f5; padding: 20px; border-radius: 12px; margin: 20px 0; text-align: center; }
+.info-block .highlight strong { color: #6a1b9a; }
+.payment-methods { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+.payment-method { background: #f3e5f5; padding: 20px; border-radius: 12px; text-align: center; }
+.payment-method .icon { font-size: 32px; margin-bottom: 10px; }
+.payment-method strong { display: block; color: #6a1b9a; margin-bottom: 5px; }
+.payment-method span { font-size: 14px; color: #5a6c5d; }
+.cta-block { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 20px; padding: 40px; margin-bottom: 30px; border-left: 5px solid #2e7d32; }
+.cta-block h3 { color: #2e7d32; font-size: 24px; margin-bottom: 15px; }
+.cta-block p { color: #5a6c5d; font-size: 16px; }
+.guarantee-block { background: linear-gradient(135deg, #ffebee, #ffcdd2); border-radius: 20px; padding: 40px; border-left: 5px solid #c62828; }
+.guarantee-block h3 { color: #c62828; font-size: 24px; margin-bottom: 15px; }
+.guarantee-block p { color: #5a6c5d; font-size: 16px; }
+.btn { display: inline-block; margin-top: 20px; padding: 15px 30px; background: #6a1b9a; color: white; text-decoration: none; border-radius: 10px; font-size: 16px; transition: background 0.3s; }
+.btn:hover { background: #4a148c; }
+.btn.green { background: #2e7d32; }
+.btn.green:hover { background: #1b5e20; }
+footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; font-size: 14px; }
+</style>
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero">
+<h1>🌿 Услуги и форматы работы</h1>
+<p>Индивидуальный подход к вашему здоровью через силу природы</p>
+</section>
+<div class="container">
+
+<!-- УСЛУГА 1: КОНСУЛЬТАЦИЯ -->
+<div class="services-grid">
+<div class="service-card">
+<div class="icon">💬</div>
+<h3>Консультация по ароматерапии</h3>
+<p>Индивидуальная онлайн-встреча (60-90 минут), на которой мы разберём ваш запрос и подберём персональную схему применения эфирных масел.</p>
+<ul>
+<li>Знакомство с вашим запросом и текущей ситуацией</li>
+<li>Подбор 3-5 эфирных масел под вашу задачу</li>
+<li>Схема применения с дозировками</li>
+<li>Рекомендации по выбору качественных масел</li>
+<li>Письменные рекомендации после встречи</li>
+</ul>
+</div>
+
+<!-- УСЛУГА 2: ИНТЕГРАТИВНЫЙ ПРОТОКОЛ -->
+<div class="service-card green">
+<div class="icon">🌿</div>
+<h3>Интегративный протокол здоровья</h3>
+<p>Развёрнутый персональный план поддержки здоровья, объединяющий ароматерапию, нутрициологию и модификацию образа жизни.</p>
+<ul>
+<li>Поиск ресурсов для оптимизации здоровья</li>
+<li>Схема эфирных масел под вашу задачу</li>
+<li>Рекомендации по образу жизни</li>
+<li>План диагностического мониторинга</li>
+<li>Сопровождение в течение 1 месяца</li>
+</ul>
+</div>
+
+<!-- УСЛУГА 3: АРОМАКОСМЕТИКА -->
+<div class="service-card pink">
+<div class="icon">🌸</div>
+<h3>Аромакосметика под заказ</h3>
+<p>Авторские натуральные средства для ухода за кожей, созданные индивидуально под ваш тип кожи и запросы.</p>
+<ul>
+<li><b>Аромакремы</b> — питательные, увлажняющие, антивозрастные</li>
+<li><b>Сыворотки</b> — концентрированные активные формулы</li>
+<li><b>Средства для умывания</b> — мягкие, без агрессивных ПАВ</li>
+<li>Только натуральные масла и экстракты</li>
+<li>Индивидуальный подбор состава</li>
+</ul>
+</div>
+
+<!-- УСЛУГА 4: ПОДБОР МАСЕЛ -->
+<div class="service-card red">
+<div class="icon">💜</div>
+<h3>Подбор эфирных масел</h3>
+<p>Помощь в выборе качественных эфирных масел от проверенных производителей под ваши конкретные задачи.</p>
+<ul>
+<li>Обсуждение вашего запроса (сон, стресс, кожа, иммунитет)</li>
+<li>Подбор 3-7 масел с описанием свойств</li>
+<li>Рекомендации по производителям</li>
+<li>Схемы синергичных композиций</li>
+<li>Инструкция по безопасному применению</li>
+</ul>
+</div>
+</div>
+
+<!-- КАК НАЧАТЬ РАБОТУ -->
+<div class="info-block">
+<h2>Как начать работу?</h2>
+<p>Напишите мне через форму «Связаться со мной» или в мессенджер. Мы обсудим ваш запрос, и я предложу оптимальный формат работы.</p>
+<a href="contact.html" class="btn">Связаться со мной</a>
+</div>
+
+<!-- СТОИМОСТЬ УСЛУГ -->
+<div class="info-block">
+<h2>💜 Стоимость услуг</h2>
+<p>Стоимость каждой услуги определяется <strong>индивидуально</strong> — в зависимости от сложности вашего запроса и объёма работы.</p>
+<p>Напишите мне через форму «Связаться со мной» или в мессенджер — мы обсудим ваш запрос, и я предложу оптимальный формат работы и стоимость.</p>
+
+<h3 style="color:#6a1b9a;margin-top:30px;text-align:center">Способы оплаты</h3>
+<div class="payment-methods">
+<div class="payment-method">
+<div class="icon">💳</div>
+<strong>Банковская карта</strong>
+<span>Visa, MasterCard, МИР</span>
+</div>
+<div class="payment-method">
+<div class="icon">🏦</div>
+<strong>Перевод</strong>
+<span>На расчётный счёт</span>
+</div>
+<div class="payment-method">
+<div class="icon">💵</div>
+<strong>Наличные</strong>
+<span>При личной встрече</span>
+</div>
+</div>
+</div>
+
+<!-- БЕСПЛАТНАЯ МИНИ-ВСТРЕЧА -->
+<div class="cta-block">
+<h3>🌿 Бесплатная мини-встреча (15 минут)</h3>
+<p>Не уверены, подходит ли вам формат работы? Запишитесь на короткую знакомство-встречу — мы обсудим ваш запрос, и я расскажу, как могу помочь. Без обязательств и оплаты.</p>
+<a href="contact.html" class="btn green">Записаться на мини-встречу</a>
+</div>
+
+<!-- ГАРАНТИЯ -->
+<div class="guarantee-block">
+<h3>🛡️ Гарантия удовлетворённости</h3>
+<p>Если после первой консультации вы почувствуете, что формат работы вам не подходит — я верну полную стоимость без вопросов. Мне важно, чтобы вам было комфортно.</p>
+</div>
+
+</div>
+<footer><p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p></footer>
+<script src="premium.js"></script>
+</body>
+</html>

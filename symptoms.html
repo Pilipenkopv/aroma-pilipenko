@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Подбор анализов по симптомам - Справочная информация</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;line-height:1.6;color:#2c3e50;background:#f0f4f8;padding:20px}
+.container{max-width:1100px;margin:0 auto;background:#fff;border-radius:12px;padding:30px;box-shadow:0 4px 20px rgba(0,0,0,0.1)}
+h1{color:#1a5490;text-align:center;margin-bottom:10px}
+.subtitle{text-align:center;color:#666;margin-bottom:20px}
+.quote-box{background:linear-gradient(135deg,#1a5490,#2a9d8f);color:#fff;padding:20px;border-radius:12px;text-align:center;margin-bottom:25px;box-shadow:0 4px 15px rgba(26,84,144,0.3)}
+.quote-box .quote{font-size:1.2em;font-weight:bold;font-style:italic;margin-bottom:8px}
+.quote-box .author{font-size:0.9em;opacity:0.9}
+.info-box{background:#e3f2fd;border-left:4px solid #1976d2;padding:15px;border-radius:0 8px 8px 0;margin-bottom:25px}
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-bottom:25px}
+.category{background:#f8f9fa;border:2px solid #e0e0e0;border-radius:10px;padding:20px}
+.category h3{color:#1a5490;margin-bottom:12px;font-size:1.15em;display:flex;align-items:center;gap:8px}
+.symptom-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;padding:8px;border-radius:6px;transition:background 0.2s}
+.symptom-item:hover{background:#e8f5e9}
+.symptom-item input[type="checkbox"]{width:18px;height:18px;margin-top:3px;cursor:pointer;accent-color:#2a9d8f}
+.symptom-item label{cursor:pointer;font-size:0.95em;flex:1}
+.action-box{text-align:center;margin:30px 0}
+.action-btn{background:linear-gradient(135deg,#1a5490,#2a9d8f);color:#fff;border:none;padding:15px 40px;font-size:1.1em;border-radius:30px;cursor:pointer;font-weight:bold;transition:transform 0.2s,box-shadow 0.2s}
+.action-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,84,144,0.4)}
+.clear-btn{background:#f0f0f0;color:#666;border:none;padding:10px 25px;font-size:0.95em;border-radius:20px;cursor:pointer;margin-left:10px}
+.clear-btn:hover{background:#e0e0e0}
+
+/* Стили для отчёта */
+.report-section{display:none;margin-top:30px;border-top:3px solid #1a5490;padding-top:25px}
+.report-section.show{display:block}
+.report-header{text-align:center;margin-bottom:25px}
+.report-header h2{color:#1a5490;font-size:1.8em;margin-bottom:10px}
+.report-header p{color:#666}
+.report-header .date{font-size:0.9em;color:#888;margin-top:5px}
+.report-block{background:#fff;border:2px solid #e0e0e0;border-radius:10px;padding:20px;margin-bottom:20px}
+.report-block h3{color:#1a5490;margin-bottom:15px;display:flex;align-items:center;gap:8px;border-bottom:2px solid #f0f4f8;padding-bottom:10px}
+.priority-high{color:#c62828;font-weight:bold}
+.priority-med{color:#e65100;font-weight:bold}
+.report-block ul{margin-left:20px;margin-bottom:10px}
+.report-block li{margin-bottom:8px}
+.doctor-box{background:#e8f5e9;border-left:4px solid #2a9d8f;padding:15px;border-radius:0 8px 8px 0}
+.doctor-box strong{color:#2e7d32}
+.imaging-box{background:#f3e5f5;border-left:4px solid #8e24aa;padding:15px;border-radius:0 8px 8px 0}
+.imaging-box strong{color:#6a1b9a}
+.explanation-box{background:#fff8e1;border-left:4px solid #ffa000;padding:15px;border-radius:0 8px 8px 0}
+.disclaimer{background:#fff3e0;border-left:4px solid #f57c00;padding:15px;border-radius:0 8px 8px 0;margin-top:20px;font-size:0.9em;color:#e65100}
+.print-btn{background:#1a5490;color:#fff;border:none;padding:12px 30px;font-size:1em;border-radius:25px;cursor:pointer;margin-top:20px}
+.print-btn:hover{background:#2a9d8f}
+
+@media print {
+  body{background:#fff;padding:0}
+  .container{box-shadow:none;max-width:100%;padding:10px}
+  .categories, .action-box, .back-link, .quote-box, .info-box, .print-btn, .disclaimer{display:none!important}
+  .report-section{display:block!important;border:none;padding:0;margin:0}
+  .report-block{border:1px solid #ccc;break-inside:avoid}
+}
+.back-link{display:inline-block;margin-bottom:15px;color:#1a5490;text-decoration:none;font-weight:bold}
+.back-link:hover{text-decoration:underline}
+</style>
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<div class="container">
+<a href="analyses.html" class="back-link">← Назад к разделу Анализы</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+
+<div class="quote-box">
+<div class="quote">"Никогда не смотрим анализы в отрыве от симптоматики, только в контексте ситуации клиента!"</div>
+<div class="author">— Профессиональное образование в области интегративной нутрициологии</div>
+</div>
+
+<h1>Подбор анализов по симптомам</h1>
+<p class="subtitle">Отметьте ваши симптомы — система сформирует отчёт с рекомендованными анализами, инструментальной диагностикой и направлениями к специалистам</p>
+
+<div class="info-box">
+<h3>Как это работает</h3>
+<p>Отметьте галочками симптомы, которые вас беспокоят. Нажмите кнопку <b>«Сформировать отчёт»</b>. Система проанализирует выбранные симптомы и подготовит справочную информацию: какие лабораторные анализы и инструментальные исследования могут быть информативны в вашей ситуации, а также к какому профильному специалисту имеет смысл обратиться для уточнения диагноза.</p>
+</div>
+
+<div class="categories" id="categories"></div>
+
+<div class="action-box">
+<button class="action-btn" onclick="generateReport()">📋 Сформировать отчёт</button>
+<button class="clear-btn" onclick="clearAll()">Сбросить всё</button>
+</div>
+
+<div class="report-section" id="report-section">
+<div class="report-header">
+<h2>📄 Ваш персональный отчёт</h2>
+<p>Сформирован на основе выбранных симптомов</p>
+<p class="date" id="report-date"></p>
+</div>
+<div id="report-content"></div>
+<button class="print-btn" onclick="window.print()">🖨️ Распечатать / Сохранить в PDF</button>
+</div>
+
+<div class="disclaimer">
+⚠️ <b>Важно:</b> Данный отчёт носит исключительно справочный характер и не заменяет консультацию врача. Нутрициолог не ставит диагнозы и не назначает инструментальные исследования. Окончательный перечень исследований и тактику ведения определяет лечащий врач с учетом вашей клинической картины, анамнеза и осмотра.
+</div>
+</div>
+
+<script>
+var symptomData = {
+energy: { title: '⚡ Энергия и усталость', symptoms: [
+  {id:'fatigue', name:'Хроническая усталость, слабость'},
+  {id:'dizziness', name:'Головокружение'},
+  {id:'shortness', name:'Одышка при нагрузке'},
+  {id:'pale', name:'Бледность кожи'},
+  {id:'cold', name:'Зябкость, холодные руки и ноги'}
+]},
+digest: { title: '🍽️ ЖКТ и пищеварение', symptoms: [
+  {id:'bloating', name:'Вздутие, газообразование'},
+  {id:'constipation', name:'Запоры'},
+  {id:'diarrhea', name:'Диарея, неустойчивый стул'},
+  {id:'heartburn', name:'Изжога, отрыжка'},
+  {id:'nausea', name:'Тошнота'}
+]},
+skin: { title: '💇 Кожа, волосы, ногти', symptoms: [
+  {id:'hair_loss', name:'Выпадение волос'},
+  {id:'brittle_nails', name:'Ломкость ногтей'},
+  {id:'dry_skin', name:'Сухость кожи'},
+  {id:'acne', name:'Акне, высыпания'},
+  {id:'itching', name:'Кожный зуд'}
+]},
+neuro: { title: '🧠 Неврология и настроение', symptoms: [
+  {id:'headache', name:'Частые головные боли'},
+  {id:'memory', name:'Снижение памяти, концентрации'},
+  {id:'anxiety', name:'Тревожность, беспокойство'},
+  {id:'depression', name:'Сниженное настроение'},
+  {id:'tingling', name:'Онемение, покалывание в конечностях'}
+]},
+immunity: { title: '🛡️ Иммунитет', symptoms: [
+  {id:'colds', name:'Частые простуды'},
+  {id:'allergy', name:'Аллергические реакции'},
+  {id:'infections', name:'Частые инфекции'},
+  {id:'slow_heal', name:'Медленное заживление ран'}
+]},
+metabolism: { title: '⚖️ Вес и метаболизм', symptoms: [
+  {id:'weight_gain', name:'Набор веса без причины'},
+  {id:'thirst', name:'Постоянная жажда'},
+  {id:'hunger', name:'Частый голод'},
+  {id:'cravings', name:'Тяга к сладкому'},
+  {id:'edema', name:'Отеки'}
+]},
+women: { title: '🌸 Женское здоровье', symptoms: [
+  {id:'cycle', name:'Нарушения менструального цикла'},
+  {id:'pms', name:'Выраженный ПМС'},
+  {id:'libido', name:'Снижение либидо'},
+  {id:'hot_flashes', name:'Приливы'}
+]},
+heart: { title: '❤️ Сердце и сосуды', symptoms: [
+  {id:'palpitations', name:'Учащенное сердцебиение'},
+  {id:'high_bp', name:'Повышенное давление'},
+  {id:'varicose', name:'Варикоз, тяжесть в ногах'}
+]},
+bones: { title: '🦴 Кости и суставы', symptoms: [
+  {id:'joint_pain', name:'Боли в суставах'},
+  {id:'back_pain', name:'Боли в спине'},
+  {id:'cramps', name:'Судороги в мышцах'}
+]}
+};
+
+var recs = {
+fatigue: {tests:['ОАК','Ферритин','Витамин D (25-OH)','ТТГ, Т3 св., Т4 св.'], imaging:['ЭКГ','УЗИ щитовидной железы'], docs:['Терапевт','Эндокринолог'], p:'high'},
+dizziness: {tests:['ОАК','Ферритин','Глюкоза натощак','ТТГ'], imaging:['УЗДГ сосудов шеи (БЦА)','МРТ головного мозга (при стойких симптомах)'], docs:['Терапевт','Невролог'], p:'high'},
+shortness: {tests:['ОАК','Ферритин','ТТГ'], imaging:['ЭКГ','ЭхоКГ (УЗИ сердца)','Рентген/КТ органов грудной клетки'], docs:['Терапевт','Кардиолог'], p:'high'},
+pale: {tests:['ОАК','Ферритин','Витамин В12'], imaging:['УЗИ органов брюшной полости (исключить скрытую кровопотерю)'], docs:['Терапевт','Гематолог'], p:'high'},
+cold: {tests:['ТТГ, Т3 св., Т4 св.','Ферритин','Витамин D'], imaging:['УЗИ щитовидной железы'], docs:['Эндокринолог'], p:'med'},
+bloating: {tests:['Кальпротектин фекальный','Эластаза-1 панкреатическая','Анализ кала на дисбактериоз'], imaging:['УЗИ органов брюшной полости','ФГДС (гастроскопия)'], docs:['Гастроэнтеролог'], p:'high'},
+constipation: {tests:['ТТГ','Магний','Кальпротектин'], imaging:['УЗИ органов брюшной полости','Колоноскопия (при стойких симптомах)'], docs:['Гастроэнтеролог','Эндокринолог'], p:'med'},
+diarrhea: {tests:['Кальпротектин фекальный','Копрограмма','Анализ на паразиты'], imaging:['УЗИ органов брюшной полости','Колоноскопия (при стойких симптомах)'], docs:['Гастроэнтеролог','Инфекционист'], p:'high'},
+heartburn: {tests:['H. pylori (дыхательный тест или антиген в кале)','Пепсиноген I и II'], imaging:['ФГДС (гастроскопия)','УЗИ органов брюшной полости'], docs:['Гастроэнтеролог'], p:'high'},
+nausea: {tests:['АЛТ, АСТ, ГГТП','Билирубин общий','Амилаза, липаза'], imaging:['УЗИ органов брюшной полости','ФГДС'], docs:['Гастроэнтеролог'], p:'med'},
+hair_loss: {tests:['Ферритин','Витамин D (25-OH)','ТТГ, Т3 св., Т4 св.','Цинк'], imaging:['УЗИ щитовидной железы'], docs:['Эндокринолог','Терапевт','Гастроэнтеролог'], p:'high'},
+brittle_nails: {tests:['Ферритин','Цинк','Кальций ионизированный','Витамин D'], imaging:['УЗИ щитовидной железы'], docs:['Эндокринолог','Терапевт','Гастроэнтеролог'], p:'med'},
+dry_skin: {tests:['Витамин D','ТТГ','Омега-3 индекс'], imaging:['УЗИ щитовидной железы'], docs:['Эндокринолог','Терапевт','Гастроэнтеролог'], p:'med'},
+acne: {tests:['Инсулин','Глюкоза','Тестостерон свободный','ДГЭА-С'], imaging:['УЗИ органов малого таза (у женщин)','УЗИ надпочечников'], docs:['Эндокринолог','Терапевт','Гастроэнтеролог'], p:'high'},
+itching: {tests:['АЛТ, АСТ, ГГТП','Билирубин','IgE общий','Глюкоза'], imaging:['УЗИ органов брюшной полости','УЗИ щитовидной железы'], docs:['Дерматолог','Гастроэнтеролог'], p:'med'},
+headache: {tests:['Ферритин','Витамин D','Магний','Гомоцистеин','ТТГ'], imaging:['УЗДГ сосудов шеи (БЦА)','МРТ головного мозга (при стойких симптомах)'], docs:['Невролог','Терапевт'], p:'high'},
+memory: {tests:['Витамин В12','Фолиевая кислота','Гомоцистеин','Витамин D','ТТГ'], imaging:['МРТ головного мозга (при стойких симптомах)','УЗДГ сосудов шеи'], docs:['Невролог','Эндокринолог'], p:'high'},
+anxiety: {tests:['Кортизол','ТТГ','Магний','Витамин D'], imaging:['УЗИ щитовидной железы','УЗИ надпочечников'], docs:['Эндокринолог','Психотерапевт'], p:'med'},
+depression: {tests:['Витамин D','Витамин В12','ТТГ','Ферритин','Гомоцистеин'], imaging:['УЗИ щитовидной железы'], docs:['Эндокринолог','Психотерапевт'], p:'high'},
+tingling: {tests:['Витамин В12','Витамин В6','Глюкоза','Магний'], imaging:['ЭНМГ (электронейромиография)','УЗДГ сосудов шеи'], docs:['Невролог','Эндокринолог'], p:'high'},
+colds: {tests:['ОАК','Витамин D','Цинк','Ферритин'], imaging:['Рентген/КТ органов грудной клетки (при частых бронхитах)'], docs:['Терапевт','Иммунолог'], p:'med'},
+allergy: {tests:['IgE общий','Эозинофильный катионный белок (ЭКБ)','ОАК (эозинофилы)'], imaging:['Спирометрия (при астме)','Риноскопия'], docs:['Аллерголог'], p:'high'},
+infections: {tests:['ОАК','СРБ','Иммуноглобулины (IgG, IgA, IgM)','Витамин D'], imaging:['УЗИ органов брюшной полости','Рентген/КТ органов грудной клетки'], docs:['Терапевт','Иммунолог'], p:'med'},
+slow_heal: {tests:['Общий белок','Витамин С','Цинк','Глюкоза'], imaging:['УЗИ органов брюшной полости'], docs:['Терапевт','Эндокринолог'], p:'med'},
+weight_gain: {tests:['ТТГ, Т3 св., Т4 св.','Инсулин','Глюкоза','Лептин','Липидный профиль'], imaging:['УЗИ щитовидной железы','УЗИ органов брюшной полости','УЗИ органов малого таза (у женщин)'], docs:['Эндокринолог'], p:'high'},
+thirst: {tests:['Глюкоза натощак','Гликированный гемоглобин','Инсулин'], imaging:['УЗИ поджелудочной железы'], docs:['Эндокринолог'], p:'high'},
+hunger: {tests:['Глюкоза','Инсулин','Гликированный гемоглобин','Лептин'], imaging:['УЗИ поджелудочной железы'], docs:['Эндокринолог'], p:'med'},
+cravings: {tests:['Глюкоза','Инсулин','Магний','Хром'], imaging:['УЗИ поджелудочной железы'], docs:['Эндокринолог','Нутрициолог'], p:'med'},
+edema: {tests:['Общий белок, Альбумин','ТТГ','Натрий, Калий','Креатинин, Мочевина'], imaging:['УЗИ почек и надпочечников','ЭхоКГ (УЗИ сердца)','УЗДГ вен нижних конечностей'], docs:['Терапевт','Кардиолог','Нефролог'], p:'high'},
+cycle: {tests:['ФСГ, ЛГ','Эстрадиол','Прогестерон','Тестостерон','ТТГ','Пролактин','Ферритин'], imaging:['УЗИ органов малого таза','УЗИ щитовидной железы','Маммография (по возрасту)'], docs:['Гинеколог','Эндокринолог'], p:'high'},
+pms: {tests:['Прогестерон','Эстрадиол','ТТГ','Магний','Витамин В6'], imaging:['УЗИ органов малого таза','УЗИ щитовидной железы'], docs:['Гинеколог','Эндокринолог'], p:'med'},
+libido: {tests:['Тестостерон свободный','ДГЭА-С','Эстрадиол','ТТГ','Пролактин'], imaging:['УЗИ органов малого таза (у женщин)','УЗИ предстательной железы (у мужчин)','УЗИ надпочечников'], docs:['Эндокринолог','Гинеколог/Андролог'], p:'med'},
+hot_flashes: {tests:['ФСГ, ЛГ','Эстрадиол','ТТГ'], imaging:['УЗИ органов малого таза','УЗИ щитовидной железы','Денситометрия (оценка плотности костей)'], docs:['Гинеколог','Эндокринолог'], p:'high'},
+palpitations: {tests:['ТТГ, Т3 св., Т4 св.','Ферритин','Магний','Калий'], imaging:['ЭКГ','Холтеровское мониторирование (при стойких симптомах)','ЭхоКГ','УЗИ щитовидной железы'], docs:['Кардиолог','Эндокринолог'], p:'high'},
+high_bp: {tests:['Натрий, Калий','Кортизол','Липидный профиль','Гомоцистеин'], imaging:['Суточный мониторинг АД','ЭхоКГ','УЗИ почек и надпочечников','УЗДГ сосудов шеи'], docs:['Кардиолог','Эндокринолог'], p:'high'},
+varicose: {tests:['Липидный профиль','Гомоцистеин','Фибриноген','Коагулограмма'], imaging:['УЗДГ вен нижних конечностей','УЗДГ сосудов шеи'], docs:['Флеболог','Кардиолог'], p:'med'},
+joint_pain: {tests:['СРБ','СОЭ','Мочевая кислота','Витамин D','Ревматоидный фактор'], imaging:['Рентген/УЗИ суставов','МРТ суставов (при необходимости)'], docs:['Ревматолог','Терапевт'], p:'high'},
+back_pain: {tests:['Витамин D','Кальций, Фосфор','Магний','СРБ'], imaging:['МРТ/Рентген позвоночника','Денситометрия (оценка плотности костей)'], docs:['Невролог','Ортопед'], p:'med'},
+cramps: {tests:['Магний','Калий','Кальций ионизированный','Витамин D'], imaging:['УЗИ щитовидной железы','ЭНМГ (при стойких симптомах)'], docs:['Терапевт','Невролог'], p:'high'}
+};
+
+function buildCategories(){
+var container = document.getElementById('categories');
+container.innerHTML = '';
+for(var catId in symptomData){
+var cat = symptomData[catId];
+var div = document.createElement('div');
+div.className = 'category';
+var html = '<h3>'+cat.title+'</h3>';
+for(var i=0;i<cat.symptoms.length;i++){
+var s = cat.symptoms[i];
+html += '<div class="symptom-item"><input type="checkbox" id="sym-'+s.id+'" value="'+s.id+'"><label for="sym-'+s.id+'">'+s.name+'</label></div>';
+}
+div.innerHTML = html;
+container.appendChild(div);
+}
+}
+
+function generateReport(){
+var selected = [];
+for(var catId in symptomData){
+var cat = symptomData[catId];
+for(var i=0;i<cat.symptoms.length;i++){
+var cb = document.getElementById('sym-'+cat.symptoms[i].id);
+if(cb && cb.checked) selected.push(cat.symptoms[i].id);
+}
+}
+var reportDiv = document.getElementById('report-section');
+var contentDiv = document.getElementById('report-content');
+var dateDiv = document.getElementById('report-date');
+
+if(selected.length === 0){
+contentDiv.innerHTML = '<div class="report-block" style="background:#fff3e0;border-color:#f57c00"><h3>⚠️ Не выбрано ни одного симптома</h3><p>Пожалуйста, отметьте хотя бы один симптом из списка выше, чтобы получить рекомендации.</p></div>';
+reportDiv.classList.add('show');
+return;
+}
+
+var now = new Date();
+dateDiv.textContent = '📅 Дата формирования: ' + now.toLocaleDateString('ru-RU') + ' ' + now.toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+
+var allTests = {high:[], med:[]};
+var allImaging = [];
+var allDocs = {};
+
+for(var i=0;i<selected.length;i++){
+var symId = selected[i];
+var r = recs[symId];
+if(r){
+for(var j=0;j<r.tests.length;j++){
+if(r.p==='high' && allTests.high.indexOf(r.tests[j])===-1) allTests.high.push(r.tests[j]);
+else if(allTests.med.indexOf(r.tests[j])===-1) allTests.med.push(r.tests[j]);
+}
+if(r.imaging){
+for(var k=0;k<r.imaging.length;k++){
+if(allImaging.indexOf(r.imaging[k])===-1) allImaging.push(r.imaging[k]);
+}
+}
+for(var m=0;m<r.docs.length;m++){
+allDocs[r.docs[m]] = (allDocs[r.docs[m]] || 0) + 1;
+}
+}
+}
+
+var sortedDocs = Object.keys(allDocs).sort(function(a,b){return allDocs[b]-allDocs[a];});
+
+var html = '<div class="report-block"><h3>🧪 Рекомендованные лабораторные анализы</h3>';
+if(allTests.high.length > 0){
+html += '<p class="priority-high">⭐ Приоритетные (сдать в первую очередь):</p><ul>';
+for(var i=0;i<allTests.high.length;i++) html += '<li>'+allTests.high[i]+'</li>';
+html += '</ul>';
+}
+if(allTests.med.length > 0){
+html += '<p class="priority-med">🔹 Дополнительные (уточняющие):</p><ul>';
+for(var i=0;i<allTests.med.length;i++) html += '<li>'+allTests.med[i]+'</li>';
+html += '</ul>';
+}
+html += '</div>';
+
+if(allImaging.length > 0){
+html += '<div class="report-block imaging-box"><h3>📷 Инструментальная диагностика</h3>';
+html += '<p style="margin-bottom:12px;color:#6a1b9a"><i>Данные исследования назначаются врачом при наличии клинических показаний:</i></p><ul>';
+for(var i=0;i<allImaging.length;i++) html += '<li>'+allImaging[i]+'</li>';
+html += '</ul></div>';
+}
+
+html += '<div class="report-block doctor-box"><h3>👨‍⚕️ К каким специалистам обратиться:</h3><ul>';
+for(var i=0;i<sortedDocs.length;i++) html += '<li><b>'+sortedDocs[i]+'</b></li>';
+html += '</ul></div>';
+
+html += '<div class="report-block"><h3>💡 Как подготовиться к сдаче анализов</h3><ul><li>Сдавать строго натощак (8-14 часов голода).</li><li>За сутки исключить алкоголь, интенсивные тренировки, жирную пищу.</li><li>Избегать стресса и недосыпа накануне.</li><li>Утром перед забором крови отдохнуть 10-20 минут.</li><li>Лекарства принимать только после сдачи анализа (если иное не назначено врачом).</li></ul></div>';
+
+html += '<div class="report-block explanation-box"><h3>📌 Важное пояснение</h3><p>Ваши симптомы могут быть связаны с различными функциональными дисбалансами: дефицитами нутриентов, нарушением работы щитовидной железы, надпочечников, пищеварительной системы, воспалительными процессами. Лабораторные анализы позволяют выявить эти дисбалансы на ранней стадии, а инструментальные исследования — уточнить состояние органов и систем. Комплексный подход даёт наиболее полную картину и позволяет подобрать эффективную стратегию коррекции.</p></div>';
+
+contentDiv.innerHTML = html;
+reportDiv.classList.add('show');
+reportDiv.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function clearAll(){
+var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+for(var i=0;i<checkboxes.length;i++) checkboxes[i].checked = false;
+document.getElementById('report-section').classList.remove('show');
+window.scrollTo({top:0, behavior:'smooth'});
+}
+
+buildCategories();
+</script>
+
+<script>
+// Интеграция "Симптомы → Анализы": делаем названия анализов кликабельными
+window.addEventListener('DOMContentLoaded', function() {
+  var analysisLinks = {
+    'ферритин': 'ferritin.html',
+    'витамин d': 'vitamin-d.html',
+    '25-oh': 'vitamin-d.html',
+    'ттг': 'hormones.html',
+    'т3': 'hormones.html',
+    'т4': 'hormones.html',
+    'глюкоза': 'biochem-carbs.html',
+    'инсулин': 'biochem-carbs.html',
+    'homa-ir': 'medical-calculators.html',
+    'холестерин': 'biochem-lipids.html',
+    'лпнп': 'biochem-lipids.html',
+    'лпвп': 'biochem-lipids.html',
+    'триглицериды': 'biochem-lipids.html',
+    'алт': 'biochem-liver.html',
+    'аст': 'biochem-liver.html',
+    'ггтп': 'biochem-liver.html',
+    'билирубин': 'biochem-liver.html',
+    'креатинин': 'biochem-protein.html',
+    'мочевина': 'biochem-protein.html',
+    'мочевая кислота': 'biochem-protein.html',
+    'общий белок': 'biochem-protein.html',
+    'альбумин': 'biochem-protein.html',
+    'срб': 'biochem-inflammation.html',
+    'с-реактивный белок': 'biochem-inflammation.html',
+    'гомоцистеин': 'homocysteine.html',
+    'в12': 'homocysteine.html',
+    'витамин в12': 'homocysteine.html',
+    'в9': 'homocysteine.html',
+    'фолиевая кислота': 'homocysteine.html',
+    'оак': 'OAK.html',
+    'общий анализ крови': 'OAK.html',
+    'гемоглобин': 'OAK.html',
+    'лейкоциты': 'OAK.html',
+    'тромбоциты': 'OAK.html',
+    'соэ': 'biochem-inflammation.html',
+    'кальций': 'biochem-electrolytes.html',
+    'магний': 'biochem-electrolytes.html',
+    'натрий': 'biochem-electrolytes.html',
+    'калий': 'biochem-electrolytes.html',
+    'тестостерон': 'hormones.html',
+    'эстрадиол': 'hormones.html',
+    'прогестерон': 'hormones.html',
+    'пролактин': 'hormones.html',
+    'фсг': 'hormones.html',
+    'лг': 'hormones.html',
+    'пса': 'checkup-men.html',
+    'кортизол': 'hormones.html',
+    'дгэа-с': 'hormones.html',
+    'копрограмма': 'coprogram.html',
+    'оам': 'OAM.html',
+    'общий анализ мочи': 'OAM.html'
+  };
+ 
+  // Ищем все элементы с результатами (обычно это div, p, li с текстом)
+  var resultElements = document.querySelectorAll('.result, .recommendation, .analysis-list, .symptom-result, p, li, div');
+ 
+  for (var i = 0; i < resultElements.length; i++) {
+    var el = resultElements[i];
+    var text = el.innerHTML;
+    var modified = false;
+   
+    // Заменяем названия анализов на ссылки (регистронезависимо)
+    for (var analysis in analysisLinks) {
+      var regex = new RegExp('\\\\b(' + analysis + ')\\\\b', 'gi');
+      if (regex.test(text)) {
+        text = text.replace(regex, '<a href="' + analysisLinks[analysis] + '" style="color:#1a5490;font-weight:bold;text-decoration:underline;"></a>');
+        modified = true;
+      }
+    }
+   
+    if (modified) {
+      el.innerHTML = text;
+    }
+  }
+ 
+  console.log('✅ Интеграция "Симптомы → Анализы" активирована!');
+});
+</script>
+
+<script>
+// Интеграция "Симптомы → Анализы": делаем названия анализов кликабельными
+window.addEventListener('DOMContentLoaded', function() {
+  var analysisLinks = {
+    'ферритин': 'ferritin.html',
+    'витамин d': 'vitamin-d.html',
+    '25-oh': 'vitamin-d.html',
+    'ттг': 'hormones.html',
+    'т3': 'hormones.html',
+    'т4': 'hormones.html',
+    'глюкоза': 'biochem-carbs.html',
+    'инсулин': 'biochem-carbs.html',
+    'homa-ir': 'medical-calculators.html',
+    'холестерин': 'biochem-lipids.html',
+    'лпнп': 'biochem-lipids.html',
+    'лпвп': 'biochem-lipids.html',
+    'триглицериды': 'biochem-lipids.html',
+    'алт': 'biochem-liver.html',
+    'аст': 'biochem-liver.html',
+    'ггтп': 'biochem-liver.html',
+    'билирубин': 'biochem-liver.html',
+    'креатинин': 'biochem-protein.html',
+    'мочевина': 'biochem-protein.html',
+    'мочевая кислота': 'biochem-protein.html',
+    'общий белок': 'biochem-protein.html',
+    'альбумин': 'biochem-protein.html',
+    'срб': 'biochem-inflammation.html',
+    'с-реактивный белок': 'biochem-inflammation.html',
+    'гомоцистеин': 'homocysteine.html',
+    'в12': 'homocysteine.html',
+    'витамин в12': 'homocysteine.html',
+    'в9': 'homocysteine.html',
+    'фолиевая кислота': 'homocysteine.html',
+    'оак': 'OAK.html',
+    'общий анализ крови': 'OAK.html',
+    'гемоглобин': 'OAK.html',
+    'лейкоциты': 'OAK.html',
+    'тромбоциты': 'OAK.html',
+    'соэ': 'biochem-inflammation.html',
+    'кальций': 'biochem-electrolytes.html',
+    'магний': 'biochem-electrolytes.html',
+    'натрий': 'biochem-electrolytes.html',
+    'калий': 'biochem-electrolytes.html',
+    'тестостерон': 'hormones.html',
+    'эстрадиол': 'hormones.html',
+    'прогестерон': 'hormones.html',
+    'пролактин': 'hormones.html',
+    'фсг': 'hormones.html',
+    'лг': 'hormones.html',
+    'пса': 'checkup-men.html',
+    'кортизол': 'hormones.html',
+    'дгэа-с': 'hormones.html',
+    'копрограмма': 'coprogram.html',
+    'оам': 'OAM.html',
+    'общий анализ мочи': 'OAM.html'
+  };
+ 
+  // Ищем все элементы с результатами (обычно это div, p, li с текстом)
+  var resultElements = document.querySelectorAll('.result, .recommendation, .analysis-list, .symptom-result, p, li, div');
+ 
+  for (var i = 0; i < resultElements.length; i++) {
+    var el = resultElements[i];
+    var text = el.innerHTML;
+    var modified = false;
+   
+    // Заменяем названия анализов на ссылки (регистронезависимо)
+    for (var analysis in analysisLinks) {
+      var regex = new RegExp('\\\\b(' + analysis + ')\\\\b', 'gi');
+      if (regex.test(text)) {
+        text = text.replace(regex, '<a href="' + analysisLinks[analysis] + '" style="color:#1a5490;font-weight:bold;text-decoration:underline;"></a>');
+        modified = true;
+      }
+    }
+   
+    if (modified) {
+      el.innerHTML = text;
+    }
+  }
+ 
+  console.log('✅ Интеграция "Симптомы → Анализы" активирована!');
+});
+</script>
+<script src="symptoms-links.js"></script>
+<script src="premium.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Калькуляторы здоровья — Павел Пилипенко</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; line-height: 1.7; color: #2c3e50; background: #f9f7f4; }
+header { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 20px 0; }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 16px; }
+nav a:hover { opacity: 0.8; }
+.hero { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 80px 20px; text-align: center; }
+.hero h1 { font-size: 42px; color: #2e7d32; margin-bottom: 15px; }
+.hero p { font-size: 20px; color: #5a6c5d; max-width: 700px; margin: 0 auto; }
+.container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+.calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+.calc-card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #2e7d32; transition: transform 0.3s; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+.calc-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+.calc-card .icon { font-size: 48px; margin-bottom: 15px; }
+.calc-card h3 { font-size: 22px; color: #2e7d32; margin-bottom: 12px; }
+.calc-card p { font-size: 15px; color: #5a6c5d; margin-bottom: 20px; flex-grow: 1; }
+.calc-card .arrow { font-size: 18px; color: #2e7d32; font-weight: bold; }
+.intro { background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #2e7d32; margin-bottom: 40px; }
+.intro h2 { font-size: 28px; color: #2e7d32; margin-bottom: 15px; }
+.intro p { font-size: 17px; color: #5a6c5d; margin-bottom: 10px; }
+.warning { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 20px; border-radius: 10px; margin-top: 40px; }
+.warning strong { color: #1b5e20; }
+.warning p { color: #1b5e20; font-size: 15px; }
+footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; font-size: 14px; }
+
+<style>
+.floating-buttons { position: fixed; right: 20px; bottom: 100px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
+
+.floating-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(255,255,255,0.3); transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s; }
+.floating-btn:hover::before { width: 300px; height: 300px; }
+.floating-btn:hover { transform: scale(1.15) translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.35); animation: none; }
+.floating-btn .icon { position: relative; z-index: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+.floating-btn 
+.floating-btn:hover 
+
+
+.btn-email { background: linear-gradient(135deg, #ea4335 0%, #fbbc05 100%); }
+@keyframes pulse { 0%, 100% { box-shadow: 0 6px 20px rgba(0,0,0,0.25); } 50% { box-shadow: 0 6px 20px rgba(0,0,0,0.25), 0 0 0 10px rgba(255,255,255,0.1); } }
+</style></style>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="blog.html">Блог</a>
+<a href="calculators.html">Калькуляторы</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero"><h1>Калькуляторы здоровья</h1><p>Бесплатные инструменты для контроля вашего здоровья и подбора ароматерапии</p></section>
+<div class="container">
+<div class="intro">
+<h2>Зачем нужны калькуляторы</h2>
+<p>Эти инструменты помогут вам получить объективные данные о вашем теле и здоровье. Все расчёты основаны на научных формулах и рекомендациях ВОЗ.</p>
+<p>Особое внимание уделите калькулятору концентрации эфирных масел — он поможет безопасно использовать масла дома.</p>
+</div>
+<div class="calc-grid">
+<a href="calc-bmi.html" class="calc-card">
+<div class="icon">⚖️ </div>
+<h3>Индекс массы тела (ИМТ)</h3>
+<p>Оцените, соответствует ли ваш вес норме по стандартам ВОЗ. Быстрый и простой расчёт.</p>
+<span class="arrow">Рассчитать →</span>
+</a>
+<a href="calc-water.html" class="calc-card">
+<div class="icon">💧 </div>
+<h3>Норма воды в день</h3>
+<p>Узнайте, сколько чистой воды нужно пить именно вам с учётом веса и активности.</p>
+<span class="arrow">Рассчитать →</span>
+</a>
+<a href="calc-calories.html" class="calc-card">
+<div class="icon"></div>
+<h3>Норма калорий (BMR/TDEE)</h3>
+<p>Базовый обмен веществ и суточная норма калорий с учётом уровня активности.</p>
+<span class="arrow">Рассчитать →</span>
+</a>
+<a href="calc-ideal-weight.html" class="calc-card">
+<div class="icon">🎯 </div>
+<h3>Идеальный вес</h3>
+
+<p>Расчёт по формулам Девайна, Робинсона и Миллера. Найдите свой здоровый диапазон.</p>
+<span class="arrow">Рассчитать →</span>
+</a>
+<a href="calc-sleep.html" class="calc-card">
+<div class="icon"></div>
+<h3>Циклы сна</h3>
+<p>Когда лечь или во сколько встать, чтобы проснуться бодрым. Расчёт по 90-минутным циклам.</p>
+<span class="arrow">Рассчитать →</span>
+</a>
+<a href="calc-oils.html" class="calc-card">
+<div class="icon">🌿 </div>
+<h3>Концентрация эфирных масел</h3>
+<p>Уникальный калькулятор для ароматерапии. Безопасные пропорции для лица, тела и детей.</p>
+<span class="arrow">Рассчитать →</span>
+</a>
+</div>
+<div class="warning">
+<strong>Важно:</strong>
+<p>Все калькуляторы носят информационный характер и не заменяют консультацию врача. Результаты — ориентир, а не диагноз. При хронических заболеваниях, беременности и приёме лекарств необходима консультация специалиста.</p>
+</div>
+</div>
+<footer>
+    <p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p>
+    <p style="margin-top: 15px; font-size: 13px; opacity: 0.8;">
+        Методология основана на знаниях 
+        <a href="https://aromaschool.ru" target="_blank" style="color: #81c784; text-decoration: underline;">Школы ароматерапии и парфюмерии «Астарта»</a> 
+        и стандартах Международной ассоциации ароматерапевтов.
+    </p>
+    <p style="font-size: 13px; opacity: 0.8;">
+        Рекомендуемые натуральные эфирные масла и аксессуары: 
+        <a href="https://aromaschool-shop.ru" target="_blank" style="color: #ffb74d; text-decoration: underline;">Магазин «Астарта»</a>
+    </p>
+</footer>
+<button id="backToTop" title="Наверх">↑</button>
+<script>
+const backToTopBtn = document.getElementById('backToTop');
+window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+};
+backToTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+</script>
+<div class="floating-buttons">
+    
+    
+    
+</div>
+<script>
+// Добавляем карточку-ссылку на медицинские калькуляторы
+window.addEventListener('DOMContentLoaded', function() {
+  // Ищем контейнер с калькуляторами (обычно это grid или flex-контейнер)
+  var containers = document.querySelectorAll('.calc-grid, .calculators-grid, .cards, .grid, .container > div');
+  var targetContainer = null;
+ 
+  for (var i = 0; i < containers.length; i++) {
+    if (containers[i].children.length >= 4) {
+      targetContainer = containers[i];
+      break;
+    }
+  }
+ 
+  if (targetContainer) {
+    var newCard = document.createElement('a');
+    newCard.href = 'medical-calculators.html';
+    newCard.style.cssText = 'display:block;background:#fff;border:2px solid #2e7d32;border-radius:12px;padding:25px;text-decoration:none;color:inherit;transition:all 0.3s;border-left:5px solid #1a5490;';
+    newCard.innerHTML = '<h3 style="color:#1a5490;margin-bottom:10px;display:flex;align-items:center;gap:10px"><span style="font-size:2em">🧮</span> Медицинские калькуляторы</h3><p style="color:#666;font-size:0.95em;margin-bottom:15px">HOMA-IR, СКФ, КА, NLR — расчёт по результатам лабораторных анализов.</p><div style="font-weight:bold;color:#1a5490">Перейти →</div>';
+    newCard.onmouseover = function() { this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.1)'; this.style.transform = 'translateY(-2px)'; };
+    newCard.onmouseout = function() { this.style.boxShadow = 'none'; this.style.transform = 'none'; };
+    targetContainer.appendChild(newCard);
+  }
+});
+</script>
+<script src="premium.js"></script>
+</body>
+</html>
+
+
+
+
+

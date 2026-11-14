@@ -1,0 +1,619 @@
+﻿/* ========================================
+   PREMIUM VISUAL UPGRADE
+   Павел Лилипенко - Клиническая ароматерапия
+   Версия 1.0
+   ======================================== */
+
+/* --- 1. БАЗОВЫЕ УЛУЧШЕНИЯ --- */
+
+/* Плавный скролл по всей странице */
+html {
+  scroll-behavior: smooth !important;
+}
+
+/* Красивый цвет выделения текста */
+::selection {
+  background: #1a5490 !important;
+  color: #fff !important;
+}
+::-moz-selection {
+  background: #1a5490 !important;
+  color: #fff !important;
+}
+
+/* Улучшенный скроллбар */
+::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+::-webkit-scrollbar-track {
+  background: #f0f4f8 !important;
+  border-radius: 10px !important;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1a5490, #2a9d8f) !important;
+  border-radius: 10px !important;
+  border: 2px solid #f0f4f8 !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2a9d8f, #1a5490) !important;
+}
+
+/* --- 2. АНИМАЦИИ ПОЯВЛЕНИЯ --- */
+
+/* Класс для элементов, которые должны анимироваться */
+.animate-on-scroll {
+  opacity: 0 !important;
+  transform: translateY(30px) !important;
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Задержка для stagger-эффекта (поочерёдное появление) */
+.animate-on-scroll:nth-child(1) { transition-delay: 0.05s !important; }
+.animate-on-scroll:nth-child(2) { transition-delay: 0.1s !important; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.15s !important; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.2s !important; }
+.animate-on-scroll:nth-child(5) { transition-delay: 0.25s !important; }
+.animate-on-scroll:nth-child(6) { transition-delay: 0.3s !important; }
+
+/* --- 3. УЛУЧШЕННЫЕ КАРТОЧКИ --- */
+
+/* Основные карточки (услуги, чекапы, калькуляторы) */
+.card, .checkup-card, .calc-card, .service-card, .feature-card {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05),
+              0 1px 3px rgba(0,0,0,0.08) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Эффект "подъёма" при наведении */
+.card:hover, .checkup-card:hover, .calc-card:hover,
+.service-card:hover, .feature-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 40px rgba(26,84,144,0.15),
+              0 8px 16px rgba(0,0,0,0.1) !important;
+}
+
+/* Градиентная полоска сверху карточки */
+.card::before, .checkup-card::before, .calc-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, #1a5490, #2a9d8f, #1a5490) !important;
+  background-size: 200% 100% !important;
+  opacity: 0 !important;
+  transition: opacity 0.4s ease !important;
+}
+
+.card:hover::before, .checkup-card:hover::before, .calc-card:hover::before {
+  opacity: 1 !important;
+  animation: gradientShift 2s ease infinite !important;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* --- 4. КНОПКИ С МИКРО-АНИМАЦИЕЙ --- */
+
+.btn, button, .calc-btn {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.btn:hover, button:hover, .calc-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(26,84,144,0.3) !important;
+}
+
+.btn:active, button:active, .calc-btn:active {
+  transform: translateY(0) scale(0.98) !important;
+  box-shadow: 0 2px 8px rgba(26,84,144,0.2) !important;
+}
+
+/* Эффект "волны" при клике на кнопку */
+.btn::after, button::after, .calc-btn::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: rgba(255,255,255,0.3) !important;
+  border-radius: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  transition: width 0.6s ease, height 0.6s ease !important;
+}
+
+.btn:active::after, button:active::after, .calc-btn:active::after {
+  width: 300px !important;
+  height: 300px !important;
+}
+
+/* --- 5. ЗАГОЛОВКИ С ГРАДИЕНТОМ --- */
+
+h1 {
+  background: linear-gradient(135deg, #1a5490 0%, #2a9d8f 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-fill-color: transparent !important;
+  animation: titleFadeIn 1s ease-out !important;
+}
+
+@keyframes titleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Подчёркивание заголовков h2 */
+h2 {
+  position: relative !important;
+  padding-bottom: 12px !important;
+}
+
+h2::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 60px !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, #1a5490, #2a9d8f) !important;
+  border-radius: 2px !important;
+  transition: width 0.4s ease !important;
+}
+
+h2:hover::after {
+  width: 100px !important;
+}
+
+/* --- 6. УЛУЧШЕННЫЕ ПОЛЯ ВВОДА --- */
+
+input, select, textarea {
+  transition: all 0.3s ease !important;
+  border: 2px solid #e0e0e0 !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #2a9d8f !important;
+  box-shadow: 0 0 0 4px rgba(42,157,143,0.1) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Анимация placeholder */
+input::placeholder, textarea::placeholder {
+  transition: opacity 0.3s ease !important;
+  color: #aaa !important;
+}
+
+input:focus::placeholder, textarea:focus::placeholder {
+  opacity: 0.5 !important;
+}
+
+/* --- 7. ИНФОРМАЦИОННЫЕ БЛОКИ --- */
+
+/* Цитата-бокс с пульсацией */
+.quote-box {
+  position: relative !important;
+  overflow: hidden !important;
+  animation: quoteGlow 4s ease-in-out infinite !important;
+}
+
+@keyframes quoteGlow {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(26,84,144,0.3) !important;
+  }
+  50% {
+    box-shadow: 0 8px 30px rgba(42,157,143,0.5) !important;
+  }
+}
+
+/* Бегущий блик по цитате */
+.quote-box::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent) !important;
+  animation: shimmer 3s infinite !important;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Информационные блоки с иконками */
+.info-box, .target-box, .alert-box, .prep-box, .context-box, .warn {
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+.info-box:hover, .target-box:hover, .alert-box:hover,
+.prep-box:hover, .context-box:hover {
+  transform: translateX(5px) !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08) !important;
+}
+
+/* --- 8. ТАБЛИЦЫ --- */
+
+table {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+}
+
+table thead {
+  background: linear-gradient(135deg, #1a5490 0%, #2a9d8f 100%) !important;
+}
+
+table tbody tr {
+  transition: all 0.2s ease !important;
+}
+
+table tbody tr:hover {
+  background: #f8f9fa !important;
+  transform: scale(1.005) !important;
+}
+
+/* --- 9. СТАТУСЫ (🟢 🟡 🔴) --- */
+
+.status {
+  transition: all 0.3s ease !important;
+  animation: statusPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+@keyframes statusPop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.status:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
+
+/* --- 10. ССЫЛКИ --- */
+
+a {
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+a:not(.btn):not(.card):not(.checkup-card):not(.calc-btn):hover {
+  color: #2a9d8f !important;
+  transform: translateX(3px) !important;
+}
+
+/* Подчёркивание ссылок при наведении */
+a:not(.btn):not(.card):not(.checkup-card)::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -2px !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 2px !important;
+  background: #2a9d8f !important;
+  transition: width 0.3s ease !important;
+}
+
+a:not(.btn):not(.card):not(.checkup-card):hover::after {
+  width: 100% !important;
+}
+
+/* --- 11. МОДАЛЬНЫЕ ОКНА --- */
+
+.tooltip-popup {
+  animation: modalSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%) scale(0.95) !important;
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+}
+
+.tooltip-overlay {
+  animation: overlayFadeIn 0.3s ease !important;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0 !important; }
+  to { opacity: 1 !important; }
+}
+
+/* --- 12. ИКОНКИ И ЭМОДЗИ --- */
+
+.card-icon, .icon {
+  display: inline-block !important;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+.card:hover .card-icon,
+.checkup-card:hover .icon,
+.calc-card:hover .icon {
+  transform: scale(1.2) rotate(5deg) !important;
+}
+
+/* --- 13. РАЗДЕЛИТЕЛИ --- */
+
+hr, .section-divider {
+  border: none !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, #1a5490, #2a9d8f, transparent) !important;
+  margin: 30px 0 !important;
+  opacity: 0.3 !important;
+}
+
+/* --- 14. НАВИГАЦИЯ (меню на главной) --- */
+
+nav a, .menu a, header nav a {
+  position: relative !important;
+  transition: all 0.3s ease !important;
+}
+
+nav a::before, .menu a::before {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  width: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #1a5490, #2a9d8f) !important;
+  transition: all 0.3s ease !important;
+  transform: translateX(-50%) !important;
+}
+
+nav a:hover::before, .menu a:hover::before {
+  width: 80% !important;
+}
+
+/* --- 15. ТЕГИ (Доступно / В разработке) --- */
+
+.tag, .card-tag {
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+}
+
+.tag:hover, .card-tag:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
+
+/* --- 16. ИСТОРИЯ ИЗМЕРЕНИЙ --- */
+
+.history-item {
+  transition: all 0.3s ease !important;
+  border-left: 3px solid transparent !important;
+}
+
+.history-item:hover {
+  border-left-color: #2a9d8f !important;
+  transform: translateX(5px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+}
+
+/* --- 17. АДАПТИВНОСТЬ АНИМАЦИЙ --- */
+
+/* На мобильных устройствах отключаем сложные анимации для производительности */
+@media (max-width: 768px) {
+  .animate-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+ 
+  .quote-box::before {
+    animation: none !important;
+  }
+ 
+  .quote-box {
+    animation: none !important;
+  }
+ 
+  .card:hover, .checkup-card:hover, .calc-card:hover {
+    transform: none !important;
+  }
+}
+
+/* Уважение к настройкам пользователя об уменьшении анимаций */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+ 
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- 18. ПЛАВНОЕ ПОЯВЛЕНИЕ СТРАНИЦЫ --- */
+
+body {
+  animation: pageLoad 0.6s ease-out !important;
+}
+
+@keyframes pageLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- 19. КНОПКА "НАЗАД" --- */
+
+.back-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.back-link:hover {
+  transform: translateX(-5px) !important;
+  color: #2a9d8f !important;
+}
+
+.back-link::before {
+  content: '←' !important;
+  transition: transform 0.3s ease !important;
+}
+
+.back-link:hover::before {
+  transform: translateX(-5px) !important;
+}
+
+/* --- 20. ДОПОЛНИТЕЛЬНЫЕ ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ --- */
+
+/* Тонкая линия под заголовком страницы */
+h1 + .subtitle {
+  position: relative !important;
+  padding-bottom: 20px !important;
+}
+
+h1 + .subtitle::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 80px !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, #1a5490, #2a9d8f) !important;
+  border-radius: 2px !important;
+}
+
+/* Пульсирующая точка для "В разработке" */
+.tag.soon::before {
+  content: '' !important;
+  display: inline-block !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: #e65100 !important;
+  border-radius: 50% !important;
+  margin-right: 6px !important;
+  animation: pulse 1.5s ease-in-out infinite !important;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
+}
+
+/* Доступно - зелёная точка */
+.tag:not(.soon)::before {
+  content: '' !important;
+  display: inline-block !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: #2e7d32 !important;
+  border-radius: 50% !important;
+  margin-right: 6px !important;
+}
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #2d5016, #4a7c23);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+nav a:not(.dropbtn) {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background 0.3s;
+    white-space: nowrap;
+}
+nav a:not(.dropbtn):hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* ===== ВЫПАДАЮЩЕЕ МЕНЮ ===== */
+
+
+.dropbtn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+
+
+
+.dropdown:hover 
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    nav a:not(.dropbtn) {
+        text-align: center;
+    }
+    
+    
+    
+    
+    
+}
+/* ===== КОНЕЦ НАВИГАЦИИ ===== */
+

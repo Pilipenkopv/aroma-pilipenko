@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блог — Павел Пилипенко, ароматерапевт</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+<style>
+.articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.article-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+.article-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+.article-image { height: 200px; background: linear-gradient(135deg, #4a7c23, #2d5016); display: flex; align-items: center; justify-content: center; font-size: 64px; }
+.article-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+.article-tag { display: inline-block; background: #fff3e0; color: #f57c00; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: bold; margin-bottom: 12px; text-transform: uppercase; }
+.article-card h3 { font-size: 22px; color: #2d5016; margin-bottom: 12px; line-height: 1.3; }
+.article-card p { font-size: 15px; color: #5a6c5d; line-height: 1.6; margin-bottom: 15px; flex-grow: 1; }
+.article-meta { font-size: 13px; color: #7f8c8d; }
+</style>
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="blog.html">Блог</a>
+<a href="calculators.html">Калькуляторы</a>
+<a href="where-to-buy.html">Где купить</a>
+<a href="faq.html">Вопросы</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 80px 20px; text-align: center;">
+<h1 style="font-size: 42px; color: #2e7d32; margin-bottom: 15px;">Блог</h1>
+<p style="font-size: 20px; color: #5a6c5d;">Статьи об ароматерапии, здоровье и натуральной поддержке организма</p>
+</section>
+<div class="container">
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+<div class="articles-grid">
+
+<a href="blog-autumn.html" class="article-card">
+<div class="article-image">🍂 </div>
+<div class="article-content">
+<span class="article-tag">Осень</span>
+<h3>Как укрепить иммунитет осенью с помощью эфирных масел</h3>
+<p>Осень — сезон простуд и авитаминоза. Узнайте, какие эфирные масла помогут защитить организм от вирусов, поднять настроение и справиться с осенней хандрой.</p>
+<div class="article-meta">Читать 5 минут</div>
+</div>
+</a>
+
+<a href="blog-winter.html" class="article-card">
+<div class="article-image">❄️ </div>
+<div class="article-content">
+<span class="article-tag">Зима</span>
+<h3>Зимняя аптечка: эфирные масла при простуде и гриппе</h3>
+<p>Зима — время респираторных инфекций. Разбираем проверенные арома-рецепты для профилактики и поддержки организма при первых признаках болезни.</p>
+<div class="article-meta">Читать 6 минут</div>
+</div>
+</a>
+
+<a href="blog-spring.html" class="article-card">
+<div class="article-image">🌸 </div>
+<div class="article-content">
+<span class="article-tag">Весна</span>
+<h3>Весенний детокс и борьба с авитаминозом: роль ароматерапии</h3>
+<p>Весной организм истощён после зимы. Как помочь ему восстановиться, очистить печень и поднять энергию с помощью эфирных масел и базовых масел.</p>
+<div class="article-meta">Читать 5 минут</div>
+</div>
+</a>
+
+<a href="blog-summer.html" class="article-card">
+<div class="article-image">☀️ </div>
+<div class="article-content">
+<span class="article-tag">Лето</span>
+<h3>Летний уход: защита от солнца, комаров и обезвоживания</h3>
+<p>Лето — время активного солнца и насекомых. Разбираем, какие эфирные масла помогут защитить кожу, отпугнуть комаров и сохранить водный баланс.</p>
+<div class="article-meta">Читать 5 минут</div>
+</div>
+</a>
+
+<a href="blog-magnesium.html" class="article-card">
+
+<div class="article-image" style="background: linear-gradient(135deg, #5e35b1, #7e57c2);">🧪 </div>
+<div class="article-content">
+
+<h3>Формы магния: какой выбрать и когда принимать</h3>
+<p>Гид по 9 формам магния: цитрат, глицинат, малат, треонат, таурат и другие. Когда принимать, с чем сочетать и почему дозировку назначает только врач.</p>
+<div class="article-meta">Читать 10 минут</div>
+</div>
+</a>
+
+<a href="blog-water.html" class="article-card">
+<div class="article-image" style="background: linear-gradient(135deg, #0288d1, #29b6f6);">💧 </div>
+<div class="article-content">
+<span class="article-tag" style="background: #e1f5fe; color: #0288d1;">Здоровье</span>
+<h3>Водный баланс: сколько воды нужно пить на самом деле</h3>
+<p>Разбираем мифы о 8 стаканах воды, как рассчитать свою индивидуальную норму, признаки обезвоживания и как правильно пить воду в течение дня.</p>
+<div class="article-meta">Читать 8 минут</div>
+</div>
+</a>
+<a href="blog-bristol.html" class="article-card">
+<div class="article-image" style="background: linear-gradient(135deg, #8d6e63, #a1887f); display: flex; align-items: center; justify-content: center; font-size: 70px;">🩺 </div>
+<div class="article-content">
+<span class="article-tag" style="background: #efebe9; color: #5d4037;">Здоровье</span>
+<h3>Бристольская шкала: что говорит о вашем здоровье форма стула</h3>
+<p>Подробный разбор 7 типов Бристольской шкалы, признаки нормы и отклонений, практические рекомендации по питанию и образу жизни. Как вести дневник пищеварения и когда срочно идти к врачу.</p>
+<div class="article-meta">Читать 10 минут</div>
+</div>
+</a>
+
+<a href="blog-urine.html" class="article-card" style="border: 2px dashed #00897b;">
+<div class="article-image" style="background: linear-gradient(135deg, #00897b, #26a69a); display: flex; align-items: center; justify-content: center; font-size: 70px;">🔬 </div>
+<div class="article-content">
+<span class="article-tag" style="background: #e0f2f1; color: #00695c;">Здоровье</span>
+<h3>Анализ мочи: что он говорит о вашем здоровье</h3>
+<p>Подробный разбор 15 показателей общего анализа мочи: нормы, отклонения, ацидоз и алкалоз, кетоз при кетодиете. Честно об уровне доказательности ароматерапии в поддержке мочевыделительной системы.</p>
+<div class="article-meta" style="color: #00897b; font-weight: bold;">Читать 12 минут →</div>
+</div>
+</a>
+
+<a href="pdf-guide.html" class="article-card" style="border: 2px dashed #d4a574;">
+<div class="article-image" style="background: linear-gradient(135deg, #d4a574, #b8860b); display: flex; align-items: center; justify-content: center; font-size: 70px;">📄 </div>
+<div class="article-content">
+<span class="article-tag" style="background: #fff8e1; color: #8b6914;">PDF-гайд</span>
+<h3>Топ-5 эфирных масел для домашней аптечки</h3>
+<p>Бесплатное практическое руководство по выбору и безопасному применению эфирных масел. Сохраните как PDF или распечатайте.</p>
+<div class="article-meta" style="color: #d4a574; font-weight: bold;">Скачать бесплатно →</div>
+</div>
+</a>
+
+</div>
+</div>
+<footer>
+<p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p>
+<p style="margin-top: 15px; font-size: 13px; opacity: 0.8;">
+Методология основана на знаниях 
+<a href="https://aromaschool.ru" target="_blank" style="color: #81c784; text-decoration: underline;">Школы ароматерапии и парфюмерии «Астарта»</a> 
+и стандартах Международной ассоциации ароматерапевтов.
+</p>
+<p style="font-size: 13px; opacity: 0.8;">
+Рекомендуемые натуральные эфирные масла и аксессуары: 
+<a href="https://aromaschool-shop.ru" target="_blank" style="color: #ffb74d; text-decoration: underline;">Магазин «Астарта»</a>
+
+</p>
+</footer>
+<button id="backToTop" title="Наверх">↑</button>
+<script>
+const backToTopBtn = document.getElementById('backToTop');
+window.onscroll = function() {
+if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) backToTopBtn.classList.add('show');
+else backToTopBtn.classList.remove('show');
+};
+backToTopBtn.onclick = function() { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+</script>
+<script src="premium.js"></script>
+</body>
+</html>
+
+
+
+

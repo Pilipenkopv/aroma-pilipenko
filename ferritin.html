@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ферритин и обмен железа - Справочная информация</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;line-height:1.6;color:#2c3e50;background:#f0f4f8;padding:20px}
+.container{max-width:1200px;margin:0 auto;background:#fff;border-radius:12px;padding:30px;box-shadow:0 4px 20px rgba(0,0,0,0.1)}
+h1{color:#1a5490;text-align:center;margin-bottom:10px}
+.subtitle{text-align:center;color:#666;margin-bottom:20px}
+.quote-box{background:linear-gradient(135deg,#1a5490,#2a9d8f);color:#fff;padding:20px;border-radius:12px;text-align:center;margin-bottom:25px;box-shadow:0 4px 15px rgba(26,84,144,0.3)}
+.quote-box .quote{font-size:1.2em;font-weight:bold;font-style:italic;margin-bottom:8px}
+.quote-box .author{font-size:0.9em;opacity:0.9}
+.context-box{background:#fff8e1;border:2px solid #ffe082;border-radius:12px;padding:20px;margin-bottom:25px}
+.context-box h3{color:#f57f17;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.context-row{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:15px}
+.context-item{flex:1;min-width:250px}
+.context-item label{display:block;font-weight:bold;margin-bottom:8px;color:#1a5490}
+.context-item select{width:100%;padding:10px;border:2px solid #ddd;border-radius:6px;font-size:1em}
+.meds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.med-item{display:flex;align-items:center;gap:8px;font-size:0.95em}
+.med-item input{width:18px;height:18px;accent-color:#2a9d8f}
+.med-warnings{display:none;margin-top:15px;padding:15px;background:#ffebee;border-left:4px solid #d32f2f;border-radius:0 8px 8px 0}
+.med-warnings.show{display:block}
+.med-warnings h4{color:#c62828;margin-bottom:10px}
+.med-warnings ul{margin-left:20px}
+.med-warnings li{margin-bottom:8px}
+.med-warnings .duration{font-weight:bold;color:#b71c1c}
+.prep-box{background:#e8f5e9;border-left:4px solid #2e7d32;border-radius:12px;padding:20px;margin-bottom:25px}
+.prep-box h3{color:#1b5e20;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.prep-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px}
+.prep-item{background:#fff;padding:12px;border-radius:8px;border:1px solid #c8e6c9}
+.prep-item .icon{font-size:1.3em;margin-right:8px}
+.prep-item strong{color:#2e7d32}
+.prep-item p{margin-top:5px;font-size:0.92em;color:#555}
+.prep-note{margin-top:15px;padding:12px;background:#fff3e0;border-radius:8px;font-size:0.9em;color:#e65100;border-left:3px solid #ff9800}
+.info-box{background:#e3f2fd;border-left:4px solid #1976d2;padding:15px;border-radius:0 8px 8px 0;margin-bottom:20px}
+table{width:100%;border-collapse:collapse;margin-bottom:20px}
+thead{background:#1a5490;color:#fff}
+th,td{padding:12px;text-align:left;border-bottom:1px solid #e0e0e0}
+td input{width:100%;padding:8px;border:2px solid #ddd;border-radius:4px;font-size:1em}
+td input:focus{outline:none;border-color:#2a9d8f}
+.opt{font-weight:bold;color:#2a9d8f;font-size:1.05em}
+.status{padding:4px 10px;border-radius:12px;font-size:0.85em;font-weight:bold;display:inline-block}
+.st-ok{background:#e8f5e9;color:#2e7d32}
+.st-low{background:#ffebee;color:#c62828}
+.st-high{background:#ffebee;color:#c62828}
+.rec{display:none;margin-top:8px;padding:12px;background:#fff3e0;border-left:4px solid #f57c00;border-radius:0 6px 6px 0;font-size:0.9em}
+.rec.show{display:block}
+.rec h5{color:#e65100;margin:8px 0 4px}
+.warn{background:#ffebee;border-left:4px solid #d32f2f;padding:15px;border-radius:0 8px 8px 0;margin-top:20px}
+.warn h3{color:#c62828;margin-bottom:8px}
+.disc{background:#f5f5f5;padding:15px;border-radius:8px;margin-top:20px;font-size:0.9em;color:#666}
+.back-link{display:inline-block;margin-bottom:15px;color:#1a5490;text-decoration:none;font-weight:bold}
+.back-link:hover{text-decoration:underline}
+.auto-calc{font-weight:bold;font-size:1.1em;color:#1a5490}
+.auto-label{color:#888;font-size:0.85em;font-style:italic}
+.info-icon{cursor:pointer;color:#1976d2;font-weight:bold;margin-left:8px;font-size:1.2em;user-select:none}
+.info-icon:hover{color:#2a9d8f;transform:scale(1.1)}
+
+/* Стили для истории измерений */
+.history-controls{background:#f0f4f8;border-radius:12px;padding:20px;margin-top:30px;border:1px solid #e0e0e0}
+.history-controls h3{color:#1a5490;margin-bottom:15px}
+.btn-group{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:15px}
+.btn{padding:10px 20px;border:none;border-radius:6px;cursor:pointer;font-size:0.95em;font-weight:bold;transition:all 0.2s}
+.btn-primary{background:#1a5490;color:#fff}
+.btn-primary:hover{background:#2a9d8f}
+.btn-secondary{background:#fff;color:#1a5490;border:1px solid #1a5490}
+.btn-secondary:hover{background:#e3f2fd}
+.btn-danger{background:#ffebee;color:#c62828;border:1px solid #c62828}
+.btn-danger:hover{background:#ffcdd2}
+.history-list{max-height:300px;overflow-y:auto;margin-bottom:15px}
+.history-item{display:flex;justify-content:space-between;align-items:center;padding:10px;background:#fff;border:1px solid #e0e0e0;border-radius:6px;margin-bottom:8px}
+.history-item input{margin-right:10px}
+.compare-table{width:100%;border-collapse:collapse;margin-top:15px}
+.compare-table th,.compare-table td{padding:10px;border:1px solid #e0e0e0;text-align:left}
+.compare-table th{background:#f8f9fa}
+.trend-up{color:#2e7d32;font-weight:bold}
+.trend-down{color:#c62828;font-weight:bold}
+.trend-same{color:#757575}
+
+/* Модальные окна */
+.tooltip-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:999}
+.tooltip-overlay.show{display:block}
+.tooltip-popup{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:25px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.2);z-index:1000;max-width:500px;width:90%;border:2px solid #1a5490}
+.tooltip-popup.show{display:block}
+.tooltip-popup h3{color:#1a5490;margin-bottom:15px;border-bottom:1px solid #e0e0e0;padding-bottom:10px}
+.tooltip-popup ul{margin-left:20px;margin-bottom:10px}
+.tooltip-popup li{margin-bottom:8px}
+.tooltip-popup input,.tooltip-popup textarea{width:100%;padding:10px;margin-bottom:15px;border:1px solid #ddd;border-radius:6px;font-size:1em}
+.close-tooltip{position:absolute;top:10px;right:15px;cursor:pointer;font-size:1.5em;color:#666;font-weight:bold}
+.close-tooltip:hover{color:#c62828}
+</style>
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<div class="container">
+<a href="analyses.html" class="back-link">← Назад к разделу Анализы</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+
+<div class="quote-box">
+<div class="quote">"Никогда не смотрим анализы в отрыве от симптоматики, только в контексте ситуации клиента!"</div>
+<div class="author">— Профессиональное образование в области интегративной нутрициологии</div>
+</div>
+
+<h1>Ферритин и обмен железа</h1>
+<p class="subtitle">Справочная информация с оптимальными значениями и рекомендациями</p>
+
+<div class="context-box">
+<h3>👤 Контекст клиента</h3>
+<div class="context-row">
+<div class="context-item">
+<label>Ваша возрастная группа:</label>
+<select id="ageGroup" onchange="updateContext()">
+<option value="infant">👶 Ранний детский возраст (0-1 год)</option>
+<option value="child">🧒 Детский возраст (1-12 лет)</option>
+<option value="teen">🧑 Подростковый возраст (12-18 лет)</option>
+<option value="adult" selected>👨 Взрослый возраст (18-50 лет)</option>
+<option value="senior">🌟 Почтенный возраст (50+ лет)</option>
+</select>
+</div>
+<div class="context-item">
+<label>Ваш пол:</label>
+<select id="gender" onchange="updateContext()">
+<option value="female">Женский</option>
+<option value="male">Мужской</option>
+</select>
+</div>
+</div>
+
+<div class="context-item" style="margin-top:15px">
+<label>💊 Вы принимаете препараты? (отметьте, если есть)</label>
+<div class="meds-grid">
+<div class="med-item"><input type="checkbox" id="med-kok" onchange="updateWarnings()"> <label for="med-kok">КОК / ЗГТ</label></div>
+<div class="med-item"><input type="checkbox" id="med-stat" onchange="updateWarnings()"> <label for="med-stat">Статины</label></div>
+<div class="med-item"><input type="checkbox" id="med-ipp" onchange="updateWarnings()"> <label for="med-ipp">ИПП (омепразол и др.)</label></div>
+<div class="med-item"><input type="checkbox" id="med-met" onchange="updateWarnings()"> <label for="med-met">Метформин</label></div>
+<div class="med-item"><input type="checkbox" id="med-iron" onchange="updateWarnings()"> <label for="med-iron">Препараты железа</label></div>
+<div class="med-item"><input type="checkbox" id="med-vitd" onchange="updateWarnings()"> <label for="med-vitd">Витамин D</label></div>
+<div class="med-item"><input type="checkbox" id="med-gcs" onchange="updateWarnings()"> <label for="med-gcs">Глюкокортикостероиды</label></div>
+<div class="med-item"><input type="checkbox" id="med-nsaid" onchange="updateWarnings()"> <label for="med-nsaid">НПВС (аспирин, ибупрофен)</label></div>
+</div>
+</div>
+
+<div id="medWarnings" class="med-warnings"></div>
+</div>
+
+<div class="prep-box">
+<h3>⏰ Правильная подготовка к оценке обмена железа</h3>
+<p style="margin-bottom:15px;color:#555">Уровень железа и ферритина чувствителен к приему добавок, питанию и воспалительным процессам. На преаналитический этап приходится до 68% всех ошибок.</p>
+<div class="prep-grid">
+<div class="prep-item"><span class="icon">💊</span><strong>Отмена препаратов железа</strong><p>Для корректной оценки запасов железа рекомендуется отменить прием препаратов железа за 5-7 дней до анализа (по согласованию с врачом).</p></div>
+<div class="prep-item"><span class="icon">🍽️</span><strong>Голодание</strong><p>Строго натощак. Интервал голодания — 12 часов. Пить можно только чистую воду.</p></div>
+<div class="prep-item"><span class="icon">🕗</span><strong>Время сдачи</strong><p>Утром, до 10:00. Уровень железа имеет выраженные суточные колебания (максимум в утренние часы).</p></div>
+<div class="prep-item"><span class="icon">🤒</span><strong>Острая инфекция</strong><p>Не сдавать ферритин во время острой инфекции (ОРВИ, ангина и др.). Ферритин — белок острой фазы, его уровень резко и ложно повышается при любом воспалении.</p></div>
+</div>
+<div class="prep-note">⚠️ <b>Важно:</b> Ферритин — это не только депо железа, но и маркер воспаления. При оценке железодефицита на фоне воспаления (повышен СРБ) уровень ферритина может быть ложно нормальным или повышенным. В таких случаях необходимо смотреть комплекс: сывороточное железо, трансферрин и % насыщения трансферрина.</div>
+</div>
+
+<div class="info-box">
+<h3>Как пользоваться</h3>
+<p>Введите ваши результаты анализа в соответствующие поля. Система автоматически сравнит их с оптимальными значениями (с учетом вашего возраста) и предоставит справочную информацию и рекомендации по питанию при выявлении <b>возможных</b> отклонений. <b>% Насыщения трансферрина рассчитывается автоматически</b> при вводе значений сывороточного железа и трансферрина.</p>
+</div>
+
+<table>
+<thead>
+<tr><th>Показатель</th><th>Ваш результат</th><th>Оптимальные значения</th><th>Статус</th></tr>
+</thead>
+<tbody id="tb"></tbody>
+</table>
+
+<!-- Блок истории измерений -->
+<div class="history-controls">
+<h3>📊 История измерений и динамика</h3>
+<p style="margin-bottom:15px;color:#666;font-size:0.95em">Сохраняйте результаты, чтобы отслеживать динамику. Данные хранятся локально в вашем браузере.</p>
+<div class="btn-group">
+<button class="btn btn-primary" onclick="openSaveModal()">💾 Сохранить текущий результат</button>
+<button class="btn btn-secondary" onclick="toggleHistoryView()">📋 Показать/скрыть историю</button>
+<button class="btn btn-secondary" onclick="exportData()">📤 Экспорт в JSON</button>
+<button class="btn btn-secondary" onclick="document.getElementById('import-file').click()">📥 Импорт из JSON</button>
+<input type="file" id="import-file" style="display:none" accept=".json" onchange="importData(event)">
+<button class="btn btn-danger" onclick="clearHistory()">🗑️ Очистить историю</button>
+</div>
+<div id="history-view" style="display:none">
+<div class="history-list" id="history-list"></div>
+<button class="btn btn-primary" onclick="compareSelected()" id="compare-btn" style="display:none">📈 Сравнить выбранные замеры</button>
+<div id="compare-result"></div>
+</div>
+</div>
+
+<div class="warn">
+<h3>Важно</h3>
+<p>Данная информация носит справочный характер и не заменяет консультацию врача. Оценка показателей должна проводиться с учетом вашей клинической картины, симптомов и анамнеза квалифицированным специалистом. Нутрициолог не ставит диагнозы и не назначает лечение.</p>
+</div>
+
+<div class="disc">
+<b>Оптимальные значения</b> основаны на интегративном подходе и современных клинических рекомендациях. Для детей используются возрастные нормы, отличающиеся от взрослых. Результаты анализов одного и того же человека, проведенные в разных лабораториях, могут различаться из-за разного оборудования и реактивов.
+</div>
+</div>
+
+<!-- Модальное окно сохранения -->
+<div class="tooltip-overlay" id="save-overlay" onclick="closeSaveModal()"></div>
+<div class="tooltip-popup" id="save-modal">
+<span class="close-tooltip" onclick="closeSaveModal()">&times;</span>
+<h3>💾 Сохранение результата</h3>
+<p style="margin-bottom:15px;color:#666">Дата: <span id="modal-date"></span></p>
+<label style="display:block;margin-bottom:8px;font-weight:bold">Комментарий (необязательно):</label>
+<textarea id="modal-comment" rows="3" placeholder="Например: До начала приема железа, Через 6 недель..."></textarea>
+<div class="btn-group" style="justify-content:flex-end">
+<button class="btn btn-secondary" onclick="closeSaveModal()">Отмена</button>
+<button class="btn btn-primary" onclick="saveResult()">Сохранить</button>
+</div>
+</div>
+
+<!-- Всплывающее окно: Формула % насыщения трансферрина -->
+<div class="tooltip-overlay" id="tsat-overlay" onclick="closeTooltip('tsat')"></div>
+<div class="tooltip-popup" id="tsat-popup">
+<span class="close-tooltip" onclick="closeTooltip('tsat')">&times;</span>
+<h3>📐 Как рассчитывается % Насыщения трансферрина?</h3>
+<p><b>Формула:</b> (Сывороточное железо × 100) ÷ (Трансферрин × 25) = % НТ</p>
+<p><b>Интерпретация:</b></p>
+<ul>
+<li><b>&lt; 20%</b> — дефицит железа (железодефицитная анемия, скрытая кровопотеря).</li>
+<li><b>20 – 35%</b> — оптимум (норма).</li>
+<li><b>&gt; 35%</b> — перегрузка железом (гемохроматоз, гемосидероз, гемолитическая анемия).</li>
+</ul>
+<p style="font-size:0.9em;color:#666;margin-top:15px"><i>Источник: профессиональные рекомендации по клинической лабораторной диагностике.</i></p>
+</div>
+
+<script>
+var norms = {
+  ferr: { infant: [30, 51], child: [30, 36], teen: [36, 50], adult_f: [45, 80], adult_m: [100, 150], senior_f: [45, 80], senior_m: [100, 150] },
+  iron: { infant: [7.2, 17.9], child: [9, 20], teen: [12, 25], adult: [15, 30], senior: [15, 30] },
+  trans: { infant: [1.5, 3.0], child: [2.0, 3.5], teen: [2.0, 3.6], adult: [2.0, 3.6], senior: [2.0, 3.6] },
+  tsat: { infant: [20, 35], child: [20, 35], teen: [20, 35], adult: [20, 35], senior: [20, 35] }
+};
+
+var indicators = [
+  {id:'ferr', name:'Ферритин', unit:'мкг/л (нг/мл)', lc:'Железодефицит, железодефицитная анемия, хронические кровопотери (обильные менструации, скрытые кровотечения в ЖКТ), нарушение всасывания железа (целиакия, атрофический гастрит, H. pylori, СИБР), дефицит кофакторов (В12, В9, С, медь), вегетарианство/веганство, гипотиреоз.', ln:'Продукты, богатые гемовым железом: красное мясо, печень, субпродукты, индейка. Сочетайте с витамином С (цитрусовые, болгарский перец, квашеная капуста) для усвоения. Исключите чай, кофе, молочные продукты за 1-2 часа до и после еды с железом.', lt:'ОАК (эритроциты, гемоглобин, MCV, MCH), сывороточное железо, трансферрин, ОЖСС, % насыщения трансферрина, витамин В12, фолиевая кислота, СРБ (для исключения воспаления), копрограмма, анализ на H. pylori.', hc:'Воспаление (острая фаза), гемохроматоз, перегрузка железом (избыток добавок, частые переливания), дисфункция печени, оксидативный стресс, метаболический синдром, ожирение, инсулинорезистентность, онкология, алкоголизм.', hn:'Исключите добавки железа и продукты, искусственно обогащенные железом. Ограничьте красное мясо и алкоголь. Противовоспалительная диета: омега-3, куркума, антиоксиданты. При подтвержденном гемохроматозе — консультация гематолога, возможно донорство крови.', ht:'ОАК, сывороточное железо, трансферрин, ОЖСС, СРБ, АЛТ, АСТ, ГГТП, глюкоза, инсулин, консультация гематолога.'},
+  {id:'iron', name:'Сывороточное железо', unit:'мкмоль/л', lc:'Железодефицит, хронические кровопотери, нарушение всасывания в ЖКТ, дефицит белка (транспортируется трансферрином), беременность, хронические инфекции.', ln:'Красное мясо, печень, субпродукты. Витамин С для усвоения.', lt:'Ферритин, трансферрин, ОЖСС, ОАК, витамин В12.', hc:'Перегрузка железом, гемохроматоз, гемолитическая анемия, прием добавок железа, отравление железом, острый гепатит.', hn:'Исключите добавки железа. Ограничьте продукты, богатые железом. Увеличьте потребление воды и клетчатки.', ht:'Ферритин, трансферрин, ОЖСС, ОАК, билирубин, ЛДГ.'},
+  {id:'trans', name:'Трансферрин', unit:'г/л', lc:'Воспаление (белок острой фазы), избыток железа, заболевания печени (нарушение синтеза), потеря белка (нефротический синдром, ожоги), онкология.', ln:'Качественный белок в рационе. Противовоспалительная диета.', lt:'Общий белок, альбумин, ферритин, сывороточное железо, СРБ.', hc:'Железодефицит (организм вырабатывает больше трансферрина, чтобы "поймать" железо), беременность, прием эстрогенов (КОК, ЗГТ).', hn:'При железодефиците — продукты, богатые железом (см. ферритин). При беременности — наблюдение у врача.', ht:'Ферритин, сывороточное железо, ОЖСС, ОАК, общий белок.'},
+  {id:'tsat', name:'% Насыщения трансферрина', unit:'', lc:'Железодефицит, скрытая кровопотеря, нарушение всасывания железа.', ln:'Продукты, богатые железом: красное мясо, печень. Витамин С.', lt:'Ферритин, сывороточное железо, трансферрин, ОАК.', hc:'Перегрузка железом, гемохроматоз, гемосидероз, гемолитическая анемия, избыточный прием железа.', hn:'Исключите добавки железа. Ограничьте красное мясо и алкоголь. Пейте больше воды.', ht:'Ферритин, сывороточное железо, трансферрин, ОЖСС, консультация гематолога.'}
+];
+
+function getNorm(id, age, gender) {
+  var n = norms[id];
+  if (!n) return [0, 0];
+  if (age === 'teen' || age === 'adult' || age === 'senior') {
+    var keyWithSuffix = age + '_' + (gender === 'female' ? 'f' : 'm');
+    if (n[keyWithSuffix]) { return n[keyWithSuffix]; }
+    if (n[age]) { return n[age]; }
+  }
+  return n[age] || [0, 0];
+}
+
+function buildTable() {
+  var tb = document.getElementById('tb');
+  tb.innerHTML = '';
+  var i, d, tr, tr2;
+  for (i = 0; i < indicators.length; i++) {
+    d = indicators[i];
+    tr = document.createElement('tr');
+    if (d.id === 'tsat') {
+      tr.innerHTML = '<td><b>' + d.name + '</b><br><small>' + d.unit + '</small></td>' +
+        '<td><span id="display-tsat" class="auto-calc">-</span> <span class="auto-label">(считается автоматически)</span> <span class="info-icon" onclick="openTooltip(\'tsat\')">ℹ️</span></td>' +
+        '<td><span class="opt" id="opt-tsat">-</span></td>' +
+        '<td><span class="status" id="st-tsat">-</span></td>';
+    } else {
+      tr.innerHTML = '<td><b>' + d.name + '</b><br><small>' + d.unit + '</small></td>' +
+        '<td><input type="number" step="0.01" id="inp-' + d.id + '" oninput="checkValue(\'' + d.id + '\')"></td>' +
+        '<td><span class="opt" id="opt-' + d.id + '">-</span></td>' +
+        '<td><span class="status" id="st-' + d.id + '">-</span></td>';
+    }
+    tb.appendChild(tr);
+    tr2 = document.createElement('tr');
+    tr2.innerHTML = '<td colspan="4"><div class="rec" id="rec-' + d.id + '"></div></td>';
+    tb.appendChild(tr2);
+  }
+  updateContext();
+}
+
+function updateContext() {
+  var age = document.getElementById('ageGroup').value;
+  var gender = document.getElementById('gender').value;
+  var i, id, n, el, st, rec;
+  for (i = 0; i < indicators.length; i++) {
+    id = indicators[i].id;
+    n = getNorm(id, age, gender);
+    el = document.getElementById('opt-' + id);
+    if (el) { el.textContent = n[0] + ' - ' + n[1]; }
+    st = document.getElementById('st-' + id);
+    rec = document.getElementById('rec-' + id);
+    if (st) { st.textContent = '-'; st.className = 'status'; }
+    if (rec) { rec.className = 'rec'; }
+  }
+  updateTsat();
+}
+
+function checkValue(id) {
+  var age = document.getElementById('ageGroup').value;
+  var gender = document.getElementById('gender').value;
+  var d = null;
+  var i;
+  for (i = 0; i < indicators.length; i++) { if (indicators[i].id === id) { d = indicators[i]; break; } }
+  if (!d) return;
+  var n = getNorm(id, age, gender);
+  var v = parseFloat(document.getElementById('inp-' + id).value);
+  var st = document.getElementById('st-' + id);
+  var rec = document.getElementById('rec-' + id);
+  if (isNaN(v) || v < 0) { st.textContent = '-'; st.className = 'status'; rec.className = 'rec'; if (id === 'iron' || id === 'trans') updateTsat(); return; }
+  if (v < n[0]) {
+    st.textContent = 'Ниже оптимума'; st.className = 'status st-low';
+    rec.innerHTML = '<h5>Возможные причины:</h5><p>' + d.lc + '</p><h5>Рекомендации:</h5><p>' + d.ln + '</p><h5>Дообследование:</h5><p>' + d.lt + '</p>';
+    rec.className = 'rec show';
+  } else if (v > n[1]) {
+    st.textContent = 'Выше оптимума'; st.className = 'status st-high';
+    rec.innerHTML = '<h5>Возможные причины:</h5><p>' + d.hc + '</p><h5>Рекомендации:</h5><p>' + d.hn + '</p><h5>Дообследование:</h5><p>' + d.ht + '</p>';
+    rec.className = 'rec show';
+  } else {
+    st.textContent = 'Оптимально'; st.className = 'status st-ok'; rec.className = 'rec';
+  }
+  if (id === 'iron' || id === 'trans') updateTsat();
+}
+
+function updateTsat() {
+  var ironVal = parseFloat(document.getElementById('inp-iron').value);
+  var transVal = parseFloat(document.getElementById('inp-trans').value);
+  var d = null;
+  var i;
+  for (i = 0; i < indicators.length; i++) { if (indicators[i].id === 'tsat') { d = indicators[i]; break; } }
+  if (!d) return;
+  var age = document.getElementById('ageGroup').value;
+  var gender = document.getElementById('gender').value;
+  var n = getNorm('tsat', age, gender);
+  var st = document.getElementById('st-tsat');
+  var rec = document.getElementById('rec-tsat');
+  var display = document.getElementById('display-tsat');
+  if (isNaN(ironVal) || isNaN(transVal) || transVal === 0) { display.textContent = '-'; st.textContent = '-'; st.className = 'status'; rec.className = 'rec'; return; }
+  var tsat = Math.round((ironVal * 100) / (transVal * 25) * 100) / 100;
+  display.textContent = tsat;
+  if (tsat < n[0]) {
+    st.textContent = 'Ниже оптимума'; st.className = 'status st-low';
+    rec.innerHTML = '<h5>Возможные причины:</h5><p>' + d.lc + '</p><h5>Рекомендации:</h5><p>' + d.ln + '</p><h5>Дообследование:</h5><p>' + d.lt + '</p>';
+    rec.className = 'rec show';
+  } else if (tsat > n[1]) {
+    st.textContent = 'Выше оптимума'; st.className = 'status st-high';
+    rec.innerHTML = '<h5>Возможные причины:</h5><p>' + d.hc + '</p><h5>Рекомендации:</h5><p>' + d.hn + '</p><h5>Дообследование:</h5><p>' + d.ht + '</p>';
+    rec.className = 'rec show';
+  } else {
+    st.textContent = 'Оптимально'; st.className = 'status st-ok'; rec.className = 'rec';
+  }
+}
+
+function updateWarnings() {
+  var w = document.getElementById('medWarnings');
+  var html = '<h4>⚠️ Влияние препаратов на обмен железа:</h4><ul>';
+  var hasWarn = false;
+  if (document.getElementById('med-iron').checked) { html += '<li><b>Препараты железа:</b><br><span class="duration">Основное действие</span> — искусственно завышают показатели сывороточного железа и ферритина. Для корректной оценки запасов железа рекомендуется отменить прием за 5-7 дней до анализа (по согласованию с врачом).</li>'; hasWarn = true; }
+  if (document.getElementById('med-ipp').checked) { html += '<li><b>ИПП (омепразол, пантопразол):</b><br><span class="duration">Длительный прием (> 6 месяцев)</span> критически снижает всасывание железа из-за снижения кислотности желудка. Это может приводить к ложно заниженным показателям гемоглобина и ферритина.</li>'; hasWarn = true; }
+  if (document.getElementById('med-kok').checked) { html += '<li><b>КОК / ЗГТ:</b><br><span class="duration">Прием более 3 месяцев</span> может повышать уровень ферритина и трансферрина.</li>'; hasWarn = true; }
+  if (document.getElementById('med-gcs').checked) { html += '<li><b>Глюкокортикостероиды:</b><br><span class="duration">Системный прием</span> может маскировать воспаление, ложно занижая ферритин (как белок острой фазы).</li>'; hasWarn = true; }
+  html += '</ul><p style="margin-top:12px;font-size:0.9em;color:#666"><i>Согласно профессиональным рекомендациям по клинической лабораторной диагностике: лекарства, мешающие определению компонентов, исключаются до взятия биоматериала, если они даются не по жизненным показаниям. Утренний прием лекарств проводится только после взятия биоматериала.</i></p>';
+  if (hasWarn) { w.innerHTML = html; w.classList.add('show'); } else { w.classList.remove('show'); }
+}
+
+// --- МОДУЛЬ ВСПЛЫВАЮЩИХ ОКОН ---
+function openTooltip(id) {
+  document.getElementById(id + '-overlay').classList.add('show');
+  document.getElementById(id + '-popup').classList.add('show');
+}
+function closeTooltip(id) {
+  document.getElementById(id + '-overlay').classList.remove('show');
+  document.getElementById(id + '-popup').classList.remove('show');
+}
+
+// --- УНИВЕРСАЛЬНЫЙ МОДУЛЬ ИСТОРИИ ИЗМЕРЕНИЙ ---
+var STORAGE_KEY = 'ferritin_history_v1';
+
+function getHistory() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { return []; } }
+
+function openSaveModal() {
+  var now = new Date();
+  document.getElementById('modal-date').textContent = now.toLocaleDateString('ru-RU') + ' ' + now.toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+  document.getElementById('modal-comment').value = '';
+  document.getElementById('save-overlay').classList.add('show');
+  document.getElementById('save-modal').classList.add('show');
+}
+
+function closeSaveModal() {
+  document.getElementById('save-overlay').classList.remove('show');
+  document.getElementById('save-modal').classList.remove('show');
+}
+
+function saveResult() {
+  var comment = document.getElementById('modal-comment').value.trim();
+  var values = {};
+  var ids = ['ferr','iron','trans'];
+  for (var i=0; i<ids.length; i++) {
+    var val = parseFloat(document.getElementById('inp-'+ids[i]).value);
+    if (!isNaN(val)) values[ids[i]] = val;
+  }
+  if (Object.keys(values).length === 0) { alert('Пожалуйста, введите хотя бы один показатель перед сохранением.'); return; }
+ 
+  var history = getHistory();
+  history.push({ date: new Date().toISOString(), comment: comment, values: values });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+  closeSaveModal();
+  alert('✅ Результат успешно сохранен!');
+  renderHistoryList();
+}
+
+function toggleHistoryView() {
+  var view = document.getElementById('history-view');
+  if (view.style.display === 'none' || view.style.display === '') { view.style.display = 'block'; renderHistoryList(); } else { view.style.display = 'none'; }
+}
+
+function renderHistoryList() {
+  var history = getHistory();
+  var list = document.getElementById('history-list');
+  var btn = document.getElementById('compare-btn');
+  list.innerHTML = '';
+  if (history.length === 0) { list.innerHTML = '<p style="color:#666;text-align:center;padding:20px">История пуста. Сохраните ваш первый результат!</p>'; btn.style.display = 'none'; return; }
+  history.sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+  for (var i=0; i<history.length; i++) {
+    var d = new Date(history[i].date);
+    var dateStr = d.toLocaleDateString('ru-RU') + ' ' + d.toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+    var commentStr = history[i].comment ? ' — ' + history[i].comment : '';
+    var div = document.createElement('div');
+    div.className = 'history-item';
+    div.innerHTML = '<div><input type="checkbox" class="hist-check" data-idx="'+i+'"> <b>' + dateStr + '</b>' + commentStr + '</div>';
+    list.appendChild(div);
+  }
+  var checks = document.querySelectorAll('.hist-check');
+  for (var j=0; j<checks.length; j++) {
+    checks[j].onchange = function() {
+      var selected = document.querySelectorAll('.hist-check:checked');
+      btn.style.display = selected.length === 2 ? 'block' : 'none';
+    };
+  }
+}
+
+function compareSelected() {
+  var checks = document.querySelectorAll('.hist-check:checked');
+  if (checks.length !== 2) return;
+  var history = getHistory();
+  history.sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+  var idx1 = parseInt(checks[0].getAttribute('data-idx'));
+  var idx2 = parseInt(checks[1].getAttribute('data-idx'));
+  var rec1 = history[idx1];
+  var rec2 = history[idx2];
+  var oldRec = new Date(rec1.date) > new Date(rec2.date) ? rec2 : rec1;
+  var newRec = new Date(rec1.date) > new Date(rec2.date) ? rec1 : rec2;
+  var age = document.getElementById('ageGroup').value;
+  var gender = document.getElementById('gender').value;
+  var html = '<h4 style="margin-top:20px;color:#1a5490">📈 Сравнение: ' + new Date(oldRec.date).toLocaleDateString('ru-RU') + ' → ' + new Date(newRec.date).toLocaleDateString('ru-RU') + '</h4>';
+  html += '<table class="compare-table"><thead><tr><th>Показатель</th><th>Было</th><th>Стало</th><th>Динамика</th></tr></thead><tbody>';
+  var ids = ['ferr','iron','trans'];
+  for (var i=0; i<ids.length; i++) {
+    var id = ids[i];
+    var v1 = oldRec.values[id];
+    var v2 = newRec.values[id];
+    if (v1 === undefined || v2 === undefined) continue;
+    var n = getNorm(id, age, gender);
+    var min = n[0], max = n[1];
+    function getDist(v) { if (v >= min && v <= max) return 0; if (v < min) return min - v; return v - max; }
+    var d1 = getDist(v1); var d2 = getDist(v2);
+    var trend = '';
+    if (d2 < d1) trend = '<span class="trend-up">🟢 Улучшение</span>';
+    else if (d2 > d1) trend = '<span class="trend-down">🔴 Ухудшение</span>';
+    else trend = '<span class="trend-same">⚪ Без изменений</span>';
+    html += '<tr><td><b>' + id.toUpperCase() + '</b></td><td>' + v1 + '</td><td>' + v2 + '</td><td>' + trend + '</td></tr>';
+  }
+  html += '</tbody></table>';
+  document.getElementById('compare-result').innerHTML = html;
+}
+
+function exportData() {
+  var history = getHistory();
+  if (history.length === 0) { alert('История пуста, нечего экспортировать.'); return; }
+  var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(history, null, 2));
+  var dlAnchorElem = document.createElement('a');
+  dlAnchorElem.setAttribute("href", dataStr);
+  dlAnchorElem.setAttribute("download", "ferritin-history-" + new Date().toISOString().slice(0,10) + ".json");
+  dlAnchorElem.click();
+}
+
+function importData(event) {
+  var file = event.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      var imported = JSON.parse(e.target.result);
+      if (Array.isArray(imported)) {
+        var current = getHistory();
+        var merged = current.concat(imported);
+        var unique = {};
+        for (var i=0; i<merged.length; i++) unique[merged[i].date] = merged[i];
+        var finalArr = Object.values(unique);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(finalArr));
+        alert('✅ Данные успешно импортированы!');
+        renderHistoryList();
+      } else { alert('Неверный формат файла.'); }
+    } catch(err) { alert('Ошибка чтения файла: ' + err.message); }
+  };
+  reader.readAsText(file);
+}
+
+function clearHistory() {
+  if (confirm('Вы уверены, что хотите удалить всю историю измерений? Это действие нельзя отменить.')) {
+    localStorage.removeItem(STORAGE_KEY);
+    renderHistoryList();
+    document.getElementById('compare-result').innerHTML = '';
+    alert('🗑️ История очищена.');
+  }
+}
+
+buildTable();
+</script>
+<script src="premium.js"></script>
+</body>
+</html>

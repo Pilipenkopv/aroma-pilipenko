@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тяжёлые базовые масла — Павел Пилипенко</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; line-height: 1.7; color: #2c3e50; background: #f9f7f4; }
+header { background: linear-gradient(135deg, #2d5016, #4a7c23); color: white; padding: 20px 0; }
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 16px; }
+nav a:hover { opacity: 0.8; }
+.hero { background: linear-gradient(135deg, #efebe9, #d7ccc8); padding: 80px 20px; text-align: center; }
+.hero h1 { font-size: 42px; color: #5d4037; margin-bottom: 15px; }
+.hero p { font-size: 20px; color: #5a6c5d; max-width: 700px; margin: 0 auto; }
+.container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+.breadcrumb { font-size: 14px; color: #7f8c8d; margin-bottom: 30px; }
+.breadcrumb a { color: #2d5016; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.oils-list { display: flex; flex-direction: column; gap: 30px; }
+.oil-item { background: white; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #5d4037; }
+.oil-item h3 { font-size: 24px; color: #5d4037; margin-bottom: 5px; }
+.oil-item .latin { font-style: italic; color: #7f8c8d; font-size: 14px; margin-bottom: 15px; }
+.oil-item p { font-size: 16px; color: #5a6c5d; margin-bottom: 10px; }
+.oil-item strong { color: #5d4037; }
+.specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0; }
+.spec { background: #efebe9; padding: 12px; border-radius: 8px; }
+.spec strong { display: block; font-size: 13px; color: #5d4037; margin-bottom: 5px; }
+.spec span { font-size: 14px; color: #5a6c5d; }
+.back-link { display: inline-block; margin-bottom: 30px; color: #5d4037; text-decoration: none; font-size: 16px; }
+.back-link:hover { text-decoration: underline; }
+.warning { background: #efebe9; border-left: 4px solid #5d4037; padding: 20px; border-radius: 10px; margin-top: 40px; }
+.warning strong { color: #3e2723; }
+.warning p { color: #3e2723; font-size: 15px; }
+footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; font-size: 14px; }
+</style>
+
+<style>
+.floating-buttons {
+    position: fixed;
+    right: 25px;
+    bottom: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 999;
+}
+
+.floating-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+.floating-btn:hover::before {
+    left: 100%;
+}
+.floating-btn:hover {
+    transform: scale(1.2) translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+.floating-btn svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: transform 0.3s;
+}
+.floating-btn:hover svg {
+    transform: scale(1.1);
+}
+.floating-btn 
+.floating-btn .tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 0 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(0,0,0,0.9);
+}
+.floating-btn:hover 
+
+
+.btn-email {
+    background: linear-gradient(135deg, #ea4335 0%, #fbbc05 50%, #ea4335 100%);
+    animation-delay: 1s;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.floating-btn:hover {
+    animation: none;
+}
+@keyframes pulse-ring {
+    0% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255,255,255,0.4); }
+    70% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 15px rgba(255,255,255,0); }
+    100% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255,255,255,0); }
+}
+
+</style><link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+</head>
+<body>
+<header><nav>
+<a href="index.html#author">Обо мне</a>
+<a href="aromatherapy.html">Ароматерапия</a>
+<a href="services.html">Услуги</a>
+<a href="contact.html">Связь</a>
+</nav></header>
+<section class="hero"><h1>Тяжёлые базовые масла</h1><p>Плотные, окклюзионные масла для защиты и глубокого питания</p></section>
+<div class="container">
+<div class="breadcrumb">
+<a href="index.html">Главная</a> &gt; <a href="aromatherapy.html">Ароматерапия</a> &gt; <a href="base-oils.html">Базовые масла</a> &gt; Тяжёлые масла
+</div>
+<a href="base-oils.html" class="back-link">&larr; Вернуться к разделу Базовые масла</a>
+<a href="symptoms.html" class="back-link" style="display:inline-block;margin-bottom:10px;color:#2a9d8f;text-decoration:none;font-weight:bold">← Подобрать анализы по симптомам</a>
+<div class="oils-list">
+<div class="oil-item">
+<h3>Масло ши (карите)</h3>
+<div class="latin">Butyrospermum parkii</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Олеиновая (40-60%), стеариновая (35-50%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>0-2 (очень низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>12-24 месяца</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Твёрдое при комнатной температуре, тает на коже</span></div>
+</div>
+<p><strong>Свойства:</strong> глубокое питание, защита от холода и ветра, противовоспалительное, богато витаминами A и E</p>
+<p><strong>Применение:</strong> бальзамы для губ, уход за руками и ногами, защита кожи зимой, массаж</p>
+</div>
+<div class="oil-item">
+<h3>Масло какао</h3>
+<div class="latin">Theobroma cacao</div>
+<div class="specs">
+
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Стеариновая (34-40%), олеиновая (34-38%), пальмитиновая (25-30%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>4 (высокая — использовать в смесях)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>2-3 года</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Твёрдое, с шоколадным ароматом</span></div>
+</div>
+<p><strong>Свойства:</strong> создаёт защитный барьер, смягчает огрубевшую кожу, антиоксидант (полифенолы какао)</p>
+<p><strong>Применение:</strong> бальзамы для тела, уход за локтями и пятками, добавлять 20-30% в смеси</p>
+</div>
+<div class="oil-item">
+<h3>Масло манго</h3>
+<div class="latin">Mangifera indica</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Олеиновая (40-60%), стеариновая (35-45%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>2 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>12-24 месяца</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Твёрдое, с лёгким сладким ароматом</span></div>
+</div>
+<p><strong>Свойства:</strong> питает и смягчает, богато витаминами A и C, антиоксидант, менее комедогенно, чем какао</p>
+<p><strong>Применение:</strong> бальзамы для тела, уход за сухой кожей, замена какао в смесях</p>
+</div>
+<div class="oil-item">
+<h3>Кокосовое масло</h3>
+<div class="latin">Cocos nucifera</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Лауриновая (45-53%), миристиновая (16-21%), пальмитиновая (7-11%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>4 (высокая для лица)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>18-24 месяца</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Твёрдое ниже +25°C, жидкое выше</span></div>
+</div>
+<p><strong>Свойства:</strong> антибактериальное (лауриновая кислота), глубоко питает волосы, создаёт защитную плёнку</p>
+<p><strong>Применение:</strong> маски для волос, уход за телом (не для лица!), бальзамы для губ</p>
+</div>
+<div class="oil-item">
+<h3>Масло зародышей пшеницы</h3>
+<div class="latin">Triticum aestivum</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Линолевая (55-65%), олеиновая (12-20%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>5 (высокая — использовать в смесях)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>6-12 месяцев, хранить в холодильнике</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Очень плотная, вязкая, тёмно-жёлтая</span></div>
+</div>
+<p><strong>Свойства:</strong> рекордное содержание витамина E (до 200 мг/100 г), мощное антиоксидантное и регенерирующее</p>
+<p><strong>Применение:</strong> добавлять 10-20% в смеси для зрелой кожи, уход за растяжками и шрамами</p>
+</div>
+<div class="oil-item">
+<h3>Касторовое масло</h3>
+<div class="latin">Ricinus communis</div>
+<div class="specs">
+<div class="spec"><strong>Состав жирных кислот:</strong><span>Рицинолевая кислота (85-95%)</span></div>
+<div class="spec"><strong>Комедогенность:</strong><span>1 (низкая)</span></div>
+<div class="spec"><strong>Срок годности:</strong><span>12-18 месяцев</span></div>
+<div class="spec"><strong>Текстура:</strong><span>Очень вязкая, густая, прозрачная</span></div>
+</div>
+<p><strong>Свойства:</strong> уникальная рицинолевая кислота, стимулирует рост волос и ресниц, противовоспалительное, увлажняет</p>
+<p><strong>Применение:</strong> маски для волос и ресниц, добавлять 10-20% в смеси из-за вязкости</p>
+</div>
+</div>
+<div class="warning">
+<strong>Важно:</strong>
+<p>Тяжёлые масла (особенно какао, кокосовое, зародыши пшеницы) не рекомендуется наносить на лицо в чистом виде — они могут забивать поры. Используйте их в смесях (20-30%) с лёгкими маслами или применяйте только для тела, рук, ног и волос. Твёрдые масла (ши, какао, манго) перед использованием растопите в ладонях или на водяной бане.</p>
+</div>
+</div>
+<footer><p>© 2026 Ароматерапия с Павлом Пилипенко. Все права защищены.</p></footer>
+
+<div class="floating-buttons">
+    
+    
+    
+</div><script src="premium.js"></script>
+</body>
+</html>
+
+
+
+
+

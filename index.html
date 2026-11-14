@@ -1,0 +1,923 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<title>АРОМАТЕРАПИЯ с Павлом Пилипенко</title>
+<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Montserrat,sans-serif;background:#fdfbf7;color:#3a3a3a;line-height:1.6}
+
+nav a{color:#5a4a3a;text-decoration:none;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;transition:all 0.3s;padding:5px 10px;border-radius:15px;font-weight:400;white-space:nowrap}
+nav a:hover{color:#8b7355;background:rgba(139,115,85,0.08)}
+.hero{position:relative;min-height:70vh;display:flex;flex-direction: row;justify-content:center;align-items:center;text-align:center;padding:90px 20px 50px;overflow:hidden;background:linear-gradient(135deg,#e8dcc8 0%,#d4c5a9 30%,#c9b896 60%,#b8a88a 100%)}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,0.2) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(107,124,90,0.15) 0%,transparent 50%);pointer-events:none}
+.botanical{position:absolute;opacity:0.15;font-size:100px;pointer-events:none;color:#6b7c5a}
+.b1{top:8%;left:8%;transform:rotate(-15deg)}
+.b2{top:15%;right:10%;transform:rotate(20deg);font-size:80px}
+.b3{bottom:15%;left:12%;transform:rotate(10deg);font-size:110px}
+.b4{bottom:20%;right:8%;transform:rotate(-25deg);font-size:90px}
+.hero-content{position:relative;z-index:2;max-width:800px}
+.hero .ornament{font-size:18px;color:#fff;letter-spacing:12px;margin-bottom:18px;opacity:0.8}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:300;color:#2d5016;margin-bottom:12px;letter-spacing:2px;line-height:1.2}
+.hero h1 span{display:block;font-size:44px;color:#3d6b4f;font-weight:400;margin-top:5px}
+.hero .tagline{font-size:14px;color:#5a4a3a;margin-bottom:30px;font-weight:300;letter-spacing:2px;text-transform:uppercase}
+.btn-primary{display:inline-block;background:rgba(255,255,255,0.9);color:#2d5016;padding:14px 35px;border-radius:50px;font-size:12px;font-weight:400;text-decoration:none;letter-spacing:2px;text-transform:uppercase;transition:all 0.4s;border:1.5px solid #6b7c5a}
+.btn-primary:hover{background:#2d5016;color:#fff;border-color:#2d5016;transform:translateY(-3px);box-shadow:0 10px 30px rgba(45,80,22,0.3)}
+.hero-wave{position:absolute;bottom:0;left:0;width:100%;overflow:hidden;line-height:0}
+.hero-wave svg{position:relative;display:block;width:calc(100% + 1.3px);height:40px}
+.section-about{padding:50px 20px 60px;background:#fdfbf7}
+.about-container{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;justify-content:center}
+.photo-wrapper{flex-shrink:0;position:relative}
+.photo-wrapper::before{content:'';position:absolute;top:-8px;left:-8px;right:-8px;bottom:-8px;border:1px solid rgba(139,115,85,0.2);border-radius:50%;animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:0.5}50%{transform:scale(1.04);opacity:0.2}}
+.author-photo{width:260px;height:260px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 15px 50px rgba(90,74,58,0.15);transition:all 0.5s;position:relative;z-index:1}
+.author-photo:hover{transform:scale(1.03);box-shadow:0 20px 60px rgba(90,74,58,0.2)}
+
+.photo-placeholder{width:260px;height:260px;border-radius:50%;background:linear-gradient(135deg,#d4c5b0,#b8a88a);display:flex;align-items:center;justify-content:center;font-size:80px;color:#fff;font-weight:300;font-family:'Cormorant Garamond',serif;box-shadow:0 15px 50px rgba(90,74,58,0.15);position:relative;z-index:1}
+.about-text{flex:1;min-width:300px}
+.about-text .label{font-size:11px;color:#b8a88a;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
+.about-text h2{font-family:'Cormorant Garamond',serif;font-size:44px;color:#3a3a3a;margin-bottom:10px;font-weight:400;letter-spacing:1px;line-height:1.2}
+.about-text .subtitle{font-size:14px;color:#8b7355;margin-bottom:8px;font-weight:400;letter-spacing:1px}
+.about-text .credentials{font-size:13px;color:#6b7c5a;margin-bottom:25px;font-weight:500;font-style:italic}
+.divider{width:40px;height:1px;background:#b8a88a;margin-bottom:25px}
+.about-text .mission{font-family:'Cormorant Garamond',serif;font-size:20px;color:#5a4a3a;line-height:1.8;margin-bottom:30px;font-weight:400;font-style:italic}
+.tags{display:flex;gap:12px;flex-wrap:wrap}
+.tag{background:transparent;padding:10px 24px;border-radius:30px;font-size:12px;color:#6b7c5a;border:1px solid #b8c5a8;transition:all 0.3s;cursor:default;font-weight:400;letter-spacing:1px}
+.tag:hover{background:#6b7c5a;color:#fff;border-color:#6b7c5a;transform:translateY(-2px)}
+.section-education{padding:60px 20px;background:#f5efe6}
+.section-education h2{font-family:'Cormorant Garamond',serif;font-size:42px;color:#3a3a3a;text-align:center;margin-bottom:15px;font-weight:400}
+.section-education .section-subtitle{text-align:center;color:#8b7355;font-size:14px;margin-bottom:40px;letter-spacing:1px}
+.education-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.education-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(90,74,58,0.08);transition:all 0.3s}
+.education-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(90,74,58,0.15)}
+.education-card .diploma-img{width:100%;height:200px;object-fit:cover;cursor:zoom-in;transition:transform 0.3s}
+.education-card .diploma-img:hover{transform:scale(1.05)}
+.education-card .diploma-placeholder{height:200px;background:linear-gradient(135deg,#e8e0d0,#d4c5b0);display:flex;align-items:center;justify-content:center;font-size:60px;color:#8b7355}
+.education-card .card-body{padding:25px}
+.education-card h3{font-family:'Cormorant Garamond',serif;font-size:22px;color:#3a3a3a;margin-bottom:10px;font-weight:500}
+.education-card .org{font-size:12px;color:#6b7c5a;margin-bottom:8px;font-weight:500}
+.education-card .year{font-size:12px;color:#b8a88a;letter-spacing:1px;margin-bottom:10px}
+.education-card .qualification{font-size:13px;color:#2d5016;font-weight:600;margin-bottom:8px;font-style:italic}
+.education-card p{font-size:14px;color:#5a4a3a;line-height:1.6}
+.education-card .diploma-number{font-size:11px;color:#999;margin-top:10px}
+.education-card .hours{font-size:12px;color:#8b7355;margin-bottom:8px}
+.view-hint{font-size:11px;color:#b8a88a;margin-top:8px;font-style:italic}
+.international-badge{display:inline-block;background:linear-gradient(135deg,#8b7355,#6b5a42);color:#fff;padding:4px 12px;border-radius:12px;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+footer{background:#3a3a3a;color:#fdfbf7;text-align:center;padding:35px 20px;font-size:13px;letter-spacing:1.5px}
+footer p{opacity:0.7}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;justify-content:center;align-items:center;cursor:zoom-out;padding:20px}
+.modal.active{display:flex}
+.modal img{max-width:90%;max-height:90vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+
+.modal-close{position:fixed;top:20px;right:30px;color:#fff;font-size:40px;cursor:pointer;z-index:1001;background:rgba(0,0,0,0.5);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background 0.3s}
+.modal-close:hover{background:rgba(0,0,0,0.8)}
+@media(max-width:768px){
+.hero{min-height:60vh;padding:80px 20px 40px}
+.hero h1{font-size:36px}
+.hero h1 span{font-size:28px}
+.about-container{flex-direction: row;text-align:center;gap:35px}
+.about-text{text-align:center}
+.about-text h2{font-size:32px}
+.about-text .mission{font-size:17px}
+.divider{margin:0 auto 25px}
+.tags{justify-content:center}
+
+nav a{font-size:10px;padding:4px 8px;letter-spacing:0.8px}
+.botanical{display:none}
+.section-about{padding:40px 20px 50px}
+.section-education{padding:40px 20px}
+.section-education h2{font-size:32px}
+}
+
+/* Выпадающее меню */
+
+
+
+
+.dropdown-content a:last-child {
+    border-bottom: none !important;
+}
+.dropdown-content a:hover {
+    background: #f3e5f5 !important;
+    color: #6a1b9a !important;
+}
+.dropdown:hover 
+@media (max-width: 768px) {
+    
+    
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+nav {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 3px !important;
+    padding: 10px 20px !important;
+    background: transparent !important;
+    border-radius: 10px !important;
+    margin-bottom: 20px !important;
+}
+nav > a, nav > .dropdown {
+    display: inline-block !important;
+}
+nav a:not(.dropbtn):not(.dropdown-content a) {
+    color: #2c3e50 !important;
+    text-decoration: none !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
+    transition: background 0.3s !important;
+}
+nav a:not(.dropbtn):not(.dropdown-content a):hover {
+    background: rgba(255,255,255,0.2) !important;
+}
+
+/* ===== ВЫПАДАЮЩЕЕ МЕНЮ ===== */
+.dropdown {
+    position: relative !important;
+    display: inline-block !important;
+}
+.dropbtn {
+    color: #2c3e50 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 8px 10px !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
+    transition: background 0.3s !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+.dropbtn:hover {
+    background: rgba(255,255,255,0.2) !important;
+}
+.dropdown-content {
+    display: none !important;
+    position: absolute !important;
+    background: white !important;
+    min-width: 200px !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important;
+    z-index: 1000 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    top: 100% !important;
+    left: 0 !important;
+    margin-top: 5px !important;
+}
+.dropdown-content a {
+    color: #2c3e50 !important;
+    padding: 12px 18px !important;
+    text-decoration: none !important;
+    display: block !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    transition: background 0.2s !important;
+}
+.dropdown-content a:last-child {
+    border-bottom: none !important;
+}
+.dropdown-content a:hover {
+    background: #f3e5f5 !important;
+    color: #6a1b9a !important;
+}
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    nav a:not(.dropbtn):not(.dropdown-content a) {
+        text-align: center !important;
+    }
+    .dropdown {
+        width: 100% !important;
+    }
+    .dropbtn {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    .dropdown-content {
+        position: static !important;
+        box-shadow: none !important;
+        background: rgba(255,255,255,0.15) !important;
+        border-radius: 8px !important;
+        margin-top: 5px !important;
+    }
+    .dropdown-content a {
+        color: #2c3e50 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+        text-align: center !important;
+    }
+    .dropdown-content a:hover {
+        background: rgba(255,255,255,0.2) !important;
+        color: #2c3e50 !important;
+    }
+}
+</style>
+
+<style>
+/* Карточки в одну линию */
+.cards, .services, .features, .buttons-container, .menu, 
+.cards > *, .services > *, .features > *, .buttons-container > *, .menu > *, nav > * {
+  flex: 1 !important;
+  min-width: 200px !important;
+  max-width: 300px !important;
+}
+
+/* Выпадающее меню */
+
+
+
+
+.dropdown-content a:last-child {
+    border-bottom: none !important;
+}
+.dropdown-content a:hover {
+    background: #f3e5f5 !important;
+    color: #6a1b9a !important;
+}
+.dropdown:hover 
+@media (max-width: 768px) {
+    
+    
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+nav {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 3px !important;
+    padding: 10px 20px !important;
+    background: transparent !important;
+    border-radius: 10px !important;
+    margin-bottom: 20px !important;
+}
+nav > a, nav > .dropdown {
+    display: inline-block !important;
+}
+nav a:not(.dropbtn):not(.dropdown-content a) {
+    color: #2c3e50 !important;
+    text-decoration: none !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
+    transition: background 0.3s !important;
+}
+nav a:not(.dropbtn):not(.dropdown-content a):hover {
+    background: rgba(255,255,255,0.2) !important;
+}
+
+/* ===== ВЫПАДАЮЩЕЕ МЕНЮ ===== */
+.dropdown {
+    position: relative !important;
+    display: inline-block !important;
+}
+.dropbtn {
+    color: #2c3e50 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 8px 10px !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
+    transition: background 0.3s !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+.dropbtn:hover {
+    background: rgba(255,255,255,0.2) !important;
+}
+.dropdown-content {
+    display: none !important;
+    position: absolute !important;
+    background: white !important;
+    min-width: 200px !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important;
+    z-index: 1000 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    top: 100% !important;
+    left: 0 !important;
+    margin-top: 5px !important;
+}
+.dropdown-content a {
+    color: #2c3e50 !important;
+    padding: 12px 18px !important;
+    text-decoration: none !important;
+    display: block !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    transition: background 0.2s !important;
+}
+.dropdown-content a:last-child {
+    border-bottom: none !important;
+}
+.dropdown-content a:hover {
+    background: #f3e5f5 !important;
+    color: #6a1b9a !important;
+}
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    nav a:not(.dropbtn):not(.dropdown-content a) {
+        text-align: center !important;
+    }
+    .dropdown {
+        width: 100% !important;
+    }
+    .dropbtn {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    .dropdown-content {
+        position: static !important;
+        box-shadow: none !important;
+        background: rgba(255,255,255,0.15) !important;
+        border-radius: 8px !important;
+        margin-top: 5px !important;
+    }
+    .dropdown-content a {
+        color: #2c3e50 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+        text-align: center !important;
+    }
+    .dropdown-content a:hover {
+        background: rgba(255,255,255,0.2) !important;
+        color: #2c3e50 !important;
+    }
+}
+</style>
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="premium.css">
+<style>
+/* Принудительные стили для навигации */
+
+nav > a, nav > 
+nav a:not(.dropbtn):not(.dropdown-content a) {
+    color: #2c3e50 !important;
+    text-decoration: none !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+}
+
+
+
+
+.dropdown-content a:last-child {
+    border-bottom: none !important;
+}
+.dropdown-content a:hover {
+    background: #f3e5f5 !important;
+    color: #6a1b9a !important;
+}
+.dropdown:hover 
+@media (max-width: 768px) {
+    
+    
+}
+
+/* Выпадающее меню */
+
+
+
+
+.dropdown-content a:last-child {
+    border-bottom: none !important;
+}
+.dropdown-content a:hover {
+    background: #f3e5f5 !important;
+    color: #6a1b9a !important;
+}
+.dropdown:hover 
+@media (max-width: 768px) {
+    
+    
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+nav {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 3px !important;
+    padding: 10px 20px !important;
+    background: transparent !important;
+    border-radius: 10px !important;
+    margin-bottom: 20px !important;
+}
+nav > a, nav > .dropdown {
+    display: inline-block !important;
+}
+nav a:not(.dropbtn):not(.dropdown-content a) {
+    color: #2c3e50 !important;
+    text-decoration: none !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
+    transition: background 0.3s !important;
+}
+nav a:not(.dropbtn):not(.dropdown-content a):hover {
+    background: rgba(255,255,255,0.2) !important;
+}
+
+/* ===== ВЫПАДАЮЩЕЕ МЕНЮ ===== */
+.dropdown {
+    position: relative !important;
+    display: inline-block !important;
+}
+.dropbtn {
+    color: #2c3e50 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 8px 10px !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
+    transition: background 0.3s !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+.dropbtn:hover {
+    background: rgba(255,255,255,0.2) !important;
+}
+.dropdown-content {
+    display: none !important;
+    position: absolute !important;
+    background: white !important;
+    min-width: 200px !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important;
+    z-index: 1000 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    top: 100% !important;
+    left: 0 !important;
+    margin-top: 5px !important;
+}
+.dropdown-content a {
+    color: #2c3e50 !important;
+    padding: 12px 18px !important;
+    text-decoration: none !important;
+    display: block !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    transition: background 0.2s !important;
+}
+.dropdown-content a:last-child {
+    border-bottom: none !important;
+}
+.dropdown-content a:hover {
+    background: #f3e5f5 !important;
+    color: #6a1b9a !important;
+}
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    nav a:not(.dropbtn):not(.dropdown-content a) {
+        text-align: center !important;
+    }
+    .dropdown {
+        width: 100% !important;
+    }
+    .dropbtn {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    .dropdown-content {
+        position: static !important;
+        box-shadow: none !important;
+        background: rgba(255,255,255,0.15) !important;
+        border-radius: 8px !important;
+        margin-top: 5px !important;
+    }
+    .dropdown-content a {
+        color: #2c3e50 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+        text-align: center !important;
+    }
+    .dropdown-content a:hover {
+        background: rgba(255,255,255,0.2) !important;
+        color: #2c3e50 !important;
+    }
+}
+</style>
+<style>
+/* Принудительные стили для навигации */
+
+nav > a, nav > 
+nav a:not(.dropbtn):not(.dropdown-content a) {
+    color: #2c3e50 !important;
+    text-decoration: none !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+}
+
+
+
+
+.dropdown-content a:last-child {
+    border-bottom: none !important;
+}
+.dropdown-content a:hover {
+    background: #f3e5f5 !important;
+    color: #6a1b9a !important;
+}
+.dropdown:hover 
+@media (max-width: 768px) {
+    
+    
+}
+
+/* Выпадающее меню */
+
+
+
+
+.dropdown-content a:last-child {
+    border-bottom: none !important;
+}
+.dropdown-content a:hover {
+    background: #f3e5f5 !important;
+    color: #6a1b9a !important;
+}
+.dropdown:hover 
+@media (max-width: 768px) {
+    
+    
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+nav {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 3px !important;
+    padding: 10px 20px !important;
+    background: transparent !important;
+    border-radius: 10px !important;
+    margin-bottom: 20px !important;
+}
+nav > a, nav > .dropdown {
+    display: inline-block !important;
+}
+nav a:not(.dropbtn):not(.dropdown-content a) {
+    color: #2c3e50 !important;
+    text-decoration: none !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
+    transition: background 0.3s !important;
+}
+nav a:not(.dropbtn):not(.dropdown-content a):hover {
+    background: rgba(255,255,255,0.2) !important;
+}
+
+/* ===== ВЫПАДАЮЩЕЕ МЕНЮ ===== */
+.dropdown {
+    position: relative !important;
+    display: inline-block !important;
+}
+.dropbtn {
+    color: #2c3e50 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 8px 10px !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
+    transition: background 0.3s !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+.dropbtn:hover {
+    background: rgba(255,255,255,0.2) !important;
+}
+.dropdown-content {
+    display: none !important;
+    position: absolute !important;
+    background: white !important;
+    min-width: 200px !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important;
+    z-index: 1000 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    top: 100% !important;
+    left: 0 !important;
+    margin-top: 5px !important;
+}
+.dropdown-content a {
+    color: #2c3e50 !important;
+    padding: 12px 18px !important;
+    text-decoration: none !important;
+    display: block !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    transition: background 0.2s !important;
+}
+.dropdown-content a:last-child {
+    border-bottom: none !important;
+}
+.dropdown-content a:hover {
+    background: #f3e5f5 !important;
+    color: #6a1b9a !important;
+}
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    nav a:not(.dropbtn):not(.dropdown-content a) {
+        text-align: center !important;
+    }
+    .dropdown {
+        width: 100% !important;
+    }
+    .dropbtn {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    .dropdown-content {
+        position: static !important;
+        box-shadow: none !important;
+        background: rgba(255,255,255,0.15) !important;
+        border-radius: 8px !important;
+        margin-top: 5px !important;
+    }
+    .dropdown-content a {
+        color: #2c3e50 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+        text-align: center !important;
+    }
+    .dropdown-content a:hover {
+        background: rgba(255,255,255,0.2) !important;
+        color: #2c3e50 !important;
+    }
+}
+</style>
+</head>
+<body>
+<nav style="display:flex;flex-direction:column;gap:8px;padding:10px 20px;">
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:5px;">
+<a href="index.html#author" style="color:#2c3e50;text-decoration:none;padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;">ОБО МНЕ</a>
+<a href="aromatherapy.html" style="color:#2c3e50;text-decoration:none;padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;">АРОМАТЕРАПИЯ</a>
+<a href="services.html" style="color:#2c3e50;text-decoration:none;padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;">УСЛУГИ</a>
+<a href="blog.html" style="color:#2c3e50;text-decoration:none;padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;">БЛОГ</a>
+<a href="analyses.html" style="color:#2c3e50;text-decoration:none;padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;">АНАЛИЗЫ</a>
+<a href="calculators.html" style="color:#2c3e50;text-decoration:none;padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;">КАЛЬКУЛЯТОРЫ</a>
+</div>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:5px;">
+<a href="where-to-buy.html" style="color:#2c3e50;text-decoration:none;padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;">ГДЕ КУПИТЬ</a>
+<a href="faq.html" style="color:#2c3e50;text-decoration:none;padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;">ВОПРОСЫ</a>
+<a href="contact.html" style="color:#2c3e50;text-decoration:none;padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;">СВЯЗЬ</a>
+<a href="checkups.html" style="color:#2c3e50;text-decoration:none;padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;">ЧЕКАПЫ</a>
+<a href="sources.html" style="color:#2c3e50;text-decoration:none;padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;">ИСТОЧНИКИ</a>
+</div>
+</nav>
+<section class="hero">
+<div class="botanical b1">🌿 </div>
+<div class="botanical b2">🍃 </div>
+<div class="botanical b3">🌾 </div>
+<div class="botanical b4">🌱 </div>
+<div class="hero-content">
+<div class="ornament">✦ ✦ ✦</div>
+<h1>Путь к гармонии тела и души</span></h1>
+<p class="tagline">Натуральные практики здоровья</p>
+<a href="#author" class="btn-primary">Познакомиться со специалистом</a>
+</div>
+<div class="hero-wave">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 40" preserveAspectRatio="none">
+<path d="M0,20 C200,40 400,0 600,20 C800,40 1000,0 1200,20 L1200,40 L0,40 Z" style="fill:#fdfbf7"></path>
+</svg>
+</div>
+</section>
+<section class="section-about" id="author">
+<div class="about-container">
+<div class="photo-wrapper">
+<img src="author.jpg" alt="Павел Пилипенко" class="author-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+<div class="photo-placeholder" style="display:none">ПП</div>
+</div>
+<div class="about-text">
+<div class="label">Обо мне</div>
+<h2>Пилипенко Павел</h2>
+<p class="subtitle">Специалист по ЗОЖ · Клинический ароматерапевт</p>
+<p class="credentials">🎓  Дипломированный нутрициолог · Дипломированный Клинический ароматерапевт · Дипломированный парафармацевт</p>
+<div class="divider"></div>
+<p class="mission">Помогаю людям обрести баланс тела, разума и эмоций через проверенные натуральные практики. Моя миссия — делиться знаниями о силе природы, правильном питании и целебных ароматах.</p>
+<div class="tags">
+<span class="tag">🌿  АРОМАТЕРАПИЯ</span>
+<span class="tag">💚  Нутрициология</span>
+<span class="tag">💊  Парафармацевтика</span>
+</div>
+</div>
+</div>
+</section>
+<footer>
+<p>© 2026 АРОМАТЕРАПИЯ с Павлом Пилипенко. Все права защищены.</p>
+</footer>
+<div class="modal" id="diplomaModal" onclick="closeModal()">
+<div class="modal-close" onclick="closeModal()">×</div>
+<img id="modalImg" src="" alt="Диплом">
+</div>
+<script>
+function openModal(img) {
+  document.getElementById('modalImg').src = img.src;
+  document.getElementById('diplomaModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('diplomaModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+
+<script>
+// Принудительно выстраиваем карточки в одну линию
+window.addEventListener('DOMContentLoaded', function() {
+  // Ищем все элементы, которые похожи на карточки/кнопки
+  var cards = document.querySelectorAll('a.card, .card, .btn, .button, .service-card, .feature-card, nav a, .menu a');
+ 
+  if (cards.length > 0) {
+    // Находим родительский контейнер первой карточки
+    var parent = cards[0].parentElement;
+   
+    // Применяем flex-стиль к родителю
+    parent.style.display = 'flex';
+    parent.style.flexDirection = 'row';
+    parent.style.flexWrap = 'nowrap';
+    parent.style.justifyContent = 'center';
+    parent.style.alignItems = 'stretch';
+    parent.style.gap = '20px';
+    parent.style.width = '100%';
+    parent.style.maxWidth = '1200px';
+    parent.style.margin = '0 auto';
+   
+    // Применяем стиль к каждой карточке
+    for (var i = 0; i < cards.length; i++) {
+      cards[i].style.flex = '1';
+      cards[i].style.minWidth = '0';
+      cards[i].style.maxWidth = '350px';
+      cards[i].style.whiteSpace = 'normal';
+      cards[i].style.wordBreak = 'break-word';
+    }
+  }
+});
+</script>
+
+
+
+<script>
+// Добавляем пункт "ЧЕКАПЫ" в меню навигации
+window.addEventListener('DOMContentLoaded', function() {
+  // Ищем все ссылки в навигации
+  var navLinks = document.querySelectorAll('nav a, .menu a, header a, [class*="nav"] a');
+ 
+  if (navLinks.length > 0) {
+    // Находим ссылку "АНАЛИЗЫ" или "КАЛЬКУЛЯТОРЫ"
+    var targetLink = null;
+    for (var i = 0; i < navLinks.length; i++) {
+      if (navLinks[i].textContent.trim() === 'АНАЛИЗЫ' || navLinks[i].textContent.trim() === 'КАЛЬКУЛЯТОРЫ') {
+        targetLink = navLinks[i];
+        break;
+      }
+    }
+   
+    // Если не нашли, берём последнюю ссылку
+    if (!targetLink && navLinks.length > 0) {
+      targetLink = navLinks[navLinks.length - 1];
+    }
+   
+    if (targetLink) {
+      var newLink = document.createElement('a');
+      newLink.href = 'checkups.html';
+      newLink.textContent = 'ЧЕКАПЫ';
+      // Копируем стили от существующих ссылок
+      newLink.style.cssText = targetLink.style.cssText;
+      newLink.className = targetLink.className;
+      targetLink.parentNode.insertBefore(newLink, targetLink.nextSibling);
+      console.log('✅ Пункт ЧЕКАПЫ добавлен в меню!');
+    }
+  }
+});
+</script>
+
+<script>
+// Удаляем дубликаты пункта "ЧЕКАПЫ" в меню — оставляем только последний
+window.addEventListener('DOMContentLoaded', function() {
+  var allLinks = document.querySelectorAll('nav a, .menu a, header a, [class*="nav"] a, a');
+  var checkupLinks = [];
+ 
+  for (var i = 0; i < allLinks.length; i++) {
+    if (allLinks[i].textContent.trim() === 'ЧЕКАПЫ' || allLinks[i].textContent.trim() === 'ЧЕКАП') {
+      checkupLinks.push(allLinks[i]);
+    }
+  }
+ 
+  // Если нашли больше одного — удаляем все, кроме последнего
+  if (checkupLinks.length > 1) {
+    for (var j = 0; j < checkupLinks.length - 1; j++) {
+      checkupLinks[j].parentNode.removeChild(checkupLinks[j]);
+    }
+    console.log('✅ Удалено дубликатов ЧЕКАПЫ: ' + (checkupLinks.length - 1) + '. Оставлен последний.');
+  }
+});
+</script>
+
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  var navLinks = document.querySelectorAll('nav a, .menu a, header a, [class*="nav"] a');
+ 
+  if (navLinks.length > 0) {
+    // Находим последнюю ссылку в меню
+    var lastLink = navLinks[navLinks.length - 1];
+   
+    var newLink = document.createElement('a');
+    newLink.href = 'sources.html';
+    newLink.style.cssText = lastLink.style.cssText;
+    newLink.className = lastLink.className;
+    lastLink.parentNode.insertBefore(newLink, lastLink.nextSibling);
+  }
+});
+</script>
+<script src="premium.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
